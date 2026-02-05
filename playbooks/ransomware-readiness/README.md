@@ -1,6 +1,6 @@
 # Ransomware Readiness (Cities/Counties)
 
-A lightweight readiness package for public-sector environments.
+A lightweight readiness package for public-sector environments. Start with RANSOMWARE_READINESS_PACK.md for the full pack.
 
 ## Contents
 - Readiness checklist (prevent/detect/respond)
@@ -17,3 +17,5 @@ A lightweight readiness package for public-sector environments.
 ## Next steps
 - Run the tabletop: `templates/tabletop-ransomware.md`
 - Build your patch governance around KEV: `slides/kev-to-risk-deck-outline.md`
+
+- Full pack: RANSOMWARE_READINESS_PACK.md
