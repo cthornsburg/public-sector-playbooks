@@ -20,13 +20,3 @@ This is a **community, unofficial** workbook designed to help local agencies pre
 2. Use **Export JSON** to save your progress to a file.
 3. Use **Import JSON** to restore a saved session.
 4. Use **Print / PDF Export** for offline review.
-
-## Hosting (GitHub Pages)
-
-This tool is designed to be hosted as a static page via GitHub Pages.
-
-If you’re enabling Pages for this repo:
-- Set **Pages source** to the `main` branch
-- Set the folder to `/docs`
-
-Then browse to the `/cjis-v6-local-agency-workbook/` path.

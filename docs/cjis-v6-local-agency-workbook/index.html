@@ -3080,49 +3080,6 @@
 
     function saveState() {
         const data = buildStateObject();
-        
-            org: {
-                agencyName: document.getElementById("agencyName").value,
-                ori: document.getElementById("ori").value,
-                csa: document.getElementById("csa").value,
-                assessmentDate: document.getElementById("assessmentDate").value,
-                assessorName: document.getElementById("assessorName").value,
-                assessorEmail: document.getElementById("assessorEmail").value,
-                scopeNotes: document.getElementById("scopeNotes").value,
-                assessmentType: document.getElementById("assessmentType").value
-            },
-            contacts: {
-                tacName: document.getElementById("tacName").value,
-                tacContact: document.getElementById("tacContact").value,
-                lasoName: document.getElementById("lasoName").value,
-                lasoContact: document.getElementById("lasoContact").value,
-                itLead: document.getElementById("itLead").value,
-                itContact: document.getElementById("itContact").value,
-                tacLasoDocs: getRadioValue("tacLasoDocs"),
-                localPolicy: getRadioValue("localPolicy")
-            },
-            environment: {
-                approxUsers: document.getElementById("approxUsers").value,
-                cjisSystems: document.getElementById("cjisSystems").value,
-                environmentNotes: document.getElementById("environmentNotes").value
-            },
-            risk: {
-                immediate: document.getElementById("riskImmediate").value,
-                shortTerm: document.getElementById("riskShortTerm").value,
-                longTerm: document.getElementById("riskLongTerm").value
-            },
-            assessor: {
-                notes: document.getElementById("assessorNotes").value
-            },
-            controls: {}
-        };
-
-        cjisControls.policyAreas.forEach(area => {
-            area.requirements.forEach(req => {
-                data.controls[req.id] = getRequirementState(req.id);
-            });
-        });
-
         try {
             localStorage.setItem(stateKey, JSON.stringify(data));
             const now = new Date();
