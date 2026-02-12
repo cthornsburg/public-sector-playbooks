@@ -1,0 +1,30 @@
+flowchart TD
+  A{Active threat actor activity now?} -->|Yes| B[Stabilize comms<br/>Start incident log]
+  B --> C[Preserve quickly<br/>EDR export; firewall/VPN/auth logs]
+  C --> D[Isolate affected hosts<br/>EDR containment; port shutdown; VLAN quarantine]
+  D --> E[Stop known bad<br/>Block IOCs; disable confirmed compromised accounts]
+  E --> F[Do NOT mass-reimage or wipe<br/>until DFIR confirms evidence is sufficient]
+
+  A -->|No / Unknown| G[Preserve logs/telemetry first]
+  G --> H[Increase monitoring for key signals]
+  H --> I[Scoped containment<br/>Reset passwords; revoke tokens; remove persistence]
+
+  I --> J{Account compromise suspected?}
+  F --> J
+  J -->|Yes| K[Collect auth logs first<br/>Then reset/disable accounts<br/>Revoke sessions/tokens; remove suspicious OAuth apps]
+  J -->|No| L[Continue monitoring + targeted containment]
+
+  K --> M{Ransomware indicators?}
+  L --> M
+  M -->|Yes| N[Isolate segments/hosts<br/>Preserve ransom note + EDR details<br/>Validate backups before restore]
+  M -->|No| O[Proceed]
+
+  N --> P{Public-facing system compromise?}
+  O --> P
+  P -->|Yes| Q[Capture state<br/>Snapshot/image/configs/logs<br/>Consider takedown/WAF rules]
+  P -->|No| R[Proceed]
+
+  Q --> S{Sensitive data potentially accessed?<br/>PII / PHI / CJIS / financial}
+  R --> S
+  S -->|Yes| T[Engage leadership + legal/IR vendor + insurance<br/>Use holding statement template]
+  S -->|No| U[Document actions + continue recovery planning]

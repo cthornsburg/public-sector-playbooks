@@ -20,6 +20,8 @@ A concise, practical checklist for the first day of an incident.
 - Disable compromised accounts; rotate credentials with a plan.
 - Block known IOCs at edge + EDR.
 
+Quick decision aid (PNG): `docs/images/containment-decision-tree.png`
+
 ## Recovery prep (8–24 hours)
 - Validate backups (restore test) before trusting them.
 - Decide: rebuild vs clean.
@@ -27,6 +29,11 @@ A concise, practical checklist for the first day of an incident.
 
 ## Templates
 See:
+- `templates/incident-triage-intake.md`
 - `templates/incident-log.md`
+- `templates/timeline-log.md`
 - `templates/evidence-collection-checklist.md`
+- `templates/minimum-logging-baseline.md`
+- `templates/containment-decision-tree.md`
+- `templates/incident-roles-ics-lite.md`
 - `templates/initial-statement-holding.md`
