@@ -16,6 +16,8 @@ This is a **community, unofficial** workbook designed to help local agencies pre
 
 ## How to use
 
+**Hosted workbook (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/cjis-v6-local-agency-workbook/
+
 1. Open the hosted tool page (GitHub Pages) and complete the workbook.
 2. Use **Export JSON** to save your progress to a file.
 3. Use **Import JSON** to restore a saved session.
