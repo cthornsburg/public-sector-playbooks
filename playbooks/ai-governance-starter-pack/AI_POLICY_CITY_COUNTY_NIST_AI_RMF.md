@@ -122,8 +122,8 @@ AI outputs created in the course of government business may be public records an
 
 ## 7) Operational use rules (acceptable use)
 ### 7.1 Human accountability
-AI output is **advisory** unless explicitly approved for automation. Users remain responsible for:
-- verifying accuracy
+AI output is **advisory** unless explicitly approved for automation. AI outputs (including summaries) may be incorrect, incomplete, or fabricated (**hallucinations**). Users remain responsible for:
+- verifying accuracy against primary records/sources
 - checking citations/claims
 - ensuring compliance with laws and policy
 
