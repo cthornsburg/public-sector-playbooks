@@ -14,6 +14,9 @@ Practical, field-tested security playbooks and templates for **cities/counties a
 - **Reference maps**: primary-source links (CISA, NIST, DOJ) and checklists
 
 ## Start here
+
+- **Executive Start Here (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/executive/
+
 - `playbooks/ransomware-readiness/`
 - `playbooks/dfir-first-24-hours/`
 - `templates/`
