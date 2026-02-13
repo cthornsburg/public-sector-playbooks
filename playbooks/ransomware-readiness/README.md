@@ -15,6 +15,9 @@ A lightweight readiness package for public-sector environments. Start with RANSO
 - Admin segmentation (separate admin workstations/accounts)
 
 ## Next steps
+
+**Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/ransomware-readiness/
+
 - Run the tabletop: `templates/tabletop-ransomware.md`
 - Build your patch governance around KEV: `slides/kev-to-risk-deck-outline.md`
 

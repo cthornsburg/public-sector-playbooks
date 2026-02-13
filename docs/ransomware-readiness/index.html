@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ransomware Readiness Pack (Cities/Counties) — Public Sector Playbooks</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px;margin-top:14px}
+    h1{font-size:1.6rem;margin:0 0 6px 0}
+    h2{font-size:1.15rem;margin:14px 0 6px 0}
+    h3{font-size:1.0rem;margin:12px 0 6px 0;color:#e2e8f0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .pill{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.1);color:#bfdbfe}
+    ul{margin:8px 0 0 18px}
+    li{margin:7px 0}
+    .muted{color:#94a3b8;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .kpi{background:#0f172a;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:12px}
+    code{background:rgba(148,163,184,.15);padding:2px 6px;border-radius:6px}
+    .hr{height:1px;background:rgba(148,163,184,.2);margin:14px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">Ransomware</span>
+    <h1>Ransomware Readiness Pack (Cities/Counties)</h1>
+    <p class="muted">Executive-friendly overview + minimum-viable checklist. Full details remain in the repo.</p>
+
+    <div class="card">
+      <h2>Executive Summary (1 page)</h2>
+      <div class="grid">
+        <div class="kpi">
+          <h3>What this is</h3>
+          <p>A practical readiness package to reduce ransomware impact and improve response speed for public-sector orgs.</p>
+        </div>
+        <div class="kpi">
+          <h3>What success looks like</h3>
+          <ul>
+            <li>Compromise is contained quickly without destroying evidence</li>
+            <li>Backups restore cleanly (tested)</li>
+            <li>Leadership decisions happen fast with documented roles/comms</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <h3>Top 5 readiness priorities (minimum viable)</h3>
+      <ul>
+        <li><strong>MFA everywhere</strong> (email, VPN/remote access, privileged accounts, cloud admin portals)</li>
+        <li><strong>Immutable/offline backups</strong> + <strong>restore tests</strong> (quarterly minimum)</li>
+        <li><strong>EDR coverage</strong> on endpoints + servers with alerting configured</li>
+        <li><strong>Central logging</strong> (VPN, firewall, DNS, EDR, cloud audit)</li>
+        <li><strong>Admin segmentation</strong> (separate admin accounts/workstations; limit lateral movement)</li>
+      </ul>
+
+      <h3>30/60/90 day roadmap (starter)</h3>
+      <ul>
+        <li><strong>30 days:</strong> confirm MFA scope, backup immutability, EDR coverage, and basic log retention</li>
+        <li><strong>60 days:</strong> tabletop exercise with leadership; close the top 5 gaps; define patch SLAs</li>
+        <li><strong>90 days:</strong> segmentation improvements; incident comms/templates approved; repeat tabletop</li>
+      </ul>
+
+      <h3>Key leadership decisions</h3>
+      <ul>
+        <li>Who can authorize downtime / emergency change windows?</li>
+        <li>What services must stay online (911, utilities, payroll)?</li>
+        <li>Who owns communications (internal + public) during an incident?</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>How to use (fast)</h2>
+      <ol style="margin:8px 0 0 18px; color:#cbd5e1;">
+        <li>Complete the checklist and create a short remediation backlog.</li>
+        <li>Confirm minimum viable logging so DFIR is possible.</li>
+        <li>Run a 60–90 minute tabletop with leadership + IT + comms.</li>
+        <li>Pre-stage comms templates and vendor contacts.</li>
+      </ol>
+      <p class="muted">Recommendation: run this pack quarterly and after major changes (new MSP, new EDR, major migration).</p>
+    </div>
+
+    <div class="card">
+      <h2>Links</h2>
+      <ul>
+        <li>Repo playbook (source): <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/ransomware-readiness">playbooks/ransomware-readiness</a></li>
+        <li>Full pack (Markdown): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/ransomware-readiness/RANSOMWARE_READINESS_PACK.md">RANSOMWARE_READINESS_PACK.md</a></li>
+        <li>Tabletop template: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/tabletop-ransomware.md">templates/tabletop-ransomware.md</a></li>
+        <li>KEV governance (monthly): <a href="../kev-to-risk-pack/index.html">KEV-to-Risk Pack (hosted)</a></li>
+      </ul>
+      <p class="muted">Back to hosted tools index: <a href="../index.html">docs/index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>

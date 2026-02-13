@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DFIR: First 24 Hours — Public Sector Playbooks</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px;margin-top:14px}
+    h1{font-size:1.6rem;margin:0 0 6px 0}
+    h2{font-size:1.15rem;margin:14px 0 6px 0}
+    h3{font-size:1.0rem;margin:12px 0 6px 0;color:#e2e8f0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .pill{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(34,197,94,.10);color:#bbf7d0}
+    ul{margin:8px 0 0 18px}
+    li{margin:7px 0}
+    .muted{color:#94a3b8;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .kpi{background:#0f172a;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:12px}
+    .hr{height:1px;background:rgba(148,163,184,.2);margin:14px 0}
+    img{max-width:100%;height:auto;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:#0b1220}
+    .callout{border-left:4px solid rgba(59,130,246,.7);padding:10px 12px;background:rgba(59,130,246,.08);border-radius:10px;color:#dbeafe}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">DFIR</span>
+    <h1>DFIR: The First 24 Hours (Public Sector)</h1>
+    <p class="muted">A single page you can hand to leadership during an incident. Keep it calm, factual, and logged.</p>
+
+    <div class="card">
+      <h2>Executive Summary (1 page)</h2>
+      <div class="grid">
+        <div class="kpi">
+          <h3>Goals</h3>
+          <ul>
+            <li>Preserve evidence</li>
+            <li>Contain safely (without destroying artifacts)</li>
+            <li>Establish command-and-control</li>
+            <li>Communicate reliably</li>
+          </ul>
+        </div>
+        <div class="kpi">
+          <h3>Leadership decisions you’ll be asked to make</h3>
+          <ul>
+            <li>Downtime approvals / emergency changes</li>
+            <li>What services must remain online</li>
+            <li>Whether to engage outside IR/forensics and counsel</li>
+            <li>Public communications posture (holding statement)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="callout">
+        <strong>Rule of thumb:</strong> If you think you might need it later (logs, evidence, screenshots), collect/export it <em>before</em> making big changes.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>0–2 hours (do immediately)</h2>
+      <ol style="margin:8px 0 0 18px; color:#cbd5e1;">
+        <li><strong>Start an incident log</strong> (who/what/when). Assign a single scribe.</li>
+        <li><strong>Stabilize communications</strong> (out-of-band contact list; bridge line/chat).</li>
+        <li><strong>Preserve</strong> key logs/telemetry: EDR alerts, firewall/VPN logs, email security logs, SIEM, cloud audit logs.</li>
+        <li><strong>Snapshot before changes</strong> when possible (VM snapshots, triage images, config exports).</li>
+        <li><strong>Identify scope</strong>: impacted systems, business-critical services, suspected entry point.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>2–8 hours (containment)</h2>
+      <ul>
+        <li>Segment affected subnets; restrict east-west traffic.</li>
+        <li>Disable compromised accounts; rotate credentials with a plan.</li>
+        <li>Block known IOCs at edge + EDR.</li>
+      </ul>
+      <h3>Containment decision tree (visual)</h3>
+      <p class="muted">This is a starter aid—not a substitute for incident-specific judgment.</p>
+      <img src="../images/containment-decision-tree.png" alt="Containment decision tree" />
+    </div>
+
+    <div class="card">
+      <h2>8–24 hours (recovery prep)</h2>
+      <ul>
+        <li>Validate backups (restore test) before trusting them.</li>
+        <li>Decide: rebuild vs clean.</li>
+        <li>Plan communications (internal, leadership, public-facing).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Templates (quick links)</h2>
+      <ul>
+        <li>Incident triage intake: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/incident-triage-intake.md">templates/incident-triage-intake.md</a></li>
+        <li>Incident log: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/incident-log.md">templates/incident-log.md</a></li>
+        <li>Timeline log: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/timeline-log.md">templates/timeline-log.md</a></li>
+        <li>Evidence collection checklist: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/evidence-collection-checklist.md">templates/evidence-collection-checklist.md</a></li>
+        <li>Minimum logging baseline: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/minimum-logging-baseline.md">templates/minimum-logging-baseline.md</a></li>
+        <li>Containment decision tree (text): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/containment-decision-tree.md">templates/containment-decision-tree.md</a></li>
+        <li>Roles (ICS-lite): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/incident-roles-ics-lite.md">templates/incident-roles-ics-lite.md</a></li>
+        <li>Holding statement: <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/initial-statement-holding.md">templates/initial-statement-holding.md</a></li>
+      </ul>
+      <p class="muted">Back to hosted tools index: <a href="../index.html">docs/index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>

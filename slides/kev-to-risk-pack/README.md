@@ -11,6 +11,8 @@
 
 ---
 
+**Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/kev-to-risk-pack/
+
 ## How to use
 1) Pull the current KEV list (or deltas since last month).
 2) Map KEVs to your environment (asset classes, internet-facing, privileged apps).

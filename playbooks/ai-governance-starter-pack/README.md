@@ -2,6 +2,8 @@
 
 Practical starter artifacts to help a city/county stand up AI governance quickly.
 
+**Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/ai-governance-starter-pack/
+
 ## What’s included
 - **AI policy template** (NIST AI RMF-aligned): `AI_POLICY_CITY_COUNTY_NIST_AI_RMF.md`
 - **1-page cheat sheet** for staff/supervisors: `AI_POLICY_CHEAT_SHEET_1P.md`

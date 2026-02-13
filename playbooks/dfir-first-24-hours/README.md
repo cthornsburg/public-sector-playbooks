@@ -27,6 +27,8 @@ Quick decision aid (PNG): `docs/images/containment-decision-tree.png`
 - Decide: rebuild vs clean.
 - Plan communications (internal, leadership, public-facing).
 
+**Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/dfir-first-24-hours/
+
 ## Templates
 See:
 - `templates/incident-triage-intake.md`

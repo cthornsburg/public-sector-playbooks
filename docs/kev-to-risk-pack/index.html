@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KEV-to-Risk Pack — Public Sector Playbooks</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px;margin-top:14px}
+    h1{font-size:1.6rem;margin:0 0 6px 0}
+    h2{font-size:1.15rem;margin:14px 0 6px 0}
+    h3{font-size:1.0rem;margin:12px 0 6px 0;color:#e2e8f0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .pill{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.10);color:#bfdbfe}
+    ul{margin:8px 0 0 18px}
+    li{margin:7px 0}
+    .muted{color:#94a3b8;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .kpi{background:#0f172a;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:12px}
+    code{background:rgba(148,163,184,.15);padding:2px 6px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">KEV</span>
+    <h1>KEV-to-Risk Pack (Cities/Counties)</h1>
+    <p class="muted">Turn CISA’s Known Exploited Vulnerabilities (KEV) into an exec-friendly risk conversation and an IT remediation plan.</p>
+
+    <div class="card">
+      <h2>Executive Summary (1 page)</h2>
+      <div class="grid">
+        <div class="kpi">
+          <h3>Why KEV matters</h3>
+          <ul>
+            <li>KEV is not theoretical—these vulnerabilities are <strong>exploited in the wild</strong>.</li>
+            <li>It’s a high-signal prioritization list for patching and mitigations.</li>
+          </ul>
+        </div>
+        <div class="kpi">
+          <h3>What leadership should ask for</h3>
+          <ul>
+            <li>Which KEVs affect <strong>internet-facing</strong> systems?</li>
+            <li>What’s the remediation plan and timeline (7/14/30)?</li>
+            <li>What exceptions require risk acceptance + compensating controls?</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Cadence</h3>
+      <ul>
+        <li>Monthly review + out-of-band addendum when KEV touches edge infrastructure.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>What you get</h2>
+      <ul>
+        <li><strong>5-slide executive deck</strong> (Markdown outline)</li>
+        <li><strong>IT action sheet</strong> (track CVEs → owners → SLAs → status)</li>
+        <li><strong>Patch SLA table</strong> (simple 7/14/30 rule-set)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Links</h2>
+      <ul>
+        <li>Exec deck (Markdown): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/slides/kev-to-risk-pack/KEV_TO_RISK_DECK.md">slides/kev-to-risk-pack/KEV_TO_RISK_DECK.md</a></li>
+        <li>IT action sheet (template): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/kev-to-risk-pack/IT_ACTION_SHEET.md">templates/kev-to-risk-pack/IT_ACTION_SHEET.md</a></li>
+        <li>Patch SLA table (template): <a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/templates/kev-to-risk-pack/PATCH_SLA_TABLE.md">templates/kev-to-risk-pack/PATCH_SLA_TABLE.md</a></li>
+        <li>CISA KEV catalog: <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog">cisa.gov/known-exploited-vulnerabilities-catalog</a></li>
+        <li>BOD 22-01 overview: <a href="https://www.cisa.gov/binding-operational-directive-22-01">cisa.gov/binding-operational-directive-22-01</a></li>
+      </ul>
+      <p class="muted">Back to hosted tools index: <a href="../index.html">docs/index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>
