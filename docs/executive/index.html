@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Public Sector Playbooks — Executive Start Here</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:#94a3b8;font-size:.95rem;line-height:1.4}
+    h1{font-size:1.7rem;margin:0 0 6px 0}
+    h2{font-size:1.05rem;margin:0 0 8px 0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .topbar{display:flex;gap:10px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+    .pill{display:inline-block;font-size:.8rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.1);color:#bfdbfe}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px}
+    .card p{margin:8px 0}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:9px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.8);color:#e5e7eb}
+    .btn.primary{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.35)}
+    ul{margin:10px 0 0 18px}
+    li{margin:7px 0;color:#cbd5e1}
+    .hr{height:1px;background:rgba(148,163,184,.2);margin:16px 0}
+    .small{font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <span class="pill">Executive Start Here</span>
+        <h1>Public Sector Playbooks</h1>
+        <div class="muted">Fast, non-technical entry points for city/county leadership. Each link opens a one-page summary with the full playbook behind it.</div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="../index.html">Hosted index</a>
+        <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks">GitHub repo</a>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="card">
+      <h2>Pick your situation</h2>
+      <ul>
+        <li><strong>Worried about ransomware?</strong> Start with readiness + leadership decisions.</li>
+        <li><strong>In an incident right now?</strong> Use the first-24-hours DFIR page.</li>
+        <li><strong>Need patch urgency + governance?</strong> Use KEV-to-risk cadence.</li>
+        <li><strong>AI policy pressure?</strong> Use the AI governance starter pack and the “hallucinations” warning.</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Ransomware Readiness Pack</h2>
+        <p class="muted">Minimum-viable controls + a 30/60/90-day plan. Built for leadership alignment and fast execution.</p>
+        <ul class="small">
+          <li>Top 5 priorities: MFA, backups+restore tests, EDR, logging, admin segmentation</li>
+          <li>Leadership decisions: downtime authority, critical services, comms owner</li>
+          <li>Links to tabletop + comms templates</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="../ransomware-readiness/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/ransomware-readiness">Source</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>DFIR: The First 24 Hours</h2>
+        <p class="muted">A one-page checklist for the first day of an incident + a containment decision tree.</p>
+        <ul class="small">
+          <li>0–2 hours: log, comms, preserve, snapshot, scope</li>
+          <li>2–8 hours: containment with evidence preserved</li>
+          <li>Template links: incident log, timeline, evidence checklist, holding statement</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="../dfir-first-24-hours/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/dfir-first-24-hours">Source</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>KEV-to-Risk Pack</h2>
+        <p class="muted">Turn CISA KEV into an executive risk conversation and an IT remediation plan (7/14/30 SLAs).</p>
+        <ul class="small">
+          <li>Monthly cadence + out-of-band addendums for edge exposure</li>
+          <li>Exec deck outline + IT action sheet template</li>
+          <li>Built to shorten patch debates during active exploitation</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="../kev-to-risk-pack/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/slides/kev-to-risk-pack">Source</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>AI Governance Starter Pack</h2>
+        <p class="muted">Starter policy + cheat sheet + use case register aligned to NIST AI RMF. Includes explicit hallucination warning.</p>
+        <ul class="small">
+          <li>Data rules (what cannot go into public AI tools)</li>
+          <li>Human accountability + “no sole-source truth”</li>
+          <li>Vendor/procurement guardrails</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="../ai-governance-starter-pack/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/ai-governance-starter-pack">Source</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:18px;">Note: These resources are practical templates, not legal advice. Adapt to your state CSA guidance, procurement rules, and records requirements.</p>
+  </div>
+</body>
+</html>
