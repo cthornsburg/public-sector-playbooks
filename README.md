@@ -21,5 +21,10 @@ Practical, field-tested security playbooks and templates for **cities/counties a
 - `playbooks/dfir-first-24-hours/`
 - `templates/`
 
+## Responsible use
+- This repository is for educational and operational guidance. Adapt to your environment.
+- Do not paste sensitive incident data into tools or templates.
+- Validate decisions with your policy and counsel as appropriate.
+
 ## License
 Unless otherwise noted, this repository is released under the MIT License.
