@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NIST SP 800-53 Rev. 5 (Moderate) Workbook (Unofficial)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --border: #d1d5db;
+            --accent: #0b61a4;
+            --accent-soft: #e0f2fe;
+            --accent-strong: #0b61a4;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --danger: #b91c1c;
+            --warning: #f59e0b;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #dbeafe, #f3f4f6);
+            color: var(--text-main);
+        }
+
+        .page {
+            max-width: 1300px;
+            margin: 16px auto 32px auto;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(300px, 1.2fr);
+            gap: 16px;
+            padding: 0 12px;
+        }
+
+        @media (max-width: 1000px) {
+            .page {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .main-card,
+        .side-card {
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            overflow: hidden;
+        }
+
+        .main-card-header {
+            padding: 18px 20px 14px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #0f172a, #1d4ed8);
+            color: #f9fafb;
+            position: relative;
+        }
+
+        .main-card-header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 0%, rgba(59, 130, 246, 0.4), transparent 50%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .main-card-header-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.8);
+            color: #e5e7eb;
+            margin-bottom: 6px;
+        }
+
+        .badge span {
+            font-size: 12px;
+        }
+
+        .audit-title {
+            font-size: 1.4rem;
+            margin: 0 0 2px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .audit-title span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #e5e7eb;
+        }
+
+        .header-sub {
+            font-size: 0.83rem;
+            color: #e5e7eb;
+            opacity: 0.95;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+            font-size: 0.78rem;
+        }
+
+        .tag {
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .main-card-body {
+            padding: 16px 20px 16px 20px;
+        }
+
+        .side-card-header {
+            padding: 12px 14px 10px 14px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(90deg, #0f172a, #1d4ed8);
+            color: #f9fafb;
+            position: relative;
+        }
+
+        .side-card-header h2 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .side-card-header p {
+            margin: 3px 0 0 0;
+            font-size: 0.78rem;
+            opacity: 0.9;
+        }
+
+        .side-card-body {
+            padding: 12px 14px 14px 14px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .toolbar-left,
+        .toolbar-right {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .toolbar-right {
+            margin-left: auto;
+        }
+
+        @media (max-width: 700px) {
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toolbar-right {
+                margin-left: 0;
+                justify-content: space-between;
+            }
+        }
+
+        .btn {
+            border: none;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1d4ed8, #0b61a4);
+            color: white;
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: #111827;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #374151;
+        }
+
+        .btn-small {
+            padding: 4px 10px;
+            font-size: 11px;
+        }
+
+        .btn-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-outline:hover {
+            background: #f3f4f6;
+        }
+
+        .btn-ghost:hover {
+            background: #f9fafb;
+        }
+
+        .pill {
+            border-radius: 999px;
+            border: 1px solid #d1d5db;
+            padding: 4px 10px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f9fafb;
+            color: #374151;
+        }
+
+        .pill-label {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .pill-value {
+            color: #2563eb;
+        }
+
+        .pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        .pill-dot.warning {
+            background: #f97316;
+        }
+
+        .pill-dot.danger {
+            background: #ef4444;
+        }
+
+        .pill-dot.muted {
+            background: #9ca3af;
+        }
+
+        .pill-soft {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1d4ed8;
+        }
+
+        .tab-row {
+            display: flex;
+			flex-wrap: wrap;
+			row-gap: 8px; 
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tab {
+            flex: 0 0 auto;
+            font-size: 11px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .tab.active {
+            background: #0b61a4;
+            color: white;
+            border-color: #0b61a4;
+        }
+
+        .section {
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            background: #f9fafb;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .section-sub {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chip {
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            border: 1px solid #d1d5db;
+            background: #f3f4f6;
+        }
+
+        .chip-accent {
+            border-color: #bfdbfe;
+            background: #e0f2fe;
+            color: #075985;
+        }
+
+        .chip-soft {
+            border-color: #e5e7eb;
+            background: #f9fafb;
+            color: #4b5563;
+        }
+
+        .inline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .field-label {
+            font-size: 0.72rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .field-label span {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .field-required {
+            color: #b91c1c;
+            font-size: 0.7rem;
+        }
+
+        .field-help {
+            font-size: 0.7rem;
+            color: #9ca3af;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 0.8rem;
+            padding: 6px 8px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #111827;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+        }
+
+        .small-input {
+            max-width: 200px;
+        }
+
+        .micro-input {
+            max-width: 100px;
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .flex-space {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-pill {
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.72rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-pill span {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+        }
+
+        .status-ok {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-ok span {
+            background: #16a34a;
+        }
+
+        .status-watch {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-watch span {
+            background: #f59e0b;
+        }
+
+        .status-risk {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .status-risk span {
+            background: #ef4444;
+        }
+
+        .status-neutral {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .status-neutral span {
+            background: #6b7280;
+        }
+
+        .switch-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .switch {
+            width: 34px;
+            height: 18px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        .switch-thumb {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: white;
+            top: 2px;
+            left: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            transition: transform 0.2s;
+        }
+
+        .switch.on {
+            background: #22c55e;
+        }
+
+        .switch.on .switch-thumb {
+            transform: translateX(16px);
+        }
+
+        .check-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.78rem;
+        }
+
+        .check-row input[type="checkbox"] {
+            width: 13px;
+            height: 13px;
+        }
+
+        .side-section {
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            padding: 8px 9px 9px 9px;
+            background: #f9fafb;
+        }
+
+        .side-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .side-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .side-section-sub {
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        .metric-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            color: #4b5563;
+        }
+
+        .metric-value {
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            overflow: hidden;
+            margin-top: 3px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #22c55e, #84cc16);
+            border-radius: 999px;
+            transition: width 0.2s ease-out;
+        }
+
+        .risk-bar {
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: #fee2e2;
+            overflow: hidden;
+        }
+
+        .risk-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f97316, #b91c1c);
+            border-radius: 999px;
+            transition: width 0.2s ease-out;
+        }
+
+        .phase-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            font-size: 0.72rem;
+        }
+
+        .phase-badge {
+            padding: 2px 7px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .phase-badge span {
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        .help-text {
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        .help-text strong {
+            color: #111827;
+        }
+
+        .list-compact {
+            margin: 4px 0 0 16px;
+            padding: 0;
+            font-size: 0.78rem;
+            color: #4b5563;
+        }
+
+        .list-compact li {
+            margin-bottom: 2px;
+        }
+
+        .pill-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.72rem;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .pill-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+        }
+
+        .pill-status-ok .pill-status-dot {
+            background: #16a34a;
+        }
+
+        .pill-status-warn .pill-status-dot {
+            background: #f59e0b;
+        }
+
+        .pill-status-risk .pill-status-dot {
+            background: #ef4444;
+        }
+
+        .pill-status-muted .pill-status-dot {
+            background: #9ca3af;
+        }
+
+        .no-print {
+            /* placeholder for print styles if needed */
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .form-row small {
+            font-size: 0.72rem;
+            color: #6b7280;
+        }
+
+        .audit-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .audit-controls label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .audit-controls input[type="radio"] {
+            width: 13px;
+            height: 13px;
+        }
+
+        .small-pill {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .badge-soft {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            font-size: 0.72rem;
+            color: #1d4ed8;
+        }
+
+        .badge-soft span {
+            font-size: 0.8rem;
+        }
+
+        .key-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.78rem;
+        }
+
+        .key-metric-label {
+            color: #6b7280;
+        }
+
+        .key-metric-value {
+            font-weight: 600;
+        }
+
+        .table-compact {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            margin-top: 6px;
+        }
+
+        .table-compact th,
+        .table-compact td {
+            border: 1px solid #e5e7eb;
+            padding: 4px 6px;
+            text-align: left;
+        }
+
+        .table-compact th {
+            background: #f3f4f6;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .tag-soft {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.7rem;
+        }
+
+        .tag-soft span {
+            font-size: 0.8rem;
+        }
+
+        .tag-soft.neutral {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .tag-soft.red {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .tag-soft.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag-soft.yellow {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag-soft.blue {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .text-muted {
+            color: #6b7280;
+            font-size: 0.78rem;
+        }
+
+        .metric-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            font-size: 0.72rem;
+        }
+
+        .metric-chip strong {
+            font-weight: 600;
+        }
+
+        .metric-chip span {
+            color: #6b7280;
+        }
+
+        .pill-cjis {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(129, 140, 248, 0.6);
+            background: rgba(129, 140, 248, 0.06);
+            color: #1d4ed8;
+            font-size: 0.7rem;
+        }
+
+        .pill-cjis-code {
+            font-weight: 600;
+        }
+
+        .pill-cjis-area {
+            color: #6b7280;
+        }
+
+        .pill-cjis-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: #4f46e5;
+        }
+
+        .badge-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            font-size: 0.72rem;
+            color: #374151;
+        }
+
+        .badge-light span {
+            font-size: 0.8rem;
+        }
+
+        .pill-text {
+            font-size: 0.72rem;
+            color: #6b7280;
+        }
+
+        .section-note {
+            margin-top: 4px;
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        .print-note {
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            background: #111827;
+            color: #f9fafb;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+            z-index: 50;
+        }
+
+        .toast.show {
+            display: inline-flex;
+        }
+
+        .toast-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 999px;
+            background: #22c55e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .toast-text {
+            white-space: nowrap;
+        }
+
+        .requirement-row {
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            padding: 7px 8px;
+            margin-bottom: 6px;
+        }
+
+        .requirement-header {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .requirement-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .requirement-id {
+            font-size: 0.72rem;
+            color: #6b7280;
+        }
+
+        .requirement-body {
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+            gap: 6px;
+        }
+
+        @media (max-width: 900px) {
+            .requirement-body {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .requirement-notes {
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+
+        .requirement-notes textarea {
+            font-size: 0.75rem;
+            min-height: 50px;
+        }
+
+        .requirement-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .status-select {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+        }
+
+        .evidence-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            font-size: 0.7rem;
+        }
+
+        .evidence-tag {
+            padding: 2px 7px;
+            border-radius: 999px;
+            border: 1px dashed #cbd5f5;
+            color: #4b5563;
+            background: #eff6ff;
+        }
+
+        .evidence-tag strong {
+            color: #1d4ed8;
+        }
+
+        .link-like {
+            color: #2563eb;
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            font-size: 0.75rem;
+        }
+
+        .link-like:hover {
+            color: #1d4ed8;
+        }
+
+        .summary-section {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e5ea;
+        }
+
+        .summary-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #1f2933;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .summary-card {
+            background: #f8f9fa;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #0b61a4;
+            font-size: 12px;
+            color: #4b5563;
+        }
+
+        .summary-card h4 {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .summary-card-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 2px 0;
+        }
+
+        .summary-card-row span:first-child {
+            color: #6b7280;
+        }
+
+        .summary-card-row span:last-child {
+            font-weight: 600;
+        }
+
+        .summary-completion {
+            margin-top: 8px;
+            font-weight: 600;
+            color: #111827;
+            font-size: 12px;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 40;
+        }
+
+        .modal {
+            background: #f9fafb;
+            border-radius: 12px;
+            max-width: 620px;
+            width: 94%;
+            padding: 12px 16px 14px 16px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.6);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .modal-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            border-radius: 999px;
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .modal-body {
+            font-size: 0.8rem;
+            color: #4b5563;
+        }
+
+        .modal-body h4 {
+            font-size: 0.85rem;
+            margin: 10px 0 3px 0;
+        }
+
+        .modal-body ul {
+            margin: 3px 0 0 16px;
+            padding: 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 2px;
+        }
+
+        .badge-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .badge-inline span {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+        }
+
+        .badge-inline.critical span {
+            background: #b91c1c;
+        }
+
+        .badge-inline.high span {
+            background: #eab308;
+        }
+
+        .badge-inline.medium span {
+            background: #0ea5e9;
+        }
+
+        .badge-inline.low span {
+            background: #22c55e;
+        }
+
+        .badge-inline.critical {
+            color: #b91c1c;
+        }
+
+        .badge-inline.high {
+            color: #92400e;
+        }
+
+        .badge-inline.medium {
+            color: #075985;
+        }
+
+        .badge-inline.low {
+            color: #166534;
+        }
+
+        .pill-light {
+            padding: 1px 7px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            font-size: 0.7rem;
+            color: #4b5563;
+        }
+
+        .text-sm {
+            font-size: 0.78rem;
+        }
+
+        .mt-4 {
+            margin-top: 6px;
+        }
+
+        .mt-2 {
+            margin-top: 3px;
+        }
+
+        .code-inline {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.75rem;
+            background: #f3f4f6;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+        }
+
+        .indicator-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+        }
+
+        .indicator.ok .indicator-dot {
+            background: #22c55e;
+        }
+
+        .indicator.warn .indicator-dot {
+            background: #facc15;
+        }
+
+        .indicator.risk .indicator-dot {
+            background: #ef4444;
+        }
+
+        .indicator-label {
+            color: #4b5563;
+        }
+
+        .logic-diagram {
+            margin-top: 6px;
+            padding: 8px 9px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #374151;
+            border: 1px dashed #d1d5db;
+        }
+
+        .logic-diagram strong {
+            color: #111827;
+        }
+
+        .logic-step {
+            display: flex;
+            gap: 4px;
+            align-items: flex-start;
+            margin-bottom: 2px;
+        }
+
+        .logic-step span {
+            font-weight: 600;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="main-card">
+        <div class="main-card-header">
+            <div class="main-card-header-inner">
+                <div class="badge">
+                    <span>🔐</span>
+                    <span>NIST SP 800-53 Rev. 5 (Moderate) Workbook</span>
+                </div>
+                <h1 class="audit-title">
+                    NIST SP 800-53 Rev. 5 (Moderate-oriented) Self-Assessment
+                    <span>Working copy – not an official NIST form</span>
+                </h1>
+                <div class="header-sub">
+                    Use this page to capture assessment notes and status against a practical subset of NIST SP 800-53 Rev. 5 controls (Moderate-oriented). Progress can be saved locally, exported to JSON, or printed.
+                </div>
+                <div class="section" id="disclaimer" style="margin-top:10px; background:#fff7ed; border-color:#fed7aa;">
+                    <div class="section-header">
+                        <div class="section-title">Important: Unofficial tool + local-only storage</div>
+                        <div class="section-sub"><span class="chip chip-accent">Read before use</span></div>
+                    </div>
+                    <div class="help-text" style="font-size:0.78rem; color:#7c2d12;">
+                        <ul class="list-compact" style="color:#7c2d12; font-size:0.78rem;">
+                            <li><strong>Unofficial resource:</strong> Not an official NIST workbook and not endorsed by NIST.</li>
+                            <li><strong>No sensitive data:</strong> Do not enter secrets or regulated/sensitive data into this workbook.</li>
+                            <li><strong>Storage:</strong> “Save Session” uses your browser’s <span class="code-inline">localStorage</span> on this device. It is <strong>not encrypted</strong>. Don’t use on shared/public computers.</li>
+                            <li><strong>Authority:</strong> Your governing policies, auditors, and legal counsel are the authoritative sources for requirements and interpretations.</li>
+                            <li><strong>Official reference:</strong> <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final" target="_blank" rel="noopener noreferrer">NIST SP 800-53 Rev. 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tag-row">
+                    <div class="tag">Policy Area 1–13 Coverage</div>
+                    <div class="tag">Cities/Counties friendly</div>
+                    <div class="tag">Leadership + IT collaboration</div>
+                </div>
+            </div>
+        </div>
+        <div class="main-card-body">
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="btn btn-primary" onclick="saveState()">
+                        💾 Save Session (Browser)
+                    </button>
+                    <button class="btn btn-outline" onclick="resetState()">
+                        ♻️ Clear All
+                    </button>
+                    
+                    <button class="btn btn-outline" onclick="exportJSON()">⬇️ Export JSON</button>
+                    <button class="btn btn-outline" onclick="document.getElementById('importFile').click()">⬆️ Import JSON</button>
+                    <input type="file" id="importFile" accept="application/json" style="display:none" onchange="importJSON(event)">
+                    <button class="btn btn-ghost" onclick="window.print()">
+                        🖨️ Print / PDF Export
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <div class="pill">
+                        <div class="pill-dot" id="overallStatusDot"></div>
+                        <span class="pill-label">Overall Status:</span>
+                        <span class="pill-value" id="overallStatusLabel">Not started</span>
+                    </div>
+                    <div class="pill-soft">
+                        <span>📅</span>
+                        <span id="lastUpdatedLabel">Last updated: not yet saved</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">1. Local Agency & Scope</div>
+                    <div class="section-sub">
+                        <span class="chip chip-soft">Context & identifiers</span>
+                    </div>
+                </div>
+                <div class="inline-grid">
+                    <div class="field-group">
+                        <div class="field-label"><span>Agency Name</span> <span class="field-required">*</span></div>
+                        <input type="text" id="agencyName" placeholder="e.g., Sample City Police Department">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Org/Dept Identifier</span></div>
+                        <input type="text" id="ori" placeholder="optional">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>State/Region (optional)</span></div>
+                        <input type="text" id="csa" placeholder="e.g., Texas">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Assessment Date</span></div>
+                        <input type="date" id="assessmentDate">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Assessor</span></div>
+                        <input type="text" id="assessorName" placeholder="Name(s) of assessor(s)">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Contact Email</span></div>
+                        <input type="text" id="assessorEmail" placeholder="Primary contact for follow-up">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field-group" style="flex: 2 1 260px;">
+                        <div class="field-label"><span>Scope Notes</span></div>
+                        <textarea id="scopeNotes"
+                                  placeholder="Briefly describe scope – systems, locations, any exclusions or special circumstances."></textarea>
+                        <div class="field-help">
+                            Helpful for documenting what is (and is not) in-scope: critical services, systems, cloud apps, and key vendors.
+                        </div>
+                    </div>
+                    <div class="field-group" style="flex: 1 1 200px;">
+                        <div class="field-label"><span>Assessment Type</span></div>
+                        <select id="assessmentType">
+                            <option value="">Select type</option>
+                            <option value="self">Agency self-assessment</option>
+                            <option value="preaudit">Readiness self-assessment</option>
+                            <option value="csa">External audit/assessment (if applicable)</option>
+                            <option value="consult">Third-party / consulting support</option>
+                        </select>
+                        <div class="field-help">
+                            Adjust language in notes to match purpose (formal vs. informal).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">2. Governance & Key Contacts</div>
+                    <div class="section-sub">
+                        <span class="chip chip-accent">Policy Area 1, 2, 11, 12</span>
+                    </div>
+                </div>
+                <div class="inline-grid">
+                    <div class="field-group">
+                        <div class="field-label"><span>IT/Security Lead (or Designee)</span></div>
+                        <input type="text" id="tacName" placeholder="Name and rank/position">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>IT/Security Contact</span></div>
+                        <input type="text" id="tacContact" placeholder="Phone / email">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Security Officer / Point of Contact</span></div>
+                        <input type="text" id="lasoName" placeholder="Name and rank/position">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Security POC Contact</span></div>
+                        <input type="text" id="lasoContact" placeholder="Phone / email">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>IT / ISO Lead</span></div>
+                        <input type="text" id="itLead" placeholder="Name / title for IT or ISO">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>IT / ISO Contact</span></div>
+                        <input type="text" id="itContact" placeholder="Phone / email">
+                    </div>
+                </div>
+                <div class="inline-grid" style="margin-top: 6px;">
+                    <div class="field-group">
+                        <div class="field-label">
+                            <span>Leadership & Cyber Contacts</span>
+                        </div>
+                        <div class="audit-controls">
+                            <label><input type="radio" name="tacLasoDocs" value="present"> Documented & current</label>
+                            <label><input type="radio" name="tacLasoDocs" value="partial"> Partial / needs update</label>
+                            <label><input type="radio" name="tacLasoDocs" value="missing"> Not available</label>
+                        </div>
+                        <div class="field-help">
+                            Evidence of assigned roles/responsibilities and points of contact.
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Core Cyber Policies (plain language)</span></div>
+                        <div class="audit-controls">
+                            <label><input type="radio" name="localPolicy" value="aligned"> Aligned with NIST v6.0</label>
+                            <label><input type="radio" name="localPolicy" value="dated"> Outdated / needs revision</label>
+                            <label><input type="radio" name="localPolicy" value="missing"> Not documented</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-note">
+                    <span class="link-like" onclick="openControlModal('governance')">View suggested governance evidence</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">3. Control Families — Assessment Items</div>
+                    <div class="section-sub">
+                        <span class="chip chip-accent">Policy Area 1–13</span>
+                    </div>
+                </div>
+                <div class="help-text">
+                    Use the controls below to track status by policy area. The main goal is to capture practical status for the local agency:
+                    how each control is implemented, any gaps, and follow-up actions.
+                </div>
+                <div class="tab-row" id="policyTabs"></div>
+                <div id="policyContent"></div>
+            </div>
+
+            <div class="summary-section">
+                <h3>Policy Area Summary</h3>
+                <div class="summary-grid" id="summaryGrid"></div>
+            </div>
+        </div>
+    </div>
+    <div class="side-card">
+        <div class="side-card-header">
+            <h2>Assessment Snapshot & Notes</h2>
+            <p>Quick metrics, risk overview, and planning notes for follow-up.</p>
+        </div>
+        <div class="side-card-body">
+            <div class="side-section">
+                <div class="side-section-header">
+                    <div class="side-section-title">Overall Progress & Risk</div>
+                    <div class="side-section-sub">
+                        <span id="snapshotStatusTag" class="tag-soft neutral">Not started</span>
+                    </div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Controls with any status</span>
+                    <span class="metric-value" id="metricComplete">0 / 0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="metric-row" style="margin-top: 6px;">
+                    <span class="metric-label">Controls flagged Non-Compliant</span>
+                    <span class="metric-value" id="metricNonCompliant">0</span>
+                </div>
+                <div class="risk-bar">
+                    <div class="risk-fill" id="riskFill"></div>
+                </div>
+                <div class="phase-row" style="margin-top: 6px;">
+                    <div class="phase-badge">
+                        <span>1</span> Identify & scope
+                    </div>
+                    <div class="phase-badge">
+                        <span>2</span> Gather evidence
+                    </div>
+                    <div class="phase-badge">
+                        <span>3</span> Rate controls
+                    </div>
+                    <div class="phase-badge">
+                        <span>4</span> Plan remediation
+                    </div>
+                </div>
+                <div class="print-note">
+                    <strong>Tip:</strong> Use this snapshot as your quick “executive summary” when discussing results with agency leadership.
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-header">
+                    <div class="side-section-title">Environment Summary</div>
+                    <div class="side-section-sub">Optional – for context</div>
+                </div>
+                <div class="inline-grid">
+                    <div class="field-group">
+                        <div class="field-label"><span>Approximate Users</span></div>
+                        <input type="text" id="approxUsers" class="micro-input" placeholder="e.g., 45">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label"><span>Key Systems / Apps in Scope</span></div>
+                        <textarea id="cjisSystems" placeholder="CAD, RMS, NCIC/TCIC terminals, JMS, Livescan, in-car MDTs, etc."></textarea>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label"><span>High-Level Environment Notes</span></div>
+                    <textarea id="environmentNotes"
+                              placeholder="Network segmentation, hosted vendors, shared systems (county, city IT), physical layout, etc."></textarea>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-header">
+                    <div class="side-section-title">Key Risks & Immediate Actions</div>
+                    <div class="side-section-sub">For quick triage</div>
+                </div>
+                <div class="field-group">
+                    <div class="field-label"><span>Immediate Risk Items (0–90 days)</span></div>
+                    <textarea id="riskImmediate" placeholder="Summarize the most critical gaps that should be addressed first."></textarea>
+                </div>
+                <div class="field-group">
+                    <div class="field-label"><span>Short-Term Projects (3–12 months)</span></div>
+                    <textarea id="riskShortTerm" placeholder="e.g., MFA expansion, log centralization, policy updates, training backlog."></textarea>
+                </div>
+                <div class="field-group">
+                    <div class="field-label"><span>Longer-Term Improvements</span></div>
+                    <textarea id="riskLongTerm"
+                              placeholder="e.g., infrastructure modernization, new NIST-compliant hosted systems, staffing changes."></textarea>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-header">
+                    <div class="side-section-title">Assessor Notes</div>
+                    <div class="side-section-sub">For your internal use</div>
+                </div>
+                <textarea id="assessorNotes" placeholder="Use this space for meta-notes about the assessment process or follow-up steps."></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast">
+    <div class="toast-icon">✓</div>
+    <div class="toast-text" id="toastText">Saved</div>
+</div>
+
+<div class="modal-backdrop" id="controlModalBackdrop">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title" id="controlModalTitle">Control Evidence</div>
+            <button class="modal-close" onclick="closeControlModal()">✕</button>
+        </div>
+        <div class="modal-body" id="controlModalBody"></div>
+    </div>
+</div>
+
+<script>
+    const cjisControls = {
+        policyAreas: [
+            { id: "ac", title: "Access Control (AC)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "AC-2", title: "Account Management", summary: "Accounts are created/changed/disabled via a defined process; access is reviewed periodically.", evidence: ["JML procedure", "Access review", "Disablement examples"], notesPlaceholder: "How fast can you disable access and how do you review it?" },
+                { id: "AC-6", title: "Least Privilege", summary: "Privileged access is limited and admin duties use separate accounts.", evidence: ["Admin account list", "Group reviews", "Privilege procedures"], notesPlaceholder: "Describe admin separation and least privilege." }
+            ]},
+            { id: "at", title: "Awareness & Training (AT)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "AT-2", title: "Security Awareness Training", summary: "Users receive basic security training and know how to report suspicious activity.", evidence: ["Training completion", "Reporting instructions", "Phishing exercises (optional)"], notesPlaceholder: "How often is training delivered and what topics?" }
+            ]},
+            { id: "au", title: "Audit & Accountability (AU)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "AU-2", title: "Event Logging", summary: "Key security events are logged for critical systems.", evidence: ["Log source list", "SIEM config", "Log settings"], notesPlaceholder: "What sources are logged today?" },
+                { id: "AU-11", title: "Audit Record Retention", summary: "Logs are retained long enough to investigate incidents.", evidence: ["Retention settings", "Storage plan", "Policy"], notesPlaceholder: "What are your retention periods?" }
+            ]},
+            { id: "ca", title: "Assessment, Authorization & Monitoring (CA)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "CA-2", title: "Security Assessments", summary: "Security controls are assessed periodically (self-assessment or external) and gaps are tracked.", evidence: ["Assessment reports", "POA&M/backlog", "Management review"], notesPlaceholder: "When was your last assessment and what changed afterwards?" }
+            ]},
+            { id: "cm", title: "Configuration Management (CM)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "CM-2", title: "Baseline Configuration", summary: "Secure baselines exist and are maintained.", evidence: ["GPO/MDM baselines", "Templates", "Compliance reports"], notesPlaceholder: "What baseline do you use and how do you measure drift?" },
+                { id: "CM-8", title: "System Component Inventory", summary: "An inventory of devices/components exists to support patching and incident response.", evidence: ["Asset inventory export", "Network scan", "CMDB/spreadsheet"], notesPlaceholder: "How do you track devices and critical components?" }
+            ]},
+            { id: "cp", title: "Contingency Planning (CP)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "CP-9", title: "System Backup", summary: "Backups cover critical systems and restores are tested.", evidence: ["Backup reports", "Restore tests", "Immutable/offline settings"], notesPlaceholder: "When was your last restore test?" },
+                { id: "CP-10", title: "System Recovery", summary: "Recovery priorities and procedures are documented.", evidence: ["Recovery plan", "Restore order", "BCP/COOP"], notesPlaceholder: "What gets restored first and why?" }
+            ]},
+            { id: "ia", title: "Identification & Authentication (IA)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "IA-2", title: "Multi-Factor Authentication", summary: "MFA is required for remote/admin access and key systems.", evidence: ["MFA enforcement", "Coverage report", "Exception list"], notesPlaceholder: "Where is MFA enforced, and what’s missing?" },
+                { id: "IA-5", title: "Authenticator Management", summary: "Passwords/keys are managed securely; shared secrets are minimized.", evidence: ["Password policy", "Password manager standard", "Key mgmt process"], notesPlaceholder: "How are secrets stored and rotated?" }
+            ]},
+            { id: "ir", title: "Incident Response (IR)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "IR-1", title: "IR Policy & Procedures", summary: "An incident response policy/procedure exists and is accessible.", evidence: ["IR plan", "Contacts", "Playbooks"], notesPlaceholder: "Where is the IR plan and who owns it?" },
+                { id: "IR-4", title: "Incident Handling", summary: "The org can analyze, contain, eradicate, and recover from incidents.", evidence: ["Runbooks", "Ticket examples", "Lessons learned"], notesPlaceholder: "Describe typical first-hour actions." }
+            ]},
+            { id: "ma", title: "Maintenance (MA)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "MA-4", title: "Remote Maintenance", summary: "Remote maintenance is authorized, MFA-protected, and logged.", evidence: ["Vendor remote access policy", "MFA settings", "Logs"], notesPlaceholder: "How do vendors/admins perform remote maintenance?" }
+            ]},
+            { id: "mp", title: "Media Protection (MP)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "MP-6", title: "Media Sanitization", summary: "Media is sanitized or destroyed before disposal/reuse.", evidence: ["Sanitization SOP", "Disposal receipts", "Asset disposal log"], notesPlaceholder: "How do you dispose of old drives/devices?" }
+            ]},
+            { id: "pe", title: "Physical & Environmental Protection (PE)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "PE-2", title: "Physical Access Authorizations", summary: "Physical access to critical areas (server/network rooms) is controlled.", evidence: ["Badge/access list", "Visitor logs", "Camera coverage (optional)"], notesPlaceholder: "Who can access server/network rooms and how is it logged?" }
+            ]},
+            { id: "pl", title: "Planning (PL)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "PL-2", title: "System Security & Privacy Plans (high level)", summary: "High-level plans exist for key systems/services (what it is, who owns it, how it’s protected).", evidence: ["System one-pagers", "Architecture notes", "Owner assignments"], notesPlaceholder: "Do you have a one-page description for critical systems?" }
+            ]},
+            { id: "pm", title: "Program Management (PM)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "PM-9", title: "Risk Management Strategy", summary: "Leadership has a simple risk strategy and reviews risk periodically.", evidence: ["Risk register", "Meeting cadence", "Risk acceptance"], notesPlaceholder: "How is risk reviewed and accepted?" }
+            ]},
+            { id: "ps", title: "Personnel Security (PS)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "PS-4", title: "Personnel Termination", summary: "Access is removed promptly during termination/role change.", evidence: ["Termination checklist", "Disablement timestamps", "HR/IT workflow"], notesPlaceholder: "What’s the offboarding process?" }
+            ]},
+            { id: "ra", title: "Risk Assessment (RA)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "RA-5", title: "Vulnerability Monitoring & Scanning", summary: "Vulnerabilities are identified and tracked to remediation.", evidence: ["Scan results", "Patch dashboards", "Remediation tracker"], notesPlaceholder: "How do you prioritize and track remediation?" }
+            ]},
+            { id: "sa", title: "System & Services Acquisition (SA)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "SA-9", title: "External System Services", summary: "Cloud/vendor services are managed with clear security responsibilities and requirements.", evidence: ["Vendor inventory", "Security clauses", "Shared responsibility notes"], notesPlaceholder: "How do you evaluate vendors before purchase?" }
+            ]},
+            { id: "sc", title: "System & Communications Protection (SC)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "SC-7", title: "Boundary Protection", summary: "Network boundaries are managed (firewalls, segmentation where appropriate), and remote access paths are controlled.", evidence: ["Firewall rules review", "Network diagrams", "Remote access controls"], notesPlaceholder: "Describe your boundary controls and segmentation (if any)." },
+                { id: "SC-12", title: "Cryptographic Key Establishment", summary: "Encryption is used for data in transit and at rest where appropriate; key management is understood.", evidence: ["TLS configs", "Disk encryption", "Key mgmt notes"], notesPlaceholder: "Where do you use encryption and how are keys managed?" }
+            ]},
+            { id: "si", title: "System & Information Integrity (SI)", policyRef: "NIST SP 800-53 Rev.5 (Moderate subset)", requirements: [
+                { id: "SI-2", title: "Flaw Remediation (Patching)", summary: "Patches are applied on schedule; exceptions are tracked.", evidence: ["Patch policy", "Patch reports", "Exception log"], notesPlaceholder: "What’s your patch cadence and escalation?" },
+                { id: "SI-3", title: "Malicious Code Protection", summary: "Anti-malware/EDR is deployed and monitored.", evidence: ["EDR/AV console", "Alert workflow", "Quarantine records"], notesPlaceholder: "Who monitors detections and what’s the response?" }
+            ]}
+        ]
+    };
+
+    const stateKey = "nist_80053r5_mod_state";
+
+    function buildStateObject() {
+        const data = {
+            org: {
+                agencyName: document.getElementById("agencyName").value,
+                ori: document.getElementById("ori").value,
+                csa: document.getElementById("csa").value,
+                assessmentDate: document.getElementById("assessmentDate").value,
+                assessorName: document.getElementById("assessorName").value,
+                assessorEmail: document.getElementById("assessorEmail").value,
+                scopeNotes: document.getElementById("scopeNotes").value,
+                assessmentType: document.getElementById("assessmentType").value
+            },
+            contacts: {
+                tacName: document.getElementById("tacName").value,
+                tacContact: document.getElementById("tacContact").value,
+                lasoName: document.getElementById("lasoName").value,
+                lasoContact: document.getElementById("lasoContact").value,
+                itLead: document.getElementById("itLead").value,
+                itContact: document.getElementById("itContact").value,
+                tacLasoDocs: getRadioValue("tacLasoDocs"),
+                localPolicy: getRadioValue("localPolicy")
+            },
+            environment: {
+                approxUsers: document.getElementById("approxUsers").value,
+                cjisSystems: document.getElementById("cjisSystems").value,
+                environmentNotes: document.getElementById("environmentNotes").value
+            },
+            risk: {
+                immediate: document.getElementById("riskImmediate").value,
+                shortTerm: document.getElementById("riskShortTerm").value,
+                longTerm: document.getElementById("riskLongTerm").value
+            },
+            assessor: {
+                notes: document.getElementById("assessorNotes").value
+            },
+            controls: {},
+            meta: {
+                exportedAt: new Date().toISOString(),
+                tool: "nist-800-53r5-moderate-workbook",
+                version: "0.1"
+            }
+        };
+
+        cjisControls.policyAreas.forEach(area => {
+            area.requirements.forEach(req => {
+                data.controls[req.id] = getRequirementState(req.id);
+            });
+        });
+        return data;
+    }
+
+    function applyStateObject(data) {
+        if (!data) return;
+
+        if (data.org) {
+            document.getElementById("agencyName").value = data.org.agencyName || "";
+            document.getElementById("ori").value = data.org.ori || "";
+            document.getElementById("csa").value = data.org.csa || "";
+            document.getElementById("assessmentDate").value = data.org.assessmentDate || "";
+            document.getElementById("assessorName").value = data.org.assessorName || "";
+            document.getElementById("assessorEmail").value = data.org.assessorEmail || "";
+            document.getElementById("scopeNotes").value = data.org.scopeNotes || "";
+            document.getElementById("assessmentType").value = data.org.assessmentType || "";
+        }
+
+        if (data.contacts) {
+            document.getElementById("tacName").value = data.contacts.tacName || "";
+            document.getElementById("tacContact").value = data.contacts.tacContact || "";
+            document.getElementById("lasoName").value = data.contacts.lasoName || "";
+            document.getElementById("lasoContact").value = data.contacts.lasoContact || "";
+            document.getElementById("itLead").value = data.contacts.itLead || "";
+            document.getElementById("itContact").value = data.contacts.itContact || "";
+            setRadioValue("tacLasoDocs", data.contacts.tacLasoDocs || "");
+            setRadioValue("localPolicy", data.contacts.localPolicy || "");
+        }
+
+        if (data.environment) {
+            document.getElementById("approxUsers").value = data.environment.approxUsers || "";
+            document.getElementById("cjisSystems").value = data.environment.cjisSystems || "";
+            document.getElementById("environmentNotes").value = data.environment.environmentNotes || "";
+        }
+
+        if (data.risk) {
+            document.getElementById("riskImmediate").value = data.risk.immediate || "";
+            document.getElementById("riskShortTerm").value = data.risk.shortTerm || "";
+            document.getElementById("riskLongTerm").value = data.risk.longTerm || "";
+        }
+
+        if (data.assessor) {
+            document.getElementById("assessorNotes").value = data.assessor.notes || "";
+        }
+
+        if (data.controls) {
+            Object.keys(data.controls).forEach(reqId => {
+                const ctrl = data.controls[reqId];
+                const statusEl = document.getElementById(`status-${reqId}`);
+                const notesEl = document.getElementById(`notes-${reqId}`);
+                if (statusEl) {
+                    statusEl.value = (ctrl && ctrl.status) ? ctrl.status : "";
+                    updateStatusPill(reqId, (ctrl && ctrl.status) ? ctrl.status : "");
+                }
+                if (notesEl) {
+                    notesEl.value = (ctrl && ctrl.notes) ? ctrl.notes : "";
+                }
+            });
+        }
+
+        updateSummary();
+        recalcSnapshot();
+    }
+
+    function downloadText(filename, text) {
+        const blob = new Blob([text], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    function exportJSON() {
+        const data = buildStateObject();
+        const agency = (data.org && data.org.agencyName) ? data.org.agencyName.trim().replace(/[^a-z0-9\- ]/gi,'').replace(/\s+/g,'-') : 'agency';
+        const date = (data.org && data.org.assessmentDate) ? data.org.assessmentDate : new Date().toISOString().slice(0,10);
+        const filename = `cjis-v6-self-assessment_${agency}_${date}.json`;
+        downloadText(filename, JSON.stringify(data, null, 2));
+        showToast('Exported JSON (saved to your device).');
+    }
+
+    function importJSON(evt) {
+        const file = evt && evt.target && evt.target.files ? evt.target.files[0] : null;
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const data = JSON.parse(reader.result);
+                applyStateObject(data);
+                localStorage.setItem(stateKey, JSON.stringify(data));
+                const now = new Date();
+                document.getElementById("lastUpdatedLabel").textContent = `Last updated: ${now.toLocaleString()}`;
+                showToast('Imported JSON and restored session.');
+            } catch (e) {
+                showToast('Import failed: invalid JSON.');
+            }
+            evt.target.value = '';
+        };
+        reader.readAsText(file);
+    }
+
+
+    function initialize() {
+        buildPolicyTabs();
+        loadState();
+        updateSummary();
+        recalcSnapshot();
+        attachRadioHandlers();
+    }
+
+    function buildPolicyTabs() {
+        const tabContainer = document.getElementById("policyTabs");
+        const contentContainer = document.getElementById("policyContent");
+        tabContainer.innerHTML = "";
+        contentContainer.innerHTML = "";
+
+        cjisControls.policyAreas.forEach((area, index) => {
+            const tab = document.createElement("div");
+            tab.className = "tab" + (index === 0 ? " active" : "");
+            tab.textContent = area.name;
+            tab.dataset.areaId = area.id;
+            tab.onclick = () => selectPolicyArea(area.id);
+            tabContainer.appendChild(tab);
+
+            const pane = document.createElement("div");
+            pane.id = `policy-pane-${area.id}`;
+            pane.style.display = index === 0 ? "block" : "none";
+
+            const headerRow = document.createElement("div");
+            headerRow.className = "flex-space";
+            headerRow.style.marginBottom = "6px";
+
+            const left = document.createElement("div");
+            left.innerHTML = `
+                <span class="pill-cjis">
+                    <span class="pill-cjis-dot"></span>
+                    <span class="pill-cjis-code">${area.code}</span>
+                    <span class="pill-cjis-area">${area.description}</span>
+                </span>
+            `;
+            headerRow.appendChild(left);
+
+            const right = document.createElement("div");
+            right.className = "phase-row";
+            right.innerHTML = `
+                <div class="phase-badge">
+                    <span>⇧</span> Capture status
+                </div>
+                <div class="phase-badge">
+                    <span>★</span> Note gaps
+                </div>
+                <div class="phase-badge">
+                    <span>⚙</span> Plan fixes
+                </div>
+            `;
+            headerRow.appendChild(right);
+
+            pane.appendChild(headerRow);
+
+            area.requirements.forEach(req => {
+                const row = document.createElement("div");
+                row.className = "requirement-row";
+                row.dataset.reqId = req.id;
+
+                const header = document.createElement("div");
+                header.className = "requirement-header";
+
+                const title = document.createElement("div");
+                title.className = "requirement-title";
+                title.textContent = req.title;
+                header.appendChild(title);
+
+                const idTag = document.createElement("div");
+                idTag.className = "requirement-id";
+                idTag.textContent = req.id.toUpperCase();
+                header.appendChild(idTag);
+
+                const statusPill = document.createElement("div");
+                statusPill.className = "pill-status pill-status-muted";
+                statusPill.id = `status-pill-${req.id}`;
+                statusPill.innerHTML = `
+                    <div class="pill-status-dot"></div>
+                    <span>Status: Not set</span>
+                `;
+                header.appendChild(statusPill);
+
+                row.appendChild(header);
+
+                const body = document.createElement("div");
+                body.className = "requirement-body";
+
+                const leftCol = document.createElement("div");
+                leftCol.className = "requirement-notes";
+                leftCol.innerHTML = `
+                    <div class="help-text">
+                        <strong>Summary:</strong> ${req.summary}
+                    </div>
+                    <div class="field-label" style="margin-top:4px;"><span>Assessor Notes</span></div>
+                    <textarea id="notes-${req.id}" placeholder="${req.notesPlaceholder || ""}"></textarea>
+                `;
+                body.appendChild(leftCol);
+
+                const rightCol = document.createElement("div");
+                rightCol.className = "requirement-controls";
+
+                const statusRow = document.createElement("div");
+                statusRow.className = "status-row";
+                statusRow.innerHTML = `
+                    <select class="status-select" id="status-${req.id}" onchange="onStatusChange('${req.id}')">
+                        <option value="">Set status…</option>
+                        <option value="compliant">Compliant</option>
+                        <option value="partial">Partially implemented</option>
+                        <option value="non-compliant">Not implemented / major gap</option>
+                        <option value="na">Not applicable</option>
+                    </select>
+                    <span class="pill-text">Use “Partial” for in-progress or limited implementation.</span>
+                `;
+                rightCol.appendChild(statusRow);
+
+                const evidenceRow = document.createElement("div");
+                evidenceRow.className = "evidence-tags";
+
+                req.evidence.forEach(ev => {
+                    const tag = document.createElement("div");
+                    tag.className = "evidence-tag";
+                    tag.innerHTML = `<strong>Evidence:</strong> ${ev}`;
+                    evidenceRow.appendChild(tag);
+                });
+
+                rightCol.appendChild(evidenceRow);
+
+                body.appendChild(rightCol);
+                row.appendChild(body);
+
+                pane.appendChild(row);
+            });
+
+            contentContainer.appendChild(pane);
+        });
+    }
+
+    function selectPolicyArea(areaId) {
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.classList.toggle("active", tab.dataset.areaId === areaId);
+        });
+
+        cjisControls.policyAreas.forEach(area => {
+            const pane = document.getElementById(`policy-pane-${area.id}`);
+            if (pane) {
+                pane.style.display = (area.id === areaId) ? "block" : "none";
+            }
+        });
+    }
+
+    function onStatusChange(reqId) {
+        const status = document.getElementById(`status-${reqId}`).value;
+        updateStatusPill(reqId, status);
+        recalcSnapshot();
+        updateSummary();
+    }
+
+    function updateStatusPill(reqId, status) {
+        const pill = document.getElementById(`status-pill-${reqId}`);
+        if (!pill) return;
+
+        pill.className = "pill-status";
+        let text = "Status: Not set";
+
+        if (!status) {
+            pill.classList.add("pill-status-muted");
+        } else if (status === "compliant") {
+            pill.classList.add("pill-status-ok");
+            text = "Status: Compliant";
+        } else if (status === "partial") {
+            pill.classList.add("pill-status-warn");
+            text = "Status: Partial / In-progress";
+        } else if (status === "non-compliant") {
+            pill.classList.add("pill-status-risk");
+            text = "Status: Non-compliant / Gap";
+        } else if (status === "na") {
+            pill.classList.add("pill-status-muted");
+            text = "Status: Not applicable";
+        }
+
+        pill.innerHTML = `
+            <div class="pill-status-dot"></div>
+            <span>${text}</span>
+        `;
+    }
+
+    function getRequirementState(reqId) {
+        const statusEl = document.getElementById(`status-${reqId}`);
+        const notesEl = document.getElementById(`notes-${reqId}`);
+
+        return {
+            status: statusEl ? statusEl.value : "",
+            notes: notesEl ? notesEl.value : ""
+        };
+    }
+
+    function recalcSnapshot() {
+        let total = 0;
+        let withStatus = 0;
+        let nonCompliant = 0;
+
+        cjisControls.policyAreas.forEach(area => {
+            area.requirements.forEach(req => {
+                total++;
+                const status = getRequirementState(req.id).status;
+                if (status) withStatus++;
+                if (status === "non-compliant") nonCompliant++;
+            });
+        });
+
+        const pctComplete = total > 0 ? Math.round((withStatus / total) * 100) : 0;
+        const pctRisk = total > 0 ? Math.round((nonCompliant / total) * 100) : 0;
+
+        document.getElementById("metricComplete").textContent = `${withStatus} / ${total}`;
+        document.getElementById("metricNonCompliant").textContent = nonCompliant.toString();
+        document.getElementById("progressFill").style.width = `${pctComplete}%`;
+        document.getElementById("riskFill").style.width = `${pctRisk}%`;
+
+        const dot = document.getElementById("overallStatusDot");
+        const label = document.getElementById("overallStatusLabel");
+        const snapshotTag = document.getElementById("snapshotStatusTag");
+
+        dot.className = "pill-dot";
+        snapshotTag.className = "tag-soft neutral";
+
+        if (withStatus === 0) {
+            dot.classList.add("muted");
+            label.textContent = "Not started";
+            snapshotTag.textContent = "Not started";
+        } else if (nonCompliant === 0 && pctComplete === 100) {
+            dot.classList.add("success");
+            label.textContent = "Green – No non-compliant controls noted";
+            snapshotTag.className = "tag-soft green";
+            snapshotTag.textContent = "Green (no non-compliant controls)";
+        } else if (nonCompliant === 0) {
+            dot.classList.add("warning");
+            label.textContent = "In progress – No non-compliant controls yet";
+            snapshotTag.className = "tag-soft yellow";
+            snapshotTag.textContent = "In progress – no red controls";
+        } else if (nonCompliant <= 3) {
+            dot.classList.add("warning");
+            label.textContent = `Moderate risk – ${nonCompliant} non-compliant controls`;
+            snapshotTag.className = "tag-soft yellow";
+            snapshotTag.textContent = `${nonCompliant} non-compliant controls`;
+        } else {
+            dot.classList.add("danger");
+            label.textContent = `Elevated risk – ${nonCompliant} non-compliant controls`;
+            snapshotTag.className = "tag-soft red";
+            snapshotTag.textContent = `Elevated risk – ${nonCompliant} non-compliant controls`;
+        }
+    }
+
+    function updateSummary() {
+        const summaryGrid = document.getElementById("summaryGrid");
+        summaryGrid.innerHTML = "";
+
+        cjisControls.policyAreas.forEach(area => {
+            const total = area.requirements.length;
+            let compliant = 0, partial = 0, nonCompliant = 0, na = 0, pending = 0;
+
+            area.requirements.forEach(req => {
+                const status = getRequirementState(req.id).status;
+                if (status === "compliant") compliant++;
+                else if (status === "partial") partial++;
+                else if (status === "non-compliant") nonCompliant++;
+                else if (status === "na") na++;
+                else pending++;
+            });
+
+            const completed = total - pending;
+            const completionRate = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+            const card = document.createElement("div");
+            card.className = "summary-card";
+            card.innerHTML = `
+                <h4>${area.name}</h4>
+                <div>
+                    <div class="summary-card-row">
+                        <span>Compliant:</span>
+                        <span style="color:#166534;">${compliant}</span>
+                    </div>
+                    <div class="summary-card-row">
+                        <span>Partial:</span>
+                        <span style="color:#854d0e;">${partial}</span>
+                    </div>
+                    <div class="summary-card-row">
+                        <span>Non-Compliant:</span>
+                        <span style="color:#b91c1c;">${nonCompliant}</span>
+                    </div>
+                    <div class="summary-card-row">
+                        <span>N/A:</span>
+                        <span style="color:#374151;">${na}</span>
+                    </div>
+                    <div class="summary-card-row">
+                        <span>Pending:</span>
+                        <span style="color:#0b61a4;">${pending}</span>
+                    </div>
+                    <div class="summary-completion">
+                        Completion: ${completionRate}% (${completed}/${total} with a status)
+                    </div>
+                    <div class="progress-bar" style="margin-top:6px;">
+                        <div class="progress-fill" style="width:${completionRate}%;"></div>
+                    </div>
+                </div>
+            `;
+
+            summaryGrid.appendChild(card);
+        });
+    }
+
+    function saveState() {
+        const data = buildStateObject();
+        try {
+            localStorage.setItem(stateKey, JSON.stringify(data));
+            const now = new Date();
+            const stamp = now.toLocaleString();
+            document.getElementById("lastUpdatedLabel").textContent = `Last updated: ${stamp}`;
+            showToast("Assessment state saved in this browser.");
+        } catch (e) {
+            showToast("Unable to save – local browser storage may be disabled.");
+        }
+    }
+
+    function loadState() {
+        try {
+            const raw = localStorage.getItem(stateKey);
+            if (!raw) return;
+            const data = JSON.parse(raw);
+
+            if (data.org) {
+                document.getElementById("agencyName").value = data.org.agencyName || "";
+                document.getElementById("ori").value = data.org.ori || "";
+                document.getElementById("csa").value = data.org.csa || "";
+                document.getElementById("assessmentDate").value = data.org.assessmentDate || "";
+                document.getElementById("assessorName").value = data.org.assessorName || "";
+                document.getElementById("assessorEmail").value = data.org.assessorEmail || "";
+                document.getElementById("scopeNotes").value = data.org.scopeNotes || "";
+                document.getElementById("assessmentType").value = data.org.assessmentType || "";
+            }
+
+            if (data.contacts) {
+                document.getElementById("tacName").value = data.contacts.tacName || "";
+                document.getElementById("tacContact").value = data.contacts.tacContact || "";
+                document.getElementById("lasoName").value = data.contacts.lasoName || "";
+                document.getElementById("lasoContact").value = data.contacts.lasoContact || "";
+                document.getElementById("itLead").value = data.contacts.itLead || "";
+                document.getElementById("itContact").value = data.contacts.itContact || "";
+                setRadioValue("tacLasoDocs", data.contacts.tacLasoDocs || "");
+                setRadioValue("localPolicy", data.contacts.localPolicy || "");
+            }
+
+            if (data.environment) {
+                document.getElementById("approxUsers").value = data.environment.approxUsers || "";
+                document.getElementById("cjisSystems").value = data.environment.cjisSystems || "";
+                document.getElementById("environmentNotes").value = data.environment.environmentNotes || "";
+            }
+
+            if (data.risk) {
+                document.getElementById("riskImmediate").value = data.risk.immediate || "";
+                document.getElementById("riskShortTerm").value = data.risk.shortTerm || "";
+                document.getElementById("riskLongTerm").value = data.risk.longTerm || "";
+            }
+
+            if (data.assessor) {
+                document.getElementById("assessorNotes").value = data.assessor.notes || "";
+            }
+
+            if (data.controls) {
+                Object.keys(data.controls).forEach(reqId => {
+                    const ctrl = data.controls[reqId];
+                    const statusEl = document.getElementById(`status-${reqId}`);
+                    const notesEl = document.getElementById(`notes-${reqId}`);
+                    if (statusEl) {
+                        statusEl.value = ctrl.status || "";
+                        updateStatusPill(reqId, ctrl.status || "");
+                    }
+                    if (notesEl) {
+                        notesEl.value = ctrl.notes || "";
+                    }
+                });
+            }
+
+        } catch (e) {
+            console.error("Error loading state", e);
+        }
+    }
+
+    function resetState() {
+        if (!confirm("Clear all assessment inputs for this page in this browser?")) return;
+        localStorage.removeItem(stateKey);
+        location.reload();
+    }
+
+    function getRadioValue(name) {
+        const radios = document.querySelectorAll(`input[name="${name}"]`);
+        for (let r of radios) {
+            if (r.checked) return r.value;
+        }
+        return "";
+    }
+
+    function setRadioValue(name, value) {
+        const radios = document.querySelectorAll(`input[name="${name}"]`);
+        radios.forEach(r => {
+            r.checked = (r.value === value);
+        });
+    }
+
+    let toastTimer = null;
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        const text = document.getElementById("toastText");
+        text.textContent = message;
+        toast.classList.add("show");
+
+        if (toastTimer) {
+            clearTimeout(toastTimer);
+        }
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2800);
+    }
+
+    const controlModalContent = {
+        governance: {
+            title: "Suggested Evidence (Governance, Policy, Vendors)",
+            body: `
+                <p class="text-sm">
+                    For Policy Areas 1, 2, 11, and 12, governance documentation is critical to show how the local
+                    agency organizes NIST responsibilities.
+                </p>
+                <h4>Core Governance Artifacts</h4>
+                <ul>
+                    <li>Evidence of assigned roles/responsibilities and points of contact</li>
+                    <li>Local NIST Security Policy or SOPs referencing NIST v6.0</li>
+                    <li>Organizational chart highlighting NIST-related roles</li>
+                    <li>Role & responsibility matrix (Leadership, IT, HR, Finance, Vendors)</li>
+                </ul>
+                <h4>Helpful Support Documents</h4>
+                <ul>
+                    <li>Meeting notes where NIST topics are discussed with leadership</li>
+                    <li>Communications from CSA or state NIST office that have been incorporated locally</li>
+                    <li>Any written tasking documents defining NIST-related duties</li>
+                </ul>
+                <p class="text-sm mt-4">
+                    <strong>Tip:</strong> Use a simple matrix listing NIST functions down the left and the responsible role across the top
+                    to make responsibilities clear and easy to review during audits.
+                </p>
+            `
+        }
+    };
+
+    function openControlModal(key) {
+        const cfg = controlModalContent[key];
+        if (!cfg) return;
+
+        document.getElementById("controlModalTitle").textContent = cfg.title;
+        document.getElementById("controlModalBody").innerHTML = cfg.body;
+        document.getElementById("controlModalBackdrop").style.display = "flex";
+    }
+
+    function closeControlModal() {
+        document.getElementById("controlModalBackdrop").style.display = "none";
+    }
+
+    function attachRadioHandlers() {
+        document.querySelectorAll('input[type="radio"]').forEach(r => {
+            r.addEventListener("change", () => {
+                recalcSnapshot();
+            });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", initialize);
+</script>
+</body>
+</html>
