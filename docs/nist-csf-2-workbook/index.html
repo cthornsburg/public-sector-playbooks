@@ -1508,6 +1508,7 @@
                     how each control is implemented, any gaps, and follow-up actions.
                 </div>
                 <div class="tab-row" id="policyTabs"></div>
+                <div class="tab-row" id="subgroupTabs" style="margin-top:6px;"></div>
                 <div id="policyContent"></div>
             </div>
 
@@ -3131,6 +3132,12 @@
 
     function initialize() {
         buildPolicyTabs();
+        // default subgroup tabs for first Function
+        if (cjisControls && cjisControls.policyAreas && cjisControls.policyAreas.length) {
+            const first = cjisControls.policyAreas[0].id;
+            buildSubgroupTabs(first);
+            selectSubgroup(first, "all");
+        }
         loadState();
         updateSummary();
         recalcSnapshot();
@@ -3163,8 +3170,8 @@
             left.innerHTML = `
                 <span class="pill-cjis">
                     <span class="pill-cjis-dot"></span>
-                    <span class="pill-cjis-code">${area.code}</span>
-                    <span class="pill-cjis-area">${area.description}</span>
+                    <span class="pill-cjis-code">${area.title}</span>
+                    <span class="pill-cjis-area">${area.policyRef || ""}</span>
                 </span>
             `;
             headerRow.appendChild(left);
@@ -3190,6 +3197,7 @@
                 const row = document.createElement("div");
                 row.className = "requirement-row";
                 row.dataset.reqId = req.id;
+                row.dataset.catCode = (req.id && req.id.includes("-")) ? req.id.split("-")[0] : "";
 
                 const header = document.createElement("div");
                 header.className = "requirement-header";
@@ -3269,6 +3277,52 @@
         });
     }
 
+    function buildSubgroupTabs(areaId) {
+        const container = document.getElementById("subgroupTabs");
+        if (!container) return;
+        container.innerHTML = "";
+
+        const area = cjisControls.policyAreas.find(a => a.id === areaId);
+        if (!area) return;
+
+        const codes = Array.from(new Set(area.requirements.map(r => {
+            if (!r || !r.id) return "";
+            return r.id.includes("-") ? r.id.split("-")[0] : "";
+        }).filter(Boolean))).sort();
+
+        const makeTab = (code, label) => {
+            const tab = document.createElement("div");
+            tab.className = "tab" + (code === "all" ? " active" : "");
+            tab.textContent = label;
+            tab.dataset.subgroup = code;
+            tab.onclick = () => selectSubgroup(areaId, code);
+            container.appendChild(tab);
+        };
+
+        makeTab("all", "All");
+        codes.forEach(c => makeTab(c, c));
+    }
+
+    function selectSubgroup(areaId, code) {
+        const container = document.getElementById("subgroupTabs");
+        if (container) {
+            container.querySelectorAll(".tab").forEach(t => {
+                t.classList.toggle("active", t.dataset.subgroup === code);
+            });
+        }
+
+        const pane = document.getElementById(`policy-pane-${areaId}`);
+        if (!pane) return;
+
+        pane.querySelectorAll(".requirement-row").forEach(row => {
+            if (code === "all") {
+                row.style.display = "block";
+                return;
+            }
+            row.style.display = (row.dataset.catCode === code) ? "block" : "none";
+        });
+    }
+
     function selectPolicyArea(areaId) {
         document.querySelectorAll(".tab").forEach(tab => {
             tab.classList.toggle("active", tab.dataset.areaId === areaId);
@@ -3280,6 +3334,9 @@
                 pane.style.display = (area.id === areaId) ? "block" : "none";
             }
         });
+
+        buildSubgroupTabs(areaId);
+        selectSubgroup(areaId, "all");
     }
 
     function onStatusChange(reqId) {
