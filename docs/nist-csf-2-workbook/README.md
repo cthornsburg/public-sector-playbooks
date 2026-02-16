@@ -13,6 +13,8 @@ This is a **community, unofficial** self-assessment workbook aligned to the **NI
 
 - CSF home: https://www.nist.gov/cyberframework
 - CSF 2.0 resources: https://www.nist.gov/cyberframework/csf-20
+- CSF 2.0 Reference Tool (CSRC): https://csrc.nist.gov/Projects/cybersecurity-framework/Filters#/csf/filters
+- CSF 2.0 Implementation Examples (NIST): https://www.nist.gov/document/csf-20-implementation-examples-xlsx
 
 ## Hosted workbook (GitHub Pages)
 

@@ -1485,7 +1485,7 @@
                     <div class="field-group">
                         <div class="field-label"><span>Core Cyber Policies (plain language)</span></div>
                         <div class="audit-controls">
-                            <label><input type="radio" name="localPolicy" value="aligned"> Aligned with CSF v6.0</label>
+                            <label><input type="radio" name="localPolicy" value="aligned"> Current and documented</label>
                             <label><input type="radio" name="localPolicy" value="dated"> Outdated / needs revision</label>
                             <label><input type="radio" name="localPolicy" value="missing"> Not documented</label>
                         </div>
@@ -1538,7 +1538,7 @@
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
                 <div class="metric-row" style="margin-top: 6px;">
-                    <span class="metric-label">Controls flagged Non-Compliant</span>
+                    <span class="metric-label">Subcategories rated Tier 1</span>
                     <span class="metric-value" id="metricNonCompliant">0</span>
                 </div>
                 <div class="risk-bar">
@@ -1635,95 +1635,1536 @@
     const cjisControls = {
         policyAreas: [
             {
-                id: "gv",
-                title: "GOVERN (GV)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-oc',
+                title: 'GV.OC — Organizational Context',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "GV.OC-01", title: "Mission + Critical Services Identified", summary: "Mission-essential services are identified and prioritized, with an understanding of key dependencies.", evidence: ["List of critical services + owners", "Dependency map (systems + vendors)", "COOP/BCP priorities"], notesPlaceholder: "List critical services and what would stop each one." },
-                    { id: "GV.OC-02", title: "Cyber Objectives Support Operations", summary: "Cyber objectives are tied to service delivery (availability, integrity, confidentiality) in plain language.", evidence: ["Leadership brief or slide", "Service-level objectives", "Risk appetite statement"], notesPlaceholder: "What must be protected first, and why?" },
-
-                    { id: "GV.RR-01", title: "Roles & Responsibilities (RACI)", summary: "Cyber roles are assigned (decide/approve/do), including leadership, IT, and system/data owners.", evidence: ["RACI or org chart", "Named system/data owners", "Duty statements"], notesPlaceholder: "Who approves risk? Who executes technical changes?" },
-                    { id: "GV.RR-02", title: "Third-Party Roles", summary: "Vendor roles are clear (who patches, who monitors, who notifies, who has access).", evidence: ["Contract language", "Vendor access list", "Support escalation contacts"], notesPlaceholder: "List top vendors and who does what for security." },
-
-                    { id: "GV.PO-01", title: "Core Policies Exist (Plain Language)", summary: "A small set of core policies exist and are understandable to non-technical staff.", evidence: ["Acceptable use", "Access control", "Incident reporting", "Vendor access rules"], notesPlaceholder: "List your top cyber policies and review dates." },
-                    { id: "GV.PO-02", title: "Policy Exceptions Controlled", summary: "Exceptions (e.g., MFA gaps) are approved, documented, and time-bounded.", evidence: ["Exception log", "Approvals", "Compensating controls"], notesPlaceholder: "How do you approve and track exceptions?" },
-
-                    { id: "GV.RM-01", title: "Risk Register (Simple is fine)", summary: "Cyber risks are tracked with owner, likelihood/impact, and due dates.", evidence: ["Risk register", "Meeting notes", "Accepted risk sign-off"], notesPlaceholder: "Describe your risk tracking method." },
-                    { id: "GV.RM-02", title: "Risk Treatment Options Used", summary: "Risks are treated via mitigate/transfer/avoid/accept decisions.", evidence: ["Mitigation plans", "Insurance notes", "Accepted risk memos"], notesPlaceholder: "Give one example of each treatment option." },
-
-                    { id: "GV.SC-01", title: "Vendor/SaaS Oversight", summary: "Key vendors are identified and reviewed for security expectations (MFA, logging, breach notice).", evidence: ["Vendor inventory", "Security addendum", "MFA/logging requirements"], notesPlaceholder: "What security terms do you require in contracts?" },
-                    { id: "GV.SC-02", title: "Vendor Access Reviews", summary: "Vendor accounts and integrations are reviewed periodically and removed when no longer needed.", evidence: ["Quarterly access review", "List of vendor accounts", "Offboarding checklist"], notesPlaceholder: "How often do you review vendor access?" }
+                    {
+                        id: 'GV.OC-01',
+                        title: 'GV.OC-01',
+                        summary: 'The organizational mission is understood and informs cybersecurity risk management',
+                        evidence: ["Example: Share the organization's mission (e.g., through vision and mission statements, marketing, and service strategies) to provide a basis for identifying risks that may impede that mission"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OC-02',
+                        title: 'GV.OC-02',
+                        summary: 'Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered',
+                        evidence: ['Example: Identify relevant internal stakeholders and their cybersecurity-related expectations (e.g., performance and risk expectations of officers, directors, and advisors; cultural expectations of employees)', 'Example: Identify relevant external stakeholders and their cybersecurity-related expectations (e.g., privacy expectations of customers, business expectations of partnerships, compliance expectations of regulators, ethics expectations of society)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OC-03',
+                        title: 'GV.OC-03',
+                        summary: 'Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed',
+                        evidence: ["Example: Determine a process to track and manage legal and regulatory requirements regarding protection of individuals' information (e.g., Health Insurance Portability and Accountability Act, California Consumer Privacy Act, General Data Protection Regulation)", 'Example: Determine a process to track and manage contractual requirements for cybersecurity management of supplier, customer, and partner information'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OC-04',
+                        title: 'GV.OC-04',
+                        summary: 'Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated',
+                        evidence: ['Example: Establish criteria for determining the criticality of capabilities and services as viewed by internal and external stakeholders', 'Example: Determine (e.g., from a business impact analysis) assets and business operations that are vital to achieving mission objectives and the potential impact of a loss (or partial loss) of such operations'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OC-05',
+                        title: 'GV.OC-05',
+                        summary: 'Outcomes, capabilities, and services that the organization depends on are understood and communicated',
+                        evidence: ["Example: Create an inventory of the organization's dependencies on external resources (e.g., facilities, cloud-based hosting providers) and their relationships to organizational assets and business functions", "Example: Identify and document external dependencies that are potential points of failure for the organization's critical capabilities and services, and share that information with appropriate personnel"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             },
             {
-                id: "id",
-                title: "IDENTIFY (ID)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-ov',
+                title: 'GV.OV — Oversight',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "ID.AM-01", title: "Asset Inventory (Systems + Software)", summary: "Key systems and software are inventoried so you know what you’re protecting.", evidence: ["Asset inventory export", "Software inventory", "Network discovery"], notesPlaceholder: "How do you inventory devices and apps?" },
-                    { id: "ID.AM-02", title: "Data Inventory (Where sensitive data lives)", summary: "Sensitive data locations and owners are known (PII, HR, finance, justice-adjacent).", evidence: ["Data map", "Repository list", "Access reviews"], notesPlaceholder: "List top data locations and data types." },
-                    { id: "ID.AM-03", title: "Identity Systems Identified", summary: "You know which systems control identity (AD/Entra/Okta), where MFA is enforced, and where it isn’t.", evidence: ["IdP diagram", "MFA coverage report", "Admin account list"], notesPlaceholder: "Describe your identity stack and MFA coverage." },
-
-                    { id: "ID.RA-01", title: "Threat Scenarios (Realistic)", summary: "Top likely scenarios are identified (ransomware, BEC, vendor compromise) and mapped to impacts.", evidence: ["Scenario list", "Tabletop notes", "Prior incidents"], notesPlaceholder: "Write your top 3 scenarios and impacts." },
-                    { id: "ID.RA-02", title: "Vulnerability Awareness", summary: "You have a process to learn about vulnerabilities (patch reports, scanning, vendor alerts) and prioritize.", evidence: ["Scan reports", "Patch dashboards", "Remediation tracker"], notesPlaceholder: "How do you find and prioritize vulnerabilities?" },
-
-                    { id: "ID.IM-01", title: "Improvement Backlog", summary: "Gaps become tracked improvement items with owners, dates, and budget alignment.", evidence: ["Roadmap/backlog", "Project plans", "Tickets"], notesPlaceholder: "Where do improvement items live?" },
-                    { id: "ID.IM-02", title: "Lessons Learned Feed Improvements", summary: "After incidents/exercises, lessons learned are translated into changes.", evidence: ["After-action reports", "Policy updates", "Completed improvement items"], notesPlaceholder: "How do you ensure changes actually happen?" }
+                    {
+                        id: 'GV.OV-01',
+                        title: 'GV.OV-01',
+                        summary: 'Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction',
+                        evidence: ['Example: Measure how well the risk management strategy and risk results have helped leaders make decisions and achieve organizational objectives', 'Example: Examine whether cybersecurity risk strategies that impede operations or innovation should be adjusted'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OV-02',
+                        title: 'GV.OV-02',
+                        summary: 'The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks',
+                        evidence: ['Example: Review audit findings to confirm whether the existing cybersecurity strategy has ensured compliance with internal and external requirements', 'Example: Review the performance oversight of those in cybersecurity-related roles to determine whether policy changes are necessary'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.OV-03',
+                        title: 'GV.OV-03',
+                        summary: 'Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed',
+                        evidence: ['Example: Review key performance indicators (KPIs) to ensure that organization-wide policies and procedures achieve objectives', 'Example: Review key risk indicators (KRIs) to identify risks the organization faces, including likelihood and potential impact'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             },
             {
-                id: "pr",
-                title: "PROTECT (PR)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-po',
+                title: 'GV.PO — Policy',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "PR.AA-01", title: "MFA for Email, Admin, Remote Access", summary: "MFA is enabled for email and remote/admin access; exceptions are documented.", evidence: ["MFA enforcement screenshots", "Exception list", "SSO settings"], notesPlaceholder: "Where is MFA enforced, and what’s missing?" },
-                    { id: "PR.AA-02", title: "Account Lifecycle (Joiner/Mover/Leaver)", summary: "Accounts are created/changed/disabled promptly; terminated users lose access quickly.", evidence: ["HR/IT workflow", "Disablement examples", "Periodic access reviews"], notesPlaceholder: "How fast can you disable a user?" },
-
-                    { id: "PR.AC-01", title: "Least Privilege + Admin Separation", summary: "Admins use separate accounts and privileged access is restricted.", evidence: ["Admin account list", "Group membership reviews", "Privilege procedures"], notesPlaceholder: "How do you control admin rights?" },
-                    { id: "PR.AC-02", title: "Remote Access Controlled", summary: "Remote access is limited, logged, and protected (VPN/zero trust with MFA).", evidence: ["Remote access policy", "VPN/ZT settings", "Remote access logs"], notesPlaceholder: "What remote paths exist and how are they secured?" },
-
-                    { id: "PR.DS-01", title: "Backups that Restore", summary: "Backups exist, restores are tested, and at least one copy is ransomware-resistant (offline/immutable).", evidence: ["Backup reports", "Restore tests", "Immutable/offline config"], notesPlaceholder: "When was your last restore test?" },
-                    { id: "PR.DS-02", title: "Sensitive Data Handling Rules", summary: "Rules exist for handling sensitive data (where it can be stored, shared, and how it’s protected).", evidence: ["Data handling policy", "Encryption settings", "DLP rules (optional)"], notesPlaceholder: "What data is ‘sensitive’ and what are the rules?" },
-
-                    { id: "PR.PT-01", title: "Secure Configuration Baselines", summary: "Standard secure configurations are applied to endpoints/servers and checked for drift.", evidence: ["GPO/MDM baselines", "Compliance reports", "Hardening standard"], notesPlaceholder: "What baseline do you use?" },
-                    { id: "PR.PT-02", title: "Patching Cadence", summary: "Patches are applied on a predictable cadence, with faster handling for critical issues.", evidence: ["Patch policy", "Patch reports", "Exception process"], notesPlaceholder: "What’s your patch SLA for critical vulnerabilities?" },
-
-                    { id: "PR.AT-01", title: "Security Awareness (Phishing + Reporting)", summary: "Users know how to spot common attacks and how to report quickly.", evidence: ["Training reports", "Reporting instructions", "Phish simulations (optional)"], notesPlaceholder: "How do staff report suspicious email?" },
-                    { id: "PR.AT-02", title: "Role-Based Training", summary: "Admins and high-risk roles get extra training (privileged users, finance, HR).", evidence: ["Admin training", "Finance BEC training", "Completion logs"], notesPlaceholder: "Who gets extra training and how often?" }
+                    {
+                        id: 'GV.PO-01',
+                        title: 'GV.PO-01',
+                        summary: 'Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced',
+                        evidence: ['Example: Create, disseminate, and maintain an understandable, usable risk management policy with statements of management intent, expectations, and direction', 'Example: Periodically review policy and supporting processes and procedures to ensure that they align with risk management strategy objectives and priorities, as well as the high-level direction of the cybersecurity policy'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.PO-02',
+                        title: 'GV.PO-02',
+                        summary: 'Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission',
+                        evidence: ['Example: Update policy based on periodic reviews of cybersecurity risk management results to ensure that policy and supporting processes and procedures adequately maintain risk at an acceptable level', "Example: Provide a timeline for reviewing changes to the organization's risk environment (e.g., changes in risk or in the organization's mission objectives), and communicate recommended policy updates"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             },
             {
-                id: "de",
-                title: "DETECT (DE)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-rm',
+                title: 'GV.RM — Risk Management Strategy',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "DE.CM-01", title: "Central Logging for Key Systems", summary: "Logs are collected for identity, email, servers, firewalls, and critical SaaS; retained for investigations.", evidence: ["SIEM/log collector", "Retention settings", "Log source list"], notesPlaceholder: "Where do logs go and how long are they kept?" },
-                    { id: "DE.CM-02", title: "Endpoint Detection (EDR/AV)", summary: "You can detect suspicious activity on endpoints via EDR or strong AV + monitoring.", evidence: ["EDR/AV console", "Alert rules", "Response workflow"], notesPlaceholder: "Who reviews alerts and how quickly?" },
-                    { id: "DE.AE-01", title: "Alert Triage and Escalation", summary: "Alerts are triaged consistently and escalated to the right people.", evidence: ["On-call/escalation policy", "Ticket examples", "Severity definitions"], notesPlaceholder: "How do alerts become actions?" },
-                    { id: "DE.DP-01", title: "Detection Processes Tested", summary: "Detection and response processes are exercised (tabletops, test alerts) to prove they work.", evidence: ["Exercise notes", "Test alert runbooks", "After-action improvements"], notesPlaceholder: "When did you last test detection/response?" }
+                    {
+                        id: 'GV.RM-01',
+                        title: 'GV.RM-01',
+                        summary: 'Risk management objectives are established and agreed to by organizational stakeholders',
+                        evidence: ['Example: Update near-term and long-term cybersecurity risk management objectives as part of annual strategic planning and when major changes occur', 'Example: Establish measurable objectives for cybersecurity risk management (e.g., manage the quality of user training, ensure adequate risk protection for industrial control systems)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-02',
+                        title: 'GV.RM-02',
+                        summary: 'Risk appetite and risk tolerance statements are established, communicated, and maintained',
+                        evidence: ['Example: Determine and communicate risk appetite statements that convey expectations about the appropriate level of risk for the organization', 'Example: Translate risk appetite statements into specific, measurable, and broadly understandable risk tolerance statements'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-03',
+                        title: 'GV.RM-03',
+                        summary: 'Cybersecurity risk management activities and outcomes are included in enterprise risk management processes',
+                        evidence: ['Example: Aggregate and manage cybersecurity risks alongside other enterprise risks (e.g., compliance, financial, operational, regulatory, reputational, safety)', 'Example: Include cybersecurity risk managers in enterprise risk management planning'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-04',
+                        title: 'GV.RM-04',
+                        summary: 'Strategic direction that describes appropriate risk response options is established and communicated',
+                        evidence: ['Example: Specify criteria for accepting and avoiding cybersecurity risk for various classifications of data', 'Example: Determine whether to purchase cybersecurity insurance'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-05',
+                        title: 'GV.RM-05',
+                        summary: 'Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties',
+                        evidence: ["Example: Determine how to update senior executives, directors, and management on the organization's cybersecurity posture at agreed-upon intervals", 'Example: Identify how all departments across the organization - such as management, operations, internal auditors, legal, acquisition, physical security, and HR - will communicate with each other about cybersecurity risks'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-06',
+                        title: 'GV.RM-06',
+                        summary: 'A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated',
+                        evidence: ['Example: Establish criteria for using a quantitative approach to cybersecurity risk analysis, and specify probability and exposure formulas', 'Example: Create and use templates (e.g., a risk register) to document cybersecurity risk information (e.g., risk description, exposure, treatment, and ownership)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RM-07',
+                        title: 'GV.RM-07',
+                        summary: 'Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions',
+                        evidence: ['Example: Define and communicate guidance and methods for identifying opportunities and including them in risk discussions (e.g., strengths, weaknesses, opportunities, and threats [SWOT] analysis)', 'Example: Identify stretch goals and document them'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             },
             {
-                id: "rs",
-                title: "RESPOND (RS)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-rr',
+                title: 'GV.RR — Roles, Responsibilities, and Authorities',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "RS.RP-01", title: "Incident Response Plan (Executable)", summary: "A short IR plan exists: who decides, who acts, first steps, and evidence handling.", evidence: ["IR plan", "Contact list", "Playbooks"], notesPlaceholder: "Where is the IR plan and who can access it?" },
-                    { id: "RS.CO-01", title: "Communications (Internal/External)", summary: "You can communicate during an incident even if email is compromised (out-of-band).", evidence: ["Comms plan", "OOB contact method", "Templates"], notesPlaceholder: "How do you communicate without email?" },
-                    { id: "RS.AN-01", title: "Incident Analysis Basics", summary: "You can determine what happened, what’s impacted, and what to do next using logs and endpoint data.", evidence: ["Investigation checklist", "Log queries", "Tooling access"], notesPlaceholder: "Who performs analysis and what tools do they have?" },
-                    { id: "RS.MI-01", title: "Containment Measures", summary: "Containment actions are known and can be executed quickly (disable accounts, isolate hosts).", evidence: ["Containment runbook", "Authority to act", "Network isolation capability"], notesPlaceholder: "Who can isolate a host or disable accounts?" },
-                    { id: "RS.IM-01", title: "Improvements from Incidents", summary: "After incidents, improvements are tracked and completed.", evidence: ["After-action report", "Improvement plan", "Closed items"], notesPlaceholder: "How do you ensure follow-through?" }
+                    {
+                        id: 'GV.RR-01',
+                        title: 'GV.RR-01',
+                        summary: 'Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving',
+                        evidence: ["Example: Leaders (e.g., directors) agree on their roles and responsibilities in developing, implementing, and assessing the organization's cybersecurity strategy", "Example: Share leaders' expectations regarding a secure and ethical culture, especially when current events present the opportunity to highlight positive or negative examples of cybersecurity risk management"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RR-02',
+                        title: 'GV.RR-02',
+                        summary: 'Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced',
+                        evidence: ['Example: Document risk management roles and responsibilities in policy', 'Example: Document who is responsible and accountable for cybersecurity risk management activities and how those teams and individuals are to be consulted and informed'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RR-03',
+                        title: 'GV.RR-03',
+                        summary: 'Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies',
+                        evidence: ['Example: Conduct periodic management reviews to ensure that those given cybersecurity risk management responsibilities have the necessary authority', 'Example: Identify resource allocation and investment in line with risk tolerance and response'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.RR-04',
+                        title: 'GV.RR-04',
+                        summary: 'Cybersecurity is included in human resources practices',
+                        evidence: ['Example: Integrate cybersecurity risk management considerations into human resources processes (e.g., personnel screening, onboarding, change notification, offboarding)', 'Example: Consider cybersecurity knowledge to be a positive factor in hiring, training, and retention decisions'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             },
             {
-                id: "rc",
-                title: "RECOVER (RC)",
-                policyRef: "NIST CSF 2.0",
+                id: 'gv-sc',
+                title: 'GV.SC — Cybersecurity Supply Chain Risk Management',
+                policyRef: "GOVERN (GV): The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored",
                 requirements: [
-                    { id: "RC.RP-01", title: "Recovery Priorities", summary: "You know what must be restored first and dependencies.", evidence: ["Restore order list", "Critical services", "Dependency notes"], notesPlaceholder: "What gets restored first and why?" },
-                    { id: "RC.RP-02", title: "Recovery Procedures", summary: "Basic recovery procedures exist (rebuild endpoints, restore servers, validate systems).", evidence: ["Recovery runbooks", "Golden images", "Restore tests"], notesPlaceholder: "Do you have documented steps for common restores?" },
-                    { id: "RC.CO-01", title: "Post-Incident Communications", summary: "Public/internal communications after incidents are planned and coordinated.", evidence: ["Comms templates", "Approval workflow", "Public info process"], notesPlaceholder: "Who approves public statements?" },
-                    { id: "RC.IM-01", title: "After-Action Improvements", summary: "Lessons learned translate into program improvements.", evidence: ["AARs", "Policy updates", "Budget requests"], notesPlaceholder: "How are lessons learned tracked?" }
+                    {
+                        id: 'GV.SC-01',
+                        title: 'GV.SC-01',
+                        summary: 'A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders',
+                        evidence: ['Example: Establish a strategy that expresses the objectives of the cybersecurity supply chain risk management program', 'Example: Develop the cybersecurity supply chain risk management program, including a plan (with milestones), policies, and procedures that guide implementation and improvement of the program, and share the policies and procedures with the organizational stakeholders'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-02',
+                        title: 'GV.SC-02',
+                        summary: 'Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally',
+                        evidence: ['Example: Identify one or more specific roles or positions that will be responsible and accountable for planning, resourcing, and executing cybersecurity supply chain risk management activities', 'Example: Document cybersecurity supply chain risk management roles and responsibilities in policy'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-03',
+                        title: 'GV.SC-03',
+                        summary: 'Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes',
+                        evidence: ['Example: Identify areas of alignment and overlap with cybersecurity and enterprise risk management', 'Example: Establish integrated control sets for cybersecurity risk management and cybersecurity supply chain risk management'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-04',
+                        title: 'GV.SC-04',
+                        summary: 'Suppliers are known and prioritized by criticality',
+                        evidence: ["Example: Develop criteria for supplier criticality based on, for example, the sensitivity of data processed or possessed by suppliers, the degree of access to the organization's systems, and the importance of the products or services to the organization's mission", 'Example: Keep a record of all suppliers, and prioritize suppliers based on the criticality criteria'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-05',
+                        title: 'GV.SC-05',
+                        summary: 'Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties',
+                        evidence: ['Example: Establish security requirements for suppliers, products, and services commensurate with their criticality level and potential impact if compromised', 'Example: Include all cybersecurity and supply chain requirements that third parties must follow and how compliance with the requirements may be verified in default contractual language'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-06',
+                        title: 'GV.SC-06',
+                        summary: 'Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships',
+                        evidence: ['Example: Perform thorough due diligence on prospective suppliers that is consistent with procurement planning and commensurate with the level of risk, criticality, and complexity of each supplier relationship', 'Example: Assess the suitability of the technology and cybersecurity capabilities and the risk management practices of prospective suppliers'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-07',
+                        title: 'GV.SC-07',
+                        summary: 'The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship',
+                        evidence: ["Example: Adjust assessment formats and frequencies based on the third party's reputation and the criticality of the products or services they provide", "Example: Evaluate third parties' evidence of compliance with contractual cybersecurity requirements, such as self-attestations, warranties, certifications, and other artifacts"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-08',
+                        title: 'GV.SC-08',
+                        summary: 'Relevant suppliers and other third parties are included in incident planning, response, and recovery activities',
+                        evidence: ['Example: Define and use rules and protocols for reporting incident response and recovery activities and the status between the organization and its suppliers', 'Example: Identify and document the roles and responsibilities of the organization and its suppliers for incident response'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-09',
+                        title: 'GV.SC-09',
+                        summary: 'Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle',
+                        evidence: ['Example: Policies and procedures require provenance records for all acquired technology products and services', 'Example: Periodically provide risk reporting to leaders about how acquired components are proven to be untampered and authentic'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'GV.SC-10',
+                        title: 'GV.SC-10',
+                        summary: 'Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement',
+                        evidence: ['Example: Establish processes for terminating critical relationships under both normal and adverse circumstances', 'Example: Define and implement plans for component end-of-life maintenance support and obsolescence'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-am',
+                title: 'ID.AM — Asset Management',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.AM-01',
+                        title: 'ID.AM-01',
+                        summary: 'Inventories of hardware managed by the organization are maintained',
+                        evidence: ['Example: Maintain inventories for all types of hardware, including IT, IoT, OT, and mobile devices', 'Example: Constantly monitor networks to detect new hardware and automatically update inventories'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-02',
+                        title: 'ID.AM-02',
+                        summary: 'Inventories of software, services, and systems managed by the organization are maintained',
+                        evidence: ['Example: Maintain inventories for all types of software and services, including commercial-off-the-shelf, open-source, custom applications, API services, and cloud-based applications and services', 'Example: Constantly monitor all platforms, including containers and virtual machines, for software and service inventory changes'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-03',
+                        title: 'ID.AM-03',
+                        summary: "Representations of the organization's authorized network communication and internal and external network data flows are maintained",
+                        evidence: ["Example: Maintain baselines of communication and data flows within the organization's wired and wireless networks", 'Example: Maintain baselines of communication and data flows between the organization and third parties'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-04',
+                        title: 'ID.AM-04',
+                        summary: 'Inventories of services provided by suppliers are maintained',
+                        evidence: ['Example: Inventory all external services used by the organization, including third-party infrastructure-as-a-service (IaaS), platform-as-a-service (PaaS), and software-as-a-service (SaaS) offerings; APIs; and other externally hosted application services', "Example: Update the inventory when a new external service is going to be utilized to ensure adequate cybersecurity risk management monitoring of the organization's use of that service"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-05',
+                        title: 'ID.AM-05',
+                        summary: 'Assets are prioritized based on classification, criticality, resources, and impact on the mission',
+                        evidence: ['Example: Define criteria for prioritizing each class of assets', 'Example: Apply the prioritization criteria to assets'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-06',
+                        title: 'ID.AM-06',
+                        summary: '[Withdrawn: Incorporated into GV.RR-02, GV.SC-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-07',
+                        title: 'ID.AM-07',
+                        summary: 'Inventories of data and corresponding metadata for designated data types are maintained',
+                        evidence: ['Example: Maintain a list of the designated data types of interest (e.g., personally identifiable information, protected health information, financial account numbers, organization intellectual property, operational technology data)', 'Example: Continuously discover and analyze ad hoc data to identify new instances of designated data types'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.AM-08',
+                        title: 'ID.AM-08',
+                        summary: 'Systems, hardware, software, services, and data are managed throughout their life cycles',
+                        evidence: ['Example: Integrate cybersecurity considerations throughout the life cycles of systems, hardware, software, and services', 'Example: Integrate cybersecurity considerations into product life cycles'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-be',
+                title: 'ID.BE — Business Environment',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.BE-01',
+                        title: 'ID.BE-01',
+                        summary: '[Withdrawn: Incorporated into GV.OC-05]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.BE-02',
+                        title: 'ID.BE-02',
+                        summary: '[Withdrawn: Incorporated into GV.OC-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.BE-03',
+                        title: 'ID.BE-03',
+                        summary: '[Withdrawn: Incorporated into GV.OC-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.BE-04',
+                        title: 'ID.BE-04',
+                        summary: '[Withdrawn: Incorporated into GV.OC-04, GV.OC-05]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.BE-05',
+                        title: 'ID.BE-05',
+                        summary: '[Withdrawn: Incorporated into GV.OC-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-gv',
+                title: 'ID.GV — Governance',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.GV-01',
+                        title: 'ID.GV-01',
+                        summary: '[Withdrawn: Incorporated into GV.PO, GV.PO-01, GV.PO-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.GV-02',
+                        title: 'ID.GV-02',
+                        summary: '[Withdrawn: Incorporated into GV.OC-02, GV.RR, GV.RR-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.GV-03',
+                        title: 'ID.GV-03',
+                        summary: '[Withdrawn: Moved to GV.OC-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.GV-04',
+                        title: 'ID.GV-04',
+                        summary: '[Withdrawn: Moved to GV.RM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-im',
+                title: 'ID.IM — Improvement',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.IM-01',
+                        title: 'ID.IM-01',
+                        summary: 'Improvements are identified from evaluations',
+                        evidence: ['Example: Perform self-assessments of critical services that take current threats and TTPs into consideration', "Example: Invest in third-party assessments or independent audits of the effectiveness of the organization's cybersecurity program to identify areas that need improvement"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.IM-02',
+                        title: 'ID.IM-02',
+                        summary: 'Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties',
+                        evidence: ['Example: Identify improvements for future incident response activities based on findings from incident response assessments (e.g., tabletop exercises and simulations, tests, internal reviews, independent audits)', 'Example: Identify improvements for future business continuity, disaster recovery, and incident response activities based on exercises performed in coordination with critical service providers and product suppliers'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.IM-03',
+                        title: 'ID.IM-03',
+                        summary: 'Improvements are identified from execution of operational processes, procedures, and activities',
+                        evidence: ['Example: Conduct collaborative lessons learned sessions with suppliers', 'Example: Annually review cybersecurity policies, processes, and procedures to take lessons learned into account'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.IM-04',
+                        title: 'ID.IM-04',
+                        summary: 'Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved',
+                        evidence: ["Example: Establish contingency plans (e.g., incident response, business continuity, disaster recovery) for responding to and recovering from adverse events that can interfere with operations, expose confidential information, or otherwise endanger the organization's mission and viability", 'Example: Include contact and communication information, processes for handling common scenarios, and criteria for prioritization, escalation, and elevation in all contingency plans'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-ra',
+                title: 'ID.RA — Risk Assessment',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.RA-01',
+                        title: 'ID.RA-01',
+                        summary: 'Vulnerabilities in assets are identified, validated, and recorded',
+                        evidence: ['Example: Use vulnerability management technologies to identify unpatched and misconfigured software', 'Example: Assess network and system architectures for design and implementation weaknesses that affect cybersecurity'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-02',
+                        title: 'ID.RA-02',
+                        summary: 'Cyber threat intelligence is received from information sharing forums and sources',
+                        evidence: ['Example: Configure cybersecurity tools and technologies with detection or response capabilities to securely ingest cyber threat intelligence feeds', 'Example: Receive and review advisories from reputable third parties on current threat actors and their tactics, techniques, and procedures (TTPs)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-03',
+                        title: 'ID.RA-03',
+                        summary: 'Internal and external threats to the organization are identified and recorded',
+                        evidence: ['Example: Use cyber threat intelligence to maintain awareness of the types of threat actors likely to target the organization and the TTPs they are likely to use', 'Example: Perform threat hunting to look for signs of threat actors within the environment'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-04',
+                        title: 'ID.RA-04',
+                        summary: 'Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded',
+                        evidence: ['Example: Business leaders and cybersecurity risk management practitioners work together to estimate the likelihood and impact of risk scenarios and record them in risk registers', "Example: Enumerate the potential business impacts of unauthorized access to the organization's communications, systems, and data processed in or by those systems"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-05',
+                        title: 'ID.RA-05',
+                        summary: 'Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization',
+                        evidence: ['Example: Develop threat models to better understand risks to the data and identify appropriate risk responses', 'Example: Prioritize cybersecurity resource allocations and investments based on estimated likelihoods and impacts'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-06',
+                        title: 'ID.RA-06',
+                        summary: 'Risk responses are chosen, prioritized, planned, tracked, and communicated',
+                        evidence: ["Example: Apply the vulnerability management plan's criteria for deciding whether to accept, transfer, mitigate, or avoid risk", "Example: Apply the vulnerability management plan's criteria for selecting compensating controls to mitigate risk"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-07',
+                        title: 'ID.RA-07',
+                        summary: 'Changes and exceptions are managed, assessed for risk impact, recorded, and tracked',
+                        evidence: ['Example: Implement and follow procedures for the formal documentation, review, testing, and approval of proposed changes and requested exceptions', 'Example: Document the possible risks of making or not making each proposed change, and provide guidance on rolling back changes'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-08',
+                        title: 'ID.RA-08',
+                        summary: 'Processes for receiving, analyzing, and responding to vulnerability disclosures are established',
+                        evidence: ['Example: Conduct vulnerability information sharing between the organization and its suppliers following the rules and protocols defined in contracts', 'Example: Assign responsibilities and verify the execution of procedures for processing, analyzing the impact of, and responding to cybersecurity threat, vulnerability, or incident disclosures by suppliers, customers, partners, and government cybersecurity organizations'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-09',
+                        title: 'ID.RA-09',
+                        summary: 'The authenticity and integrity of hardware and software are assessed prior to acquisition and use',
+                        evidence: ['Example: Assess the authenticity and cybersecurity of critical technology products and services prior to acquisition and use'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RA-10',
+                        title: 'ID.RA-10',
+                        summary: 'Critical suppliers are assessed prior to acquisition',
+                        evidence: ['Example: Conduct supplier risk assessments against business and applicable cybersecurity requirements, including the supply chain'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-rm',
+                title: 'ID.RM — Risk Management Strategy',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.RM-01',
+                        title: 'ID.RM-01',
+                        summary: '[Withdrawn: Incorporated into GV.RM-01, GV.RM-06, GV.RR-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RM-02',
+                        title: 'ID.RM-02',
+                        summary: '[Withdrawn: Incorporated into GV.RM-02, GV.RM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.RM-03',
+                        title: 'ID.RM-03',
+                        summary: '[Withdrawn: Moved into GV.RM-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'id-sc',
+                title: 'ID.SC — Supply Chain Risk Management',
+                policyRef: "IDENTIFY (ID): The organization's current cybersecurity risks are understood",
+                requirements: [
+                    {
+                        id: 'ID.SC-01',
+                        title: 'ID.SC-01',
+                        summary: '[Withdrawn: Incorporated into GV.RM-05, GV.SC-01, GV.SC-06, GV.SC-09, GV.SC-10]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.SC-02',
+                        title: 'ID.SC-02',
+                        summary: '[Withdrawn: Incorporated into GV.OC-02, GV.SC-03, GV.SC-04, GV.SC-07, ID.RA-10]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.SC-03',
+                        title: 'ID.SC-03',
+                        summary: '[Withdrawn: Moved to GV.SC-05]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.SC-04',
+                        title: 'ID.SC-04',
+                        summary: '[Withdrawn: Incorporated into GV.SC-07, ID.RA-10]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'ID.SC-05',
+                        title: 'ID.SC-05',
+                        summary: '[Withdrawn: Incorporated into GV.SC-08, ID.IM-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-aa',
+                title: 'PR.AA — Identity Management, Authentication, and Access Control',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.AA-01',
+                        title: 'PR.AA-01',
+                        summary: 'Identities and credentials for authorized users, services, and hardware are managed by the organization',
+                        evidence: ['Example: Initiate requests for new access or additional access for employees, contractors, and others, and track, review, and fulfill the requests, with permission from system or data owners when needed', 'Example: Issue, manage, and revoke cryptographic certificates and identity tokens, cryptographic keys (i.e., key management), and other credentials'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AA-02',
+                        title: 'PR.AA-02',
+                        summary: 'Identities are proofed and bound to credentials based on the context of interactions',
+                        evidence: ["Example: Verify a person's claimed identity at enrollment time using government-issued identity credentials (e.g., passport, visa, driver's license)", 'Example: Issue a different credential for each person (i.e., no credential sharing)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AA-03',
+                        title: 'PR.AA-03',
+                        summary: 'Users, services, and hardware are authenticated',
+                        evidence: ['Example: Require multifactor authentication', 'Example: Enforce policies for the minimum strength of passwords, PINs, and similar authenticators'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AA-04',
+                        title: 'PR.AA-04',
+                        summary: 'Identity assertions are protected, conveyed, and verified',
+                        evidence: ['Example: Protect identity assertions that are used to convey authentication and user information through single sign-on systems', 'Example: Protect identity assertions that are used to convey authentication and user information between federated systems'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AA-05',
+                        title: 'PR.AA-05',
+                        summary: 'Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties',
+                        evidence: ['Example: Review logical and physical access privileges periodically and whenever someone changes roles or leaves the organization, and promptly rescind privileges that are no longer needed', "Example: Take attributes of the requester and the requested resource into account for authorization decisions (e.g., geolocation, day/time, requester endpoint's cyber health)"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AA-06',
+                        title: 'PR.AA-06',
+                        summary: 'Physical access to assets is managed, monitored, and enforced commensurate with risk',
+                        evidence: ['Example: Use security guards, security cameras, locked entrances, alarm systems, and other physical controls to monitor facilities and restrict access', 'Example: Employ additional physical security controls for areas that contain high-risk assets'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ac',
+                title: 'PR.AC — Identity Management, Authentication and Access Control',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.AC-01',
+                        title: 'PR.AC-01',
+                        summary: '[Withdrawn: Incorporated into PR.AA-01, PR.AA-05]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-02',
+                        title: 'PR.AC-02',
+                        summary: '[Withdrawn: Moved to PR.AA-06]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-03',
+                        title: 'PR.AC-03',
+                        summary: '[Withdrawn: Incorporated into PR.AA-03, PR.AA-05, PR.IR-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-04',
+                        title: 'PR.AC-04',
+                        summary: '[Withdrawn: Moved to PR.AA-05]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-05',
+                        title: 'PR.AC-05',
+                        summary: '[Withdrawn: Incorporated into PR.IR-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-06',
+                        title: 'PR.AC-06',
+                        summary: '[Withdrawn: Moved to PR.AA-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AC-07',
+                        title: 'PR.AC-07',
+                        summary: '[Withdrawn: Moved to PR.AA-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-at',
+                title: 'PR.AT — Awareness and Training',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.AT-01',
+                        title: 'PR.AT-01',
+                        summary: 'Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind',
+                        evidence: ["Example: Provide basic cybersecurity awareness and training to employees, contractors, partners, suppliers, and all other users of the organization's non-public resources", 'Example: Train personnel to recognize social engineering attempts and other common attacks, report attacks and suspicious activity, comply with acceptable use policies, and perform basic cyber hygiene tasks (e.g., patching software, choosing passwords, protecting credentials)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AT-02',
+                        title: 'PR.AT-02',
+                        summary: 'Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind',
+                        evidence: ['Example: Identify the specialized roles within the organization that require additional cybersecurity training, such as physical and cybersecurity personnel, finance personnel, senior leadership, and anyone with access to business-critical data', 'Example: Provide role-based cybersecurity awareness and training to all those in specialized roles, including contractors, partners, suppliers, and other third parties'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AT-03',
+                        title: 'PR.AT-03',
+                        summary: '[Withdrawn: Incorporated into PR.AT-01, PR.AT-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AT-04',
+                        title: 'PR.AT-04',
+                        summary: '[Withdrawn: Incorporated into PR.AT-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.AT-05',
+                        title: 'PR.AT-05',
+                        summary: '[Withdrawn: Incorporated into PR.AT-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ds',
+                title: 'PR.DS — Data Security',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.DS-01',
+                        title: 'PR.DS-01',
+                        summary: 'The confidentiality, integrity, and availability of data-at-rest are protected',
+                        evidence: ['Example: Use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of stored data in files, databases, virtual machine disk images, container images, and other resources', 'Example: Use full disk encryption to protect data stored on user endpoints'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-02',
+                        title: 'PR.DS-02',
+                        summary: 'The confidentiality, integrity, and availability of data-in-transit are protected',
+                        evidence: ['Example: Use encryption, digital signatures, and cryptographic hashes to protect the confidentiality and integrity of network communications', 'Example: Automatically encrypt or block outbound emails and other communications that contain sensitive data, depending on the data classification'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-03',
+                        title: 'PR.DS-03',
+                        summary: '[Withdrawn: Incorporated into ID.AM-08, PR.PS-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-04',
+                        title: 'PR.DS-04',
+                        summary: '[Withdrawn: Moved to PR.IR-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-05',
+                        title: 'PR.DS-05',
+                        summary: '[Withdrawn: Incorporated into PR.DS-01, PR.DS-02, PR.DS-10]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-06',
+                        title: 'PR.DS-06',
+                        summary: '[Withdrawn: Incorporated into PR.DS-01, DE.CM-09]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-07',
+                        title: 'PR.DS-07',
+                        summary: '[Withdrawn: Incorporated into PR.IR-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-08',
+                        title: 'PR.DS-08',
+                        summary: '[Withdrawn: Incorporated into ID.RA-09, DE.CM-09]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-10',
+                        title: 'PR.DS-10',
+                        summary: 'The confidentiality, integrity, and availability of data-in-use are protected',
+                        evidence: ['Example: Remove data that must remain confidential (e.g., from processors and memory) as soon as it is no longer needed', 'Example: Protect data in use from access by other users and processes of the same platform'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.DS-11',
+                        title: 'PR.DS-11',
+                        summary: 'Backups of data are created, protected, maintained, and tested',
+                        evidence: ['Example: Continuously back up critical data in near-real-time, and back up other data frequently at agreed-upon schedules', 'Example: Test backups and restores for all types of data sources at least annually'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ip',
+                title: 'PR.IP — Information Protection Processes and Procedures',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.IP-01',
+                        title: 'PR.IP-01',
+                        summary: '[Withdrawn: Incorporated into PR.PS-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-02',
+                        title: 'PR.IP-02',
+                        summary: '[Withdrawn: Incorporated into ID.AM-08, PR.PS-06]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-03',
+                        title: 'PR.IP-03',
+                        summary: '[Withdrawn: Incorporated into PR.PS-01, ID.RA-07]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-04',
+                        title: 'PR.IP-04',
+                        summary: '[Withdrawn: Moved to PR.DS-11]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-05',
+                        title: 'PR.IP-05',
+                        summary: '[Withdrawn: Moved to PR.IR-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-06',
+                        title: 'PR.IP-06',
+                        summary: '[Withdrawn: Incorporated into ID.AM-08]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-07',
+                        title: 'PR.IP-07',
+                        summary: '[Withdrawn: Incorporated into ID.IM, ID.IM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-08',
+                        title: 'PR.IP-08',
+                        summary: '[Withdrawn: Moved to ID.IM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-09',
+                        title: 'PR.IP-09',
+                        summary: '[Withdrawn: Moved to ID.IM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-10',
+                        title: 'PR.IP-10',
+                        summary: '[Withdrawn: Incorporated into ID.IM-02, ID.IM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-11',
+                        title: 'PR.IP-11',
+                        summary: '[Withdrawn: Moved to GV.RR-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IP-12',
+                        title: 'PR.IP-12',
+                        summary: '[Withdrawn: Incorporated into ID.RA-01, PR.PS-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ir',
+                title: 'PR.IR — Technology Infrastructure Resilience',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.IR-01',
+                        title: 'PR.IR-01',
+                        summary: 'Networks and environments are protected from unauthorized logical access and usage',
+                        evidence: ['Example: Logically segment organization networks and cloud-based platforms according to trust boundaries and platform types (e.g., IT, IoT, OT, mobile, guests), and permit required communications only between segments', "Example: Logically segment organization networks from external networks, and permit only necessary communications to enter the organization's networks from the external networks"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IR-02',
+                        title: 'PR.IR-02',
+                        summary: "The organization's technology assets are protected from environmental threats",
+                        evidence: ['Example: Protect organizational equipment from known environmental threats, such as flooding, fire, wind, and excessive heat and humidity', "Example: Include protection from environmental threats and provisions for adequate operating infrastructure in requirements for service providers that operate systems on the organization's behalf"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IR-03',
+                        title: 'PR.IR-03',
+                        summary: 'Mechanisms are implemented to achieve resilience requirements in normal and adverse situations',
+                        evidence: ['Example: Avoid single points of failure in systems and infrastructure', 'Example: Use load balancing to increase capacity and improve reliability'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.IR-04',
+                        title: 'PR.IR-04',
+                        summary: 'Adequate resource capacity to ensure availability is maintained',
+                        evidence: ['Example: Monitor usage of storage, power, compute, network bandwidth, and other resources', 'Example: Forecast future needs, and scale resources accordingly'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ma',
+                title: 'PR.MA — Maintenance',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.MA-01',
+                        title: 'PR.MA-01',
+                        summary: '[Withdrawn: Incorporated into ID.AM-08, PR.PS-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.MA-02',
+                        title: 'PR.MA-02',
+                        summary: '[Withdrawn: Incorporated into ID.AM-08, PR.PS-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-ps',
+                title: 'PR.PS — Platform Security',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.PS-01',
+                        title: 'PR.PS-01',
+                        summary: 'Configuration management practices are established and applied',
+                        evidence: ["Example: Establish, test, deploy, and maintain hardened baselines that enforce the organization's cybersecurity policies and provide only essential capabilities (i.e., principle of least functionality)", 'Example: Review all default configuration settings that may potentially impact cybersecurity when installing or upgrading software'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PS-02',
+                        title: 'PR.PS-02',
+                        summary: 'Software is maintained, replaced, and removed commensurate with risk',
+                        evidence: ['Example: Perform routine and emergency patching within the timeframes specified in the vulnerability management plan', 'Example: Update container images, and deploy new container instances to replace rather than update existing instances'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PS-03',
+                        title: 'PR.PS-03',
+                        summary: 'Hardware is maintained, replaced, and removed commensurate with risk',
+                        evidence: ['Example: Replace hardware when it lacks needed security capabilities or when it cannot support software with needed security capabilities', 'Example: Define and implement plans for hardware end-of-life maintenance support and obsolescence'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PS-04',
+                        title: 'PR.PS-04',
+                        summary: 'Log records are generated and made available for continuous monitoring',
+                        evidence: ['Example: Configure all operating systems, applications, and services (including cloud-based services) to generate log records', "Example: Configure log generators to securely share their logs with the organization's logging infrastructure systems and services"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PS-05',
+                        title: 'PR.PS-05',
+                        summary: 'Installation and execution of unauthorized software are prevented',
+                        evidence: ['Example: When risk warrants it, restrict software execution to permitted products only or deny the execution of prohibited and unauthorized software', "Example: Verify the source of new software and the software's integrity before installing it"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PS-06',
+                        title: 'PR.PS-06',
+                        summary: 'Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle',
+                        evidence: ['Example: Protect all components of organization-developed software from tampering and unauthorized access', 'Example: Secure all software produced by the organization, with minimal vulnerabilities in their releases'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'pr-pt',
+                title: 'PR.PT — Protective Technology',
+                policyRef: "PROTECT (PR): Safeguards to manage the organization's cybersecurity risks are used",
+                requirements: [
+                    {
+                        id: 'PR.PT-01',
+                        title: 'PR.PT-01',
+                        summary: '[Withdrawn: Incorporated into PR.PS-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PT-02',
+                        title: 'PR.PT-02',
+                        summary: '[Withdrawn: Incorporated into PR.DS-01, PR.PS-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PT-03',
+                        title: 'PR.PT-03',
+                        summary: '[Withdrawn: Incorporated into PR.PS-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PT-04',
+                        title: 'PR.PT-04',
+                        summary: '[Withdrawn: Incorporated into PR.AA-06, PR.IR-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'PR.PT-05',
+                        title: 'PR.PT-05',
+                        summary: '[Withdrawn: Moved to PR.IR-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'de-ae',
+                title: 'DE.AE — Adverse Event Analysis',
+                policyRef: 'DETECT (DE): Possible cybersecurity attacks and compromises are found and analyzed',
+                requirements: [
+                    {
+                        id: 'DE.AE-01',
+                        title: 'DE.AE-01',
+                        summary: '[Withdrawn: Incorporated into ID.AM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-02',
+                        title: 'DE.AE-02',
+                        summary: 'Potentially adverse events are analyzed to better understand associated activities',
+                        evidence: ['Example: Use security information and event management (SIEM) or other tools to continuously monitor log events for known malicious and suspicious activity', 'Example: Utilize up-to-date cyber threat intelligence in log analysis tools to improve detection accuracy and characterize threat actors, their methods, and indicators of compromise'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-03',
+                        title: 'DE.AE-03',
+                        summary: 'Information is correlated from multiple sources',
+                        evidence: ['Example: Constantly transfer log data generated by other sources to a relatively small number of log servers', 'Example: Use event correlation technology (e.g., SIEM) to collect information captured by multiple sources'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-04',
+                        title: 'DE.AE-04',
+                        summary: 'The estimated impact and scope of adverse events are understood',
+                        evidence: ['Example: Use SIEMs or other tools to estimate impact and scope, and review and refine the estimates', 'Example: A person creates their own estimates of impact and scope'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-05',
+                        title: 'DE.AE-05',
+                        summary: '[Withdrawn: Moved to DE.AE-08]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-06',
+                        title: 'DE.AE-06',
+                        summary: 'Information on adverse events is provided to authorized staff and tools',
+                        evidence: ['Example: Use cybersecurity software to generate alerts and provide them to the security operations center (SOC), incident responders, and incident response tools', 'Example: Incident responders and other authorized personnel can access log analysis findings at all times'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-07',
+                        title: 'DE.AE-07',
+                        summary: 'Cyber threat intelligence and other contextual information are integrated into the analysis',
+                        evidence: ['Example: Securely provide cyber threat intelligence feeds to detection technologies, processes, and personnel', 'Example: Securely provide information from asset inventories to detection technologies, processes, and personnel'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.AE-08',
+                        title: 'DE.AE-08',
+                        summary: 'Incidents are declared when adverse events meet the defined incident criteria',
+                        evidence: ['Example: Apply incident criteria to known and assumed characteristics of activity in order to determine whether an incident should be declared', 'Example: Take known false positives into account when applying incident criteria'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'de-cm',
+                title: 'DE.CM — Continuous Monitoring',
+                policyRef: 'DETECT (DE): Possible cybersecurity attacks and compromises are found and analyzed',
+                requirements: [
+                    {
+                        id: 'DE.CM-01',
+                        title: 'DE.CM-01',
+                        summary: 'Networks and network services are monitored to find potentially adverse events',
+                        evidence: ['Example: Monitor DNS, BGP, and other network services for adverse events', 'Example: Monitor wired and wireless networks for connections from unauthorized endpoints'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-02',
+                        title: 'DE.CM-02',
+                        summary: 'The physical environment is monitored to find potentially adverse events',
+                        evidence: ['Example: Monitor logs from physical access control systems (e.g., badge readers) to find unusual access patterns (e.g., deviations from the norm) and failed access attempts', 'Example: Review and monitor physical access records (e.g., from visitor registration, sign-in sheets)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-03',
+                        title: 'DE.CM-03',
+                        summary: 'Personnel activity and technology usage are monitored to find potentially adverse events',
+                        evidence: ['Example: Use behavior analytics software to detect anomalous user activity to mitigate insider threats', 'Example: Monitor logs from logical access control systems to find unusual access patterns and failed access attempts'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-04',
+                        title: 'DE.CM-04',
+                        summary: '[Withdrawn: Incorporated into DE.CM-01, DE.CM-09]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-05',
+                        title: 'DE.CM-05',
+                        summary: '[Withdrawn: Incorporated into DE.CM-01, DE.CM-09]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-06',
+                        title: 'DE.CM-06',
+                        summary: 'External service provider activities and services are monitored to find potentially adverse events',
+                        evidence: ['Example: Monitor remote and onsite administration and maintenance activities that external providers perform on organizational systems', 'Example: Monitor activity from cloud-based services, internet service providers, and other service providers for deviations from expected behavior'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-07',
+                        title: 'DE.CM-07',
+                        summary: '[Withdrawn: Incorporated into DE.CM-01, DE.CM-03, DE.CM-06, DE.CM-09]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-08',
+                        title: 'DE.CM-08',
+                        summary: '[Withdrawn: Incorporated into ID.RA-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.CM-09',
+                        title: 'DE.CM-09',
+                        summary: 'Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events',
+                        evidence: ['Example: Monitor email, web, file sharing, collaboration services, and other common attack vectors to detect malware, phishing, data leaks and exfiltration, and other adverse events', 'Example: Monitor authentication attempts to identify attacks against credentials and unauthorized credential reuse'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'de-dp',
+                title: 'DE.DP — Detection Processes',
+                policyRef: 'DETECT (DE): Possible cybersecurity attacks and compromises are found and analyzed',
+                requirements: [
+                    {
+                        id: 'DE.DP-01',
+                        title: 'DE.DP-01',
+                        summary: '[Withdrawn: Incorporated into GV.RR-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.DP-02',
+                        title: 'DE.DP-02',
+                        summary: '[Withdrawn: Incorporated into DE.AE]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.DP-03',
+                        title: 'DE.DP-03',
+                        summary: '[Withdrawn: Incorporated into ID.IM-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.DP-04',
+                        title: 'DE.DP-04',
+                        summary: '[Withdrawn: Incorporated into DE.AE-06]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'DE.DP-05',
+                        title: 'DE.DP-05',
+                        summary: '[Withdrawn: Incorporated into ID.IM, ID.IM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-an',
+                title: 'RS.AN — Incident Analysis',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.AN-01',
+                        title: 'RS.AN-01',
+                        summary: '[Withdrawn: Incorporated into RS.MA-02]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-02',
+                        title: 'RS.AN-02',
+                        summary: '[Withdrawn: Incorporated into RS.MA-02, RS.MA-03, RS.MA-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-03',
+                        title: 'RS.AN-03',
+                        summary: 'Analysis is performed to establish what has taken place during an incident and the root cause of the incident',
+                        evidence: ['Example: Determine the sequence of events that occurred during the incident and which assets and resources were involved in each event', 'Example: Attempt to determine what vulnerabilities, threats, and threat actors were directly or indirectly involved in the incident'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-04',
+                        title: 'RS.AN-04',
+                        summary: '[Withdrawn: Moved to RS.MA-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-05',
+                        title: 'RS.AN-05',
+                        summary: '[Withdrawn: Moved to ID.RA-08]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-06',
+                        title: 'RS.AN-06',
+                        summary: "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved",
+                        evidence: ['Example: Require each incident responder and others (e.g., system administrators, cybersecurity engineers) who perform incident response tasks to record their actions and make the record immutable', 'Example: Require the incident lead to document the incident in detail and be responsible for preserving the integrity of the documentation and the sources of all information being reported'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-07',
+                        title: 'RS.AN-07',
+                        summary: 'Incident data and metadata are collected, and their integrity and provenance are preserved',
+                        evidence: ['Example: Collect, preserve, and safeguard the integrity of all pertinent incident data and metadata (e.g., data source, date/time of collection) based on evidence preservation and chain-of-custody procedures'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.AN-08',
+                        title: 'RS.AN-08',
+                        summary: "An incident's magnitude is estimated and validated",
+                        evidence: ['Example: Review other potential targets of the incident to search for indicators of compromise and evidence of persistence', 'Example: Automatically run tools on targets to look for indicators of compromise and evidence of persistence'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-co',
+                title: 'RS.CO — Incident Response Reporting and Communication',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.CO-01',
+                        title: 'RS.CO-01',
+                        summary: '[Withdrawn: Incorporated into PR.AT-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.CO-02',
+                        title: 'RS.CO-02',
+                        summary: 'Internal and external stakeholders are notified of incidents',
+                        evidence: ["Example: Follow the organization's breach notification procedures after discovering a data breach incident, including notifying affected customers", 'Example: Notify business partners and customers of incidents in accordance with contractual requirements'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.CO-03',
+                        title: 'RS.CO-03',
+                        summary: 'Information is shared with designated internal and external stakeholders',
+                        evidence: ['Example: Securely share information consistent with response plans and information sharing agreements', "Example: Voluntarily share information about an attacker's observed TTPs, with all sensitive data removed, with an Information Sharing and Analysis Center (ISAC)"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.CO-04',
+                        title: 'RS.CO-04',
+                        summary: '[Withdrawn: Incorporated into RS.MA-01, RS.MA-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.CO-05',
+                        title: 'RS.CO-05',
+                        summary: '[Withdrawn: Incorporated into RS.CO-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-im',
+                title: 'RS.IM — Improvements',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.IM-01',
+                        title: 'RS.IM-01',
+                        summary: '[Withdrawn: Incorporated into ID.IM-03, ID.IM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.IM-02',
+                        title: 'RS.IM-02',
+                        summary: '[Withdrawn: Incorporated into ID.IM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-ma',
+                title: 'RS.MA — Incident Management',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.MA-01',
+                        title: 'RS.MA-01',
+                        summary: 'The incident response plan is executed in coordination with relevant third parties once an incident is declared',
+                        evidence: ['Example: Detection technologies automatically report confirmed incidents', "Example: Request incident response assistance from the organization's incident response outsourcer"],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MA-02',
+                        title: 'RS.MA-02',
+                        summary: 'Incident reports are triaged and validated',
+                        evidence: ['Example: Preliminarily review incident reports to confirm that they are cybersecurity-related and necessitate incident response activities', 'Example: Apply criteria to estimate the severity of an incident'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MA-03',
+                        title: 'RS.MA-03',
+                        summary: 'Incidents are categorized and prioritized',
+                        evidence: ['Example: Further review and categorize incidents based on the type of incident (e.g., data breach, ransomware, DDoS, account compromise)', 'Example: Prioritize incidents based on their scope, likely impact, and time-critical nature'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MA-04',
+                        title: 'RS.MA-04',
+                        summary: 'Incidents are escalated or elevated as needed',
+                        evidence: ['Example: Track and validate the status of all ongoing incidents', 'Example: Coordinate incident escalation or elevation with designated internal and external stakeholders'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MA-05',
+                        title: 'RS.MA-05',
+                        summary: 'The criteria for initiating incident recovery are applied',
+                        evidence: ['Example: Apply incident recovery criteria to known and assumed characteristics of the incident to determine whether incident recovery processes should be initiated', 'Example: Take the possible operational disruption of incident recovery activities into account'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-mi',
+                title: 'RS.MI — Incident Mitigation',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.MI-01',
+                        title: 'RS.MI-01',
+                        summary: 'Incidents are contained',
+                        evidence: ['Example: Cybersecurity technologies (e.g., antivirus software) and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform containment actions', 'Example: Allow incident responders to manually select and perform containment actions'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MI-02',
+                        title: 'RS.MI-02',
+                        summary: 'Incidents are eradicated',
+                        evidence: ['Example: Cybersecurity technologies and cybersecurity features of other technologies (e.g., operating systems, network infrastructure devices) automatically perform eradication actions', 'Example: Allow incident responders to manually select and perform eradication actions'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RS.MI-03',
+                        title: 'RS.MI-03',
+                        summary: '[Withdrawn: Incorporated into ID.RA-06]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rs-rp',
+                title: 'RS.RP — Response Planning',
+                policyRef: 'RESPOND (RS): Actions regarding a detected cybersecurity incident are taken',
+                requirements: [
+                    {
+                        id: 'RS.RP-01',
+                        title: 'RS.RP-01',
+                        summary: '[Withdrawn: Incorporated into RS.MA-01]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rc-co',
+                title: 'RC.CO — Incident Recovery Communication',
+                policyRef: 'RECOVER (RC): Assets and operations affected by a cybersecurity incident are restored',
+                requirements: [
+                    {
+                        id: 'RC.CO-01',
+                        title: 'RC.CO-01',
+                        summary: '[Withdrawn: Incorporated into RC.CO-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.CO-02',
+                        title: 'RC.CO-02',
+                        summary: '[Withdrawn: Incorporated into RC.CO-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.CO-03',
+                        title: 'RC.CO-03',
+                        summary: 'Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders',
+                        evidence: ['Example: Securely share recovery information, including restoration progress, consistent with response plans and information sharing agreements', 'Example: Regularly update senior leadership on recovery status and restoration progress for major incidents'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.CO-04',
+                        title: 'RC.CO-04',
+                        summary: 'Public updates on incident recovery are shared using approved methods and messaging',
+                        evidence: ["Example: Follow the organization's breach notification procedures for recovering from a data breach incident", 'Example: Explain the steps being taken to recover from the incident and to prevent a recurrence'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rc-im',
+                title: 'RC.IM — Improvements',
+                policyRef: 'RECOVER (RC): Assets and operations affected by a cybersecurity incident are restored',
+                requirements: [
+                    {
+                        id: 'RC.IM-01',
+                        title: 'RC.IM-01',
+                        summary: '[Withdrawn: Incorporated into ID.IM-03, ID.IM-04]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.IM-02',
+                        title: 'RC.IM-02',
+                        summary: '[Withdrawn: Incorporated into ID.IM-03]',
+                        evidence: ['Example: (see NIST CSF 2.0 Implementation Examples)'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
+                ]
+            },
+            {
+                id: 'rc-rp',
+                title: 'RC.RP — Incident Recovery Plan Execution',
+                policyRef: 'RECOVER (RC): Assets and operations affected by a cybersecurity incident are restored',
+                requirements: [
+                    {
+                        id: 'RC.RP-01',
+                        title: 'RC.RP-01',
+                        summary: 'The recovery portion of the incident response plan is executed once initiated from the incident response process',
+                        evidence: ['Example: Begin recovery procedures during or after incident response processes', 'Example: Make all individuals with recovery responsibilities aware of the plans for recovery and the authorizations required to implement each aspect of the plans'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.RP-02',
+                        title: 'RC.RP-02',
+                        summary: 'Recovery actions are selected, scoped, prioritized, and performed',
+                        evidence: ['Example: Select recovery actions based on the criteria defined in the incident response plan and available resources', 'Example: Change planned recovery actions based on a reassessment of organizational needs and resources'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.RP-03',
+                        title: 'RC.RP-03',
+                        summary: 'The integrity of backups and other restoration assets is verified before using them for restoration',
+                        evidence: ['Example: Check restoration assets for indicators of compromise, file corruption, and other integrity issues before use'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.RP-04',
+                        title: 'RC.RP-04',
+                        summary: 'Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms',
+                        evidence: ['Example: Use business impact and system categorization records (including service delivery objectives) to validate that essential services are restored in the appropriate order', 'Example: Work with system owners to confirm the successful restoration of systems and the return to normal operations'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.RP-05',
+                        title: 'RC.RP-05',
+                        summary: 'The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed',
+                        evidence: ['Example: Check restored assets for indicators of compromise and remediation of root causes of the incident before production use', 'Example: Verify the correctness and adequacy of the restoration actions taken before putting a restored system online'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    },
+                    {
+                        id: 'RC.RP-06',
+                        title: 'RC.RP-06',
+                        summary: 'The end of incident recovery is declared based on criteria, and incident-related documentation is completed',
+                        evidence: ['Example: Prepare an after-action report that documents the incident itself, the response and recovery actions taken, and lessons learned', 'Example: Declare the end of incident recovery once the criteria are met'],
+                        notesPlaceholder: 'Describe your current approach, gaps, owner, and next step.'
+                    }
                 ]
             }
         ]
@@ -1901,7 +3342,7 @@
         cjisControls.policyAreas.forEach((area, index) => {
             const tab = document.createElement("div");
             tab.className = "tab" + (index === 0 ? " active" : "");
-            tab.textContent = area.name;
+            tab.textContent = area.title;
             tab.dataset.areaId = area.id;
             tab.onclick = () => selectPolicyArea(area.id);
             tabContainer.appendChild(tab);
@@ -1991,13 +3432,14 @@
                 statusRow.className = "status-row";
                 statusRow.innerHTML = `
                     <select class="status-select" id="status-${req.id}" onchange="onStatusChange('${req.id}')">
-                        <option value="">Set status…</option>
-                        <option value="compliant">Compliant</option>
-                        <option value="partial">Partially implemented</option>
-                        <option value="non-compliant">Not implemented / major gap</option>
+                        <option value="">Set tier…</option>
+                        <option value="tier1">Tier 1 — Partial</option>
+                        <option value="tier2">Tier 2 — Risk Informed</option>
+                        <option value="tier3">Tier 3 — Repeatable</option>
+                        <option value="tier4">Tier 4 — Adaptive</option>
                         <option value="na">Not applicable</option>
                     </select>
-                    <span class="pill-text">Use “Partial” for in-progress or limited implementation.</span>
+                    <span class="pill-text">Use tiers as a plain-language maturity signal for how consistently this outcome is achieved.</span>
                 `;
                 rightCol.appendChild(statusRow);
 
@@ -2052,16 +3494,19 @@
 
         if (!status) {
             pill.classList.add("pill-status-muted");
-        } else if (status === "compliant") {
+        } else if (status === "tier4") {
             pill.classList.add("pill-status-ok");
-            text = "Status: Compliant";
-        } else if (status === "partial") {
+            text = "Tier 4: Adaptive";
+        } else if (status === "tier3") {
+            pill.classList.add("pill-status-ok");
+            text = "Tier 3: Repeatable";
+        } else if (status === "tier2") {
             pill.classList.add("pill-status-warn");
-            text = "Status: Partial / In-progress";
-        } else if (status === "non-compliant") {
+            text = "Tier 2: Risk Informed";
+        } else if (status === "tier1") {
             pill.classList.add("pill-status-risk");
-            text = "Status: Non-compliant / Gap";
-        } else if (status === "na") {
+            text = "Tier 1: Partial";
+        }  else if (status === "na") {
             pill.classList.add("pill-status-muted");
             text = "Status: Not applicable";
         }
@@ -2085,22 +3530,22 @@
     function recalcSnapshot() {
         let total = 0;
         let withStatus = 0;
-        let nonCompliant = 0;
+        let tier1 = 0;
 
         cjisControls.policyAreas.forEach(area => {
             area.requirements.forEach(req => {
                 total++;
                 const status = getRequirementState(req.id).status;
                 if (status) withStatus++;
-                if (status === "non-compliant") nonCompliant++;
+                if (status === "tier1") tier1++;
             });
         });
 
         const pctComplete = total > 0 ? Math.round((withStatus / total) * 100) : 0;
-        const pctRisk = total > 0 ? Math.round((nonCompliant / total) * 100) : 0;
+        const pctRisk = total > 0 ? Math.round((tier1 / total) * 100) : 0;
 
         document.getElementById("metricComplete").textContent = `${withStatus} / ${total}`;
-        document.getElementById("metricNonCompliant").textContent = nonCompliant.toString();
+        document.getElementById("metricNonCompliant").textContent = tier1.toString();
         document.getElementById("progressFill").style.width = `${pctComplete}%`;
         document.getElementById("riskFill").style.width = `${pctRisk}%`;
 
@@ -2115,26 +3560,26 @@
             dot.classList.add("muted");
             label.textContent = "Not started";
             snapshotTag.textContent = "Not started";
-        } else if (nonCompliant === 0 && pctComplete === 100) {
+        } else if (tier1 === 0 && pctComplete === 100) {
             dot.classList.add("success");
-            label.textContent = "Green – No non-compliant controls noted";
+            label.textContent = "Green – No Tier 1 subcategories noted";
             snapshotTag.className = "tag-soft green";
-            snapshotTag.textContent = "Green (no non-compliant controls)";
-        } else if (nonCompliant === 0) {
+            snapshotTag.textContent = "Green (no Tier 1)";
+        } else if (tier1 === 0) {
             dot.classList.add("warning");
-            label.textContent = "In progress – No non-compliant controls yet";
+            label.textContent = "In progress – No Tier 1 subcategories yet";
             snapshotTag.className = "tag-soft yellow";
-            snapshotTag.textContent = "In progress – no red controls";
-        } else if (nonCompliant <= 3) {
+            snapshotTag.textContent = "In progress – no Tier 1";
+        } else if (tier1 <= 3) {
             dot.classList.add("warning");
-            label.textContent = `Moderate risk – ${nonCompliant} non-compliant controls`;
+            label.textContent = `Moderate risk – ${tier1} Tier 1 subcategories`;
             snapshotTag.className = "tag-soft yellow";
-            snapshotTag.textContent = `${nonCompliant} non-compliant controls`;
+            snapshotTag.textContent = `${tier1} Tier 1 subcategories`;
         } else {
             dot.classList.add("danger");
-            label.textContent = `Elevated risk – ${nonCompliant} non-compliant controls`;
+            label.textContent = `Elevated risk – ${tier1} Tier 1 subcategories`;
             snapshotTag.className = "tag-soft red";
-            snapshotTag.textContent = `Elevated risk – ${nonCompliant} non-compliant controls`;
+            snapshotTag.textContent = `Elevated risk – ${tier1} Tier 1 subcategories`;
         }
     }
 
@@ -2144,13 +3589,14 @@
 
         cjisControls.policyAreas.forEach(area => {
             const total = area.requirements.length;
-            let compliant = 0, partial = 0, nonCompliant = 0, na = 0, pending = 0;
+            let tier4 = 0, tier3 = 0, tier2 = 0, tier1 = 0, na = 0, pending = 0;
 
             area.requirements.forEach(req => {
                 const status = getRequirementState(req.id).status;
-                if (status === "compliant") compliant++;
-                else if (status === "partial") partial++;
-                else if (status === "non-compliant") nonCompliant++;
+                if (status === "tier4") tier4++;
+                else if (status === "tier3") tier3++;
+                else if (status === "tier2") tier2++;
+                else if (status === "tier1") tier1++;
                 else if (status === "na") na++;
                 else pending++;
             });
@@ -2161,19 +3607,23 @@
             const card = document.createElement("div");
             card.className = "summary-card";
             card.innerHTML = `
-                <h4>${area.name}</h4>
+                <h4>${area.title}</h4>
                 <div>
                     <div class="summary-card-row">
-                        <span>Compliant:</span>
-                        <span style="color:#166534;">${compliant}</span>
+                        <span>Tier 4 (Adaptive):</span>
+                        <span style="color:#166534;">${tier4}</span>
                     </div>
                     <div class="summary-card-row">
-                        <span>Partial:</span>
-                        <span style="color:#854d0e;">${partial}</span>
+                        <span>Tier 3 (Repeatable):</span>
+                        <span style="color:#166534;">${tier3}</span>
                     </div>
                     <div class="summary-card-row">
-                        <span>Non-Compliant:</span>
-                        <span style="color:#b91c1c;">${nonCompliant}</span>
+                        <span>Tier 2 (Risk Informed):</span>
+                        <span style="color:#854d0e;">${tier2}</span>
+                    </div>
+                    <div class="summary-card-row">
+                        <span>Tier 1 (Partial):</span>
+                        <span style="color:#b91c1c;">${tier1}</span>
                     </div>
                     <div class="summary-card-row">
                         <span>N/A:</span>
@@ -2184,7 +3634,7 @@
                         <span style="color:#0b61a4;">${pending}</span>
                     </div>
                     <div class="summary-completion">
-                        Completion: ${completionRate}% (${completed}/${total} with a status)
+                        Completion: ${completionRate}% (${completed}/${total} with a tier)
                     </div>
                     <div class="progress-bar" style="margin-top:6px;">
                         <div class="progress-fill" style="width:${completionRate}%;"></div>
