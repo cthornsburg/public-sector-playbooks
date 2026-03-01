@@ -2,25 +2,23 @@
 
 Last reviewed: 2026-02-28 (America/Chicago)
 
-## Findings
+## Status update
 
-The workbook dataset currently includes legacy CSF 1.1-era category identifiers mixed with CSF 2.0 Govern categories.
+- ✅ Phase 1 complete: removed known legacy CSF 1.1 identifier prefixes from workbook item IDs and evidence labels:
+  - `ID.BE` → `GV.OC`
+  - `ID.GV` → `GV.OV`
+  - `ID.RM` → `GV.RM`
+  - `ID.SC` → `GV.SC`
+  - `PR.AC` → `PR.AA`
+  - `PR.IP` → `GV.PO`
+- ✅ Guardrail script in place: `validate_ids.py` now fails on reintroduction of those legacy prefixes.
 
-Examples observed in `index.html` evidence metadata:
+## Remaining work
 
-- `ID.BE`
-- `ID.GV`
-- `ID.RM`
-- `ID.SC`
-- `PR.AC`
-- `PR.IP`
-
-## Required remediation
-
-1. Replace static category/subcategory inventory with authoritative CSF 2.0 Core identifiers from CSRC Reference Tool export.
+1. Replace static item inventory with direct export from the authoritative CSF 2.0 Reference Tool.
 2. Add `frameworkVersion: "CSF_2_0"` in exported JSON payloads.
-3. Add a schema validator that rejects unknown/legacy category IDs.
-4. Add a regression check in CI to detect legacy IDs in workbook data.
+3. Add schema validation for category/subcategory IDs against an authoritative allowlist.
+4. Add CI regression check to run `validate_ids.py`.
 
 ## Authoritative sources
 
