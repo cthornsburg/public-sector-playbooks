@@ -3021,7 +3021,7 @@
         };
 
         cjisControls.policyAreas.forEach(area => {
-            area.requirements.forEach(req => {
+            activeRequirements.forEach(req => {
                 data.controls[req.id] = getRequirementState(req.id);
             });
         });
@@ -3130,6 +3130,15 @@
     }
 
 
+    function isWithdrawnRequirement(req) {
+        if (!req || !req.title) return false;
+        return String(req.title).trim().startsWith('[Withdrawn:');
+    }
+
+    function getActiveRequirements(area) {
+        return (area.requirements || []).filter(req => !isWithdrawnRequirement(req));
+    }
+
     function initialize() {
         buildPolicyTabs();
         // default subgroup tabs for first Function
@@ -3153,7 +3162,8 @@
         cjisControls.policyAreas.forEach((area, index) => {
             const tab = document.createElement("div");
             tab.className = "tab" + (index === 0 ? " active" : "");
-            const count = area.requirements ? area.requirements.length : 0;
+            const activeRequirements = getActiveRequirements(area);
+            const count = activeRequirements.length;
             tab.textContent = `${area.title} (${count})`;
             tab.dataset.areaId = area.id;
             tab.onclick = () => selectPolicyArea(area.id);
@@ -3194,7 +3204,7 @@
 
             pane.appendChild(headerRow);
 
-            area.requirements.forEach(req => {
+            activeRequirements.forEach(req => {
                 const row = document.createElement("div");
                 row.className = "requirement-row";
                 row.dataset.reqId = req.id;
@@ -3286,7 +3296,9 @@
         const area = cjisControls.policyAreas.find(a => a.id === areaId);
         if (!area) return;
 
-        const codes = Array.from(new Set(area.requirements.map(r => {
+        const activeRequirements = getActiveRequirements(area);
+
+        const codes = Array.from(new Set(activeRequirements.map(r => {
             if (!r || !r.id) return "";
             return r.id.includes("-") ? r.id.split("-")[0] : "";
         }).filter(Boolean))).sort();
@@ -3300,11 +3312,11 @@
             container.appendChild(tab);
         };
 
-        const total = area.requirements.length;
+        const total = activeRequirements.length;
 
         makeTab("all", `All (${total})`);
         codes.forEach(c => {
-            const count = area.requirements.filter(r => r && r.id && r.id.startsWith(c + '-')).length;
+            const count = activeRequirements.filter(r => r && r.id && r.id.startsWith(c + '-')).length;
             makeTab(c, `${c} (${count})`);
         });
     }
@@ -3400,7 +3412,7 @@
         let tier1 = 0;
 
         cjisControls.policyAreas.forEach(area => {
-            area.requirements.forEach(req => {
+            activeRequirements.forEach(req => {
                 total++;
                 const status = getRequirementState(req.id).status;
                 if (status) withStatus++;
@@ -3455,10 +3467,10 @@
         summaryGrid.innerHTML = "";
 
         cjisControls.policyAreas.forEach(area => {
-            const total = area.requirements.length;
+            const total = activeRequirements.length;
             let tier4 = 0, tier3 = 0, tier2 = 0, tier1 = 0, na = 0, pending = 0;
 
-            area.requirements.forEach(req => {
+            activeRequirements.forEach(req => {
                 const status = getRequirementState(req.id).status;
                 if (status === "tier4") tier4++;
                 else if (status === "tier3") tier3++;
