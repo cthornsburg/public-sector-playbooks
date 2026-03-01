@@ -17,11 +17,6 @@ This is a **community, unofficial** self-assessment workbook aligned to the **NI
 - CSF 2.0 Core (CSWP 29): https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final
 - CSF 2.0 Implementation Examples (NIST): https://www.nist.gov/document/csf-20-implementation-examples-xlsx
 
-## Accuracy status (important)
-
-- This workbook is currently in **CSF 2.0 transition hardening**.
-- Some internal category labels still reflect legacy CSF 1.1-style identifiers and are being remapped to the authoritative CSF 2.0 model.
-- For authoritative implementation decisions, validate against the CSF 2.0 Core and CSRC Reference Tool links above.
 
 ## Hosted workbook (GitHub Pages)
 
