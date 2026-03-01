@@ -3021,6 +3021,7 @@
         };
 
         cjisControls.policyAreas.forEach(area => {
+            const activeRequirements = getActiveRequirements(area);
             activeRequirements.forEach(req => {
                 data.controls[req.id] = getRequirementState(req.id);
             });
@@ -3412,6 +3413,7 @@
         let tier1 = 0;
 
         cjisControls.policyAreas.forEach(area => {
+            const activeRequirements = getActiveRequirements(area);
             activeRequirements.forEach(req => {
                 total++;
                 const status = getRequirementState(req.id).status;
@@ -3467,6 +3469,7 @@
         summaryGrid.innerHTML = "";
 
         cjisControls.policyAreas.forEach(area => {
+            const activeRequirements = getActiveRequirements(area);
             const total = activeRequirements.length;
             let tier4 = 0, tier3 = 0, tier2 = 0, tier1 = 0, na = 0, pending = 0;
 
