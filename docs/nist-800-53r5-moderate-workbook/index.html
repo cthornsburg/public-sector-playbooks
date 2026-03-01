@@ -1871,7 +1871,7 @@
         cjisControls.policyAreas.forEach((area, index) => {
             const tab = document.createElement("div");
             tab.className = "tab" + (index === 0 ? " active" : "");
-            tab.textContent = area.name;
+            tab.textContent = area.title;
             tab.dataset.areaId = area.id;
             tab.onclick = () => selectPolicyArea(area.id);
             tabContainer.appendChild(tab);
@@ -1888,8 +1888,8 @@
             left.innerHTML = `
                 <span class="pill-cjis">
                     <span class="pill-cjis-dot"></span>
-                    <span class="pill-cjis-code">${area.code}</span>
-                    <span class="pill-cjis-area">${area.description}</span>
+                    <span class="pill-cjis-code">${area.id.toUpperCase()}</span>
+                    <span class="pill-cjis-area">${area.policyRef || ""}</span>
                 </span>
             `;
             headerRow.appendChild(left);
@@ -2131,7 +2131,7 @@
             const card = document.createElement("div");
             card.className = "summary-card";
             card.innerHTML = `
-                <h4>${area.name}</h4>
+                <h4>${area.title}</h4>
                 <div>
                     <div class="summary-card-row">
                         <span>Compliant:</span>
