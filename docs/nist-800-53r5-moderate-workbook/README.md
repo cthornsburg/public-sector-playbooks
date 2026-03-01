@@ -11,7 +11,9 @@ This is a **community, unofficial** self-assessment workbook based on a **Modera
 
 ## Official references
 
-- NIST SP 800-53 Rev. 5 (Final): https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+- NIST SP 800-53 Rev. 5 publication page (includes update notes): https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+- NIST SP 800-53B (Control Baselines): https://csrc.nist.gov/publications/detail/sp/800-53b/final
+- NIST SP 800-53 Downloads (current derivative datasets): https://csrc.nist.gov/projects/risk-management/sp800-53-controls/downloads
 - NIST Risk Management Framework (RMF) overview: https://csrc.nist.gov/projects/risk-management
 
 ## Hosted workbook (GitHub Pages)
