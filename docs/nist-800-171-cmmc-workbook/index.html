@@ -1379,15 +1379,15 @@
 
             <div class="section">
                 <div class="section-header">
-                    <div class="section-title">1. Local Agency & Scope</div>
+                    <div class="section-title">1. Organization & Scope</div>
                     <div class="section-sub">
                         <span class="chip chip-soft">Context & identifiers</span>
                     </div>
                 </div>
                 <div class="inline-grid">
                     <div class="field-group">
-                        <div class="field-label"><span>Agency Name</span> <span class="field-required">*</span></div>
-                        <input type="text" id="agencyName" placeholder="e.g., Sample City Police Department">
+                        <div class="field-label"><span>Organization Name</span> <span class="field-required">*</span></div>
+                        <input type="text" id="agencyName" placeholder="e.g., ACME Manufacturing, LLC">
                     </div>
                     <div class="field-group">
                         <div class="field-label"><span>Org/Dept Identifier</span></div>
@@ -1416,14 +1416,14 @@
                         <textarea id="scopeNotes"
                                   placeholder="Briefly describe scope – systems, locations, any exclusions or special circumstances."></textarea>
                         <div class="field-help">
-                            Helpful for documenting what is (and is not) in-scope: critical services, systems, cloud apps, and key vendors.
+                            Helpful for documenting what is (and is not) in scope: critical services, systems, cloud apps, and key vendors.
                         </div>
                     </div>
                     <div class="field-group" style="flex: 1 1 200px;">
                         <div class="field-label"><span>Assessment Type</span></div>
                         <select id="assessmentType">
                             <option value="">Select type</option>
-                            <option value="self">Agency self-assessment</option>
+                            <option value="self">Organization self-assessment</option>
                             <option value="preaudit">Readiness self-assessment</option>
                             <option value="csa">External audit/assessment (if applicable)</option>
                             <option value="consult">Third-party / consulting support</option>
@@ -1445,7 +1445,7 @@
                 <div class="inline-grid">
                     <div class="field-group">
                         <div class="field-label"><span>IT/Security Lead (or Designee)</span></div>
-                        <input type="text" id="tacName" placeholder="Name and rank/position">
+                        <input type="text" id="tacName" placeholder="Name / title">
                     </div>
                     <div class="field-group">
                         <div class="field-label"><span>IT/Security Contact</span></div>
@@ -1453,7 +1453,7 @@
                     </div>
                     <div class="field-group">
                         <div class="field-label"><span>Security Officer / Point of Contact</span></div>
-                        <input type="text" id="lasoName" placeholder="Name and rank/position">
+                        <input type="text" id="lasoName" placeholder="Name / title">
                     </div>
                     <div class="field-group">
                         <div class="field-label"><span>Security POC Contact</span></div>
@@ -1504,7 +1504,7 @@
                     </div>
                 </div>
                 <div class="help-text">
-                    Use the controls below to track status by control family. The main goal is to capture practical status for the local agency:
+                    Use the controls below to track status by control family. The main goal is to capture practical implementation status for the organization:
                     how each control is implemented, any gaps, and follow-up actions.
                 </div>
                 <div class="tab-row" id="policyTabs"></div>
@@ -1559,7 +1559,7 @@
                     </div>
                 </div>
                 <div class="print-note">
-                    <strong>Tip:</strong> Use this snapshot as your quick “executive summary” when discussing results with agency leadership.
+                    <strong>Tip:</strong> Use this snapshot as your quick “executive summary” when discussing results with organization leadership.
                 </div>
             </div>
 
@@ -1820,7 +1820,7 @@
         const data = buildStateObject();
         const agency = (data.org && data.org.agencyName) ? data.org.agencyName.trim().replace(/[^a-z0-9\- ]/gi,'').replace(/\s+/g,'-') : 'agency';
         const date = (data.org && data.org.assessmentDate) ? data.org.assessmentDate : new Date().toISOString().slice(0,10);
-        const filename = `cjis-v6-self-assessment_${agency}_${date}.json`;
+        const filename = `nist-workbook-self-assessment_${agency}_${date}.json`;
         downloadText(filename, JSON.stringify(data, null, 2));
         showToast('Exported JSON (saved to your device).');
     }
@@ -2277,8 +2277,7 @@
             title: "Suggested Evidence (Governance, Policy, Vendors)",
             body: `
                 <p class="text-sm">
-                    For Control Families 1, 2, 11, and 12, governance documentation is critical to show how the local
-                    agency organizes NIST responsibilities.
+                    For Control Families 1, 2, 11, and 12, governance documentation is critical to show how the organization assigns and oversees responsibilities.
                 </p>
                 <h4>Core Governance Artifacts</h4>
                 <ul>
@@ -2290,7 +2289,7 @@
                 <h4>Helpful Support Documents</h4>
                 <ul>
                     <li>Meeting notes where NIST topics are discussed with leadership</li>
-                    <li>Communications from CSA or state NIST office that have been incorporated locally</li>
+                    <li>Internal policy communications or external guidance updates incorporated into practice</li>
                     <li>Any written tasking documents defining NIST-related duties</li>
                 </ul>
                 <p class="text-sm mt-4">
