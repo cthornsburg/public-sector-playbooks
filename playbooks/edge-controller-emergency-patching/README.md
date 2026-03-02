@@ -1,6 +1,6 @@
 # Edge Controller Emergency Patching (Municipal/Public Sector)
 
-Draft playbook for urgent patching of internet-exposed edge controllers (with Cisco SD-WAN examples).
+Playbook for urgent patching of internet-exposed edge controllers (with Cisco SD-WAN examples).
 
 ## Purpose
 Provide a fast, repeatable process to reduce active-exploitation risk without creating uncontrolled outages.

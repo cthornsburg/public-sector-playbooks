@@ -1,8 +1,7 @@
-# EDGE CONTROLLER EMERGENCY PATCH PLAYBOOK (DRAFT)
+# EDGE CONTROLLER EMERGENCY PATCH PLAYBOOK
 
 **Audience:** Municipal IT/security teams, network admins, incident response leads  
-**Use case:** Rapid response to active exploitation risk (e.g., Cisco SD-WAN controller vulnerabilities)  
-**Status:** Draft for review
+**Use case:** Rapid response to active exploitation risk (e.g., Cisco SD-WAN controller vulnerabilities)
 
 ---
 
@@ -148,8 +147,3 @@ Use this section during review meetings:
 
 ---
 
-## 12) Reviewer Questions (for Chip)
-
-1. Should this playbook assume 24/7 municipal SOC coverage, or low-staff “on-call only” operations by default?
-2. Do you want a one-page quick card version for city manager/executive use?
-3. Should we add a companion worksheet (`EDGE_CONTROLLER_PATCH_ACTION_SHEET.md`) for real-time change tracking?

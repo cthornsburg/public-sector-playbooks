@@ -53,5 +53,5 @@ If rollback occurs: reapply strict mitigations, remain in incident mode, escalat
 “Active exploitation risk identified for edge controllers. Emergency patching/mitigation is [in progress/completed]. Service impact: [none/minor/major]. Residual risk: [low/medium/high]. Next update: [time].”
 
 ---
-**Companion detailed draft:** `EDGE_CONTROLLER_EMERGENCY_PATCH_PLAYBOOK.md`  
+**Companion detailed playbook:** `EDGE_CONTROLLER_EMERGENCY_PATCH_PLAYBOOK.md`  
 **DFIR follow-on:** `playbooks/dfir-first-24-hours/README.md`
