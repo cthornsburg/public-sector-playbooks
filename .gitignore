@@ -1,14 +1,6 @@
 # Local/private workflow files (never publish)
-.openclaw/
-AGENTS.md
-SOUL.md
-USER.md
-TOOLS.md
-HEARTBEAT.md
-IDENTITY.md
-MEMORY.md
-memory/
-prompts/
+notes-private/
+workspace-private/
 
 # Optional local-only config/secrets
 .env
