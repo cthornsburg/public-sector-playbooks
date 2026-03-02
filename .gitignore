@@ -1,5 +1,4 @@
-# OpenClaw local/internal assistant context
-# OpenClaw private/runtime files (never publish)
+# Local/private workflow files (never publish)
 .openclaw/
 AGENTS.md
 SOUL.md
@@ -10,3 +9,8 @@ IDENTITY.md
 MEMORY.md
 memory/
 prompts/
+
+# Optional local-only config/secrets
+.env
+.env.*
+*.local
