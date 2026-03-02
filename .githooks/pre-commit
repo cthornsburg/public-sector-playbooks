@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+blocked_paths='(^|/)(AGENTS\.md|SOUL\.md|USER\.md|TOOLS\.md|HEARTBEAT\.md|IDENTITY\.md|MEMORY\.md)$|(^|/)(memory/|prompts/|\.openclaw/)'
+secret_patterns='(BEGIN (RSA|OPENSSH|EC|PGP) PRIVATE KEY|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|xox[baprs]-|-----BEGIN)'
+
+staged_files=$(git diff --cached --name-only)
+
+if echo "$staged_files" | grep -E "$blocked_paths" >/dev/null 2>&1; then
+  echo "❌ Blocked: attempting to commit internal/private files."
+  echo "$staged_files" | grep -E "$blocked_paths" || true
+  exit 1
+fi
+
+if [ -n "$staged_files" ]; then
+  if git diff --cached | grep -E "$secret_patterns" >/dev/null 2>&1; then
+    echo "❌ Potential secret detected in staged diff. Commit blocked."
+    exit 1
+  fi
+fi
+
+exit 0
