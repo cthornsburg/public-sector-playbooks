@@ -28,6 +28,10 @@ Practical, field-tested security playbooks, templates, kits, and assessment work
 - **Starter kit:** `kits/patch-governance/`
 - **Hosted page:** https://cthornsburg.github.io/public-sector-playbooks/kev-to-risk-pack/
 
+### I need a tabletop exercise
+- **Tabletop index:** `playbooks/tabletops/README.md`
+- **Hosted tabletop page:** https://cthornsburg.github.io/public-sector-playbooks/tabletops/
+
 ### I need compliance / assessment references
 Start with these hosted workbooks:
 - **CJIS v6.0 Local Agency Self-Assessment Workbook:** https://cthornsburg.github.io/public-sector-playbooks/cjis-v6-local-agency-workbook/
