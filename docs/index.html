@@ -3,129 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Public Sector Playbooks — Tools</title>
+  <title>Public Sector Playbooks — Start Here</title>
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
-    .wrap{max-width:900px;margin:0 auto;padding:28px 16px}
-    a{color:#93c5fd}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
     .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px;margin-top:14px}
-    h1{font-size:1.4rem;margin:0 0 6px 0}
-    p{margin:6px 0;color:#cbd5e1;line-height:1.4}
+    h1{font-size:1.6rem;margin:0 0 6px 0}
+    h2{font-size:1.1rem;margin:0 0 6px 0}
+    p{margin:6px 0;color:#cbd5e1;line-height:1.45}
     .pill{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.1);color:#bfdbfe}
     ul{margin:10px 0 0 18px}
     li{margin:8px 0}
-    .muted{color:#94a3b8;font-size:.9rem}
+    .muted{color:#94a3b8;font-size:.93rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:9px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.8);color:#e5e7eb}
+    .btn.primary{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.35)}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Public Sector Playbooks — Hosted Tools</h1>
-    <p class="muted">Static tools hosted via GitHub Pages from this repository’s <code>/docs</code> folder.</p>
-    <p class="muted"><strong>New:</strong> Executive landing page: <a href="./executive/index.html">Executive Start Here</a></p>
+    <span class="pill">Start Here</span>
+    <h1>Public Sector Playbooks</h1>
+    <p class="muted">Practical security guidance for cities, counties, and other small public-sector organizations.</p>
+    <p class="muted"><strong>Non-technical or executive reader?</strong> Start with the <a href="./executive/index.html">Executive Start Here page</a>.</p>
 
     <div class="card">
-      <div class="pill">CJIS</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">CJIS v6.0 Local Agency Self‑Assessment Workbook (Unofficial)</h2>
-      <p>
-        Pre‑audit readiness workbook for local agencies aligned to CJIS v6.0. Includes local-only save, JSON export/import, and print/PDF.
-        <strong>Do not enter CJI.</strong>
-      </p>
+      <h2>Pick the problem you’re trying to solve</h2>
       <ul>
-        <li>
-          Open tool: <a href="./cjis-v6-local-agency-workbook/index.html">cjis-v6-local-agency-workbook</a>
-        </li>
-        <li>
-          Readme: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/docs/cjis-v6-local-agency-workbook">GitHub folder</a>
-        </li>
+        <li><strong>I have a cyber incident right now</strong> → <a href="./dfir-first-24-hours/index.html">DFIR: First 24 Hours</a></li>
+        <li><strong>I need ransomware readiness guidance</strong> → <a href="./ransomware-readiness/index.html">Ransomware Readiness</a></li>
+        <li><strong>I need to brief leadership</strong> → <a href="./executive/index.html">Executive Start Here</a></li>
+        <li><strong>I need AI governance starter material</strong> → <a href="./ai-governance-starter-pack/index.html">AI Governance Starter Pack</a></li>
+        <li><strong>I need patch urgency / KEV governance</strong> → <a href="./kev-to-risk-pack/index.html">KEV-to-Risk Pack</a></li>
+        <li><strong>I need self-assessment workbooks</strong> → see workbook tools below</li>
       </ul>
+      <div class="cta">
+        <a class="btn primary" href="./executive/index.html">Executive Start Here</a>
+        <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits">Browse starter kits in GitHub</a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="pill">NIST</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">NIST CSF 2.0 Workbook (Unofficial)</h2>
-      <p>
-        Plain-language self-assessment worksheet aligned to CSF 2.0 with local-only save, JSON export/import, and print/PDF.
-      </p>
-      <ul>
-        <li>Open tool: <a href="./nist-csf-2-workbook/index.html">nist-csf-2-workbook</a></li>
-        <li>Readme: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/docs/nist-csf-2-workbook">GitHub folder</a></li>
-      </ul>
-    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="pill">Incident Response</div>
+        <h2>DFIR: The First 24 Hours</h2>
+        <p>One-page first-day incident checklist plus links to incident log, evidence checklist, timeline, holding statement, and containment decision support.</p>
+        <div class="cta">
+          <a class="btn primary" href="./dfir-first-24-hours/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits/incident-response">GitHub kit</a>
+        </div>
+      </div>
 
-    <div class="card">
-      <div class="pill">NIST</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">NIST SP 800-53 Rev. 5 (Moderate) Workbook (Unofficial)</h2>
-      <p>
-        Moderate-oriented subset worksheet for practical readiness discussions. Local-only save, JSON export/import, and print/PDF.
-      </p>
-      <ul>
-        <li>Open tool: <a href="./nist-800-53r5-moderate-workbook/index.html">nist-800-53r5-moderate-workbook</a></li>
-        <li>Readme: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/docs/nist-800-53r5-moderate-workbook">GitHub folder</a></li>
-      </ul>
-    </div>
+      <div class="card">
+        <div class="pill">Ransomware</div>
+        <h2>Ransomware Readiness</h2>
+        <p>Executive-friendly readiness pack with a minimum viable checklist, leadership decisions, and follow-on tabletop material.</p>
+        <div class="cta">
+          <a class="btn primary" href="./ransomware-readiness/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits/ransomware-readiness">GitHub kit</a>
+        </div>
+      </div>
 
-    <div class="card">
-      <div class="pill">NIST / CMMC</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">NIST SP 800-171 r2 + CMMC Workbook (Unofficial)</h2>
-      <p>
-        Readiness worksheet for small organizations pursuing subcontracting opportunities that require CMMC-aligned cybersecurity evidence. Local-only save, JSON export/import, and print/PDF.
-      </p>
-      <ul>
-        <li>Open tool: <a href="./nist-800-171-cmmc-workbook/index.html">nist-800-171-cmmc-workbook</a></li>
-        <li>Readme: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/docs/nist-800-171-cmmc-workbook">GitHub folder</a></li>
-      </ul>
-    </div>
+      <div class="card">
+        <div class="pill">Executive</div>
+        <h2>Executive Start Here</h2>
+        <p>Fast, non-technical navigation into incident response, ransomware readiness, patch governance, and AI governance.</p>
+        <div class="cta">
+          <a class="btn primary" href="./executive/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits/executive-briefing">GitHub kit</a>
+        </div>
+      </div>
 
-    </div>
+      <div class="card">
+        <div class="pill">AI Governance</div>
+        <h2>AI Governance Starter Pack</h2>
+        <p>Policy starter, cheat sheet, and use-case register aligned to NIST AI RMF for quick local adoption.</p>
+        <div class="cta">
+          <a class="btn primary" href="./ai-governance-starter-pack/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits/ai-governance">GitHub kit</a>
+        </div>
+      </div>
 
-    <div class="card">
-      <div class="pill">Ransomware</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">Ransomware Readiness Pack (Cities/Counties)</h2>
-      <p>
-        Executive-friendly overview + minimum viable checklist with links to full playbook and templates.
-      </p>
-      <ul>
-        <li>Open page: <a href="./ransomware-readiness/index.html">ransomware-readiness</a></li>
-        <li>Source: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/ransomware-readiness">GitHub folder</a></li>
-      </ul>
-    </div>
+      <div class="card">
+        <div class="pill">KEV / Patch Governance</div>
+        <h2>KEV-to-Risk Pack</h2>
+        <p>Turn CISA KEV activity into an executive risk discussion and an actionable IT remediation workflow.</p>
+        <div class="cta">
+          <a class="btn primary" href="./kev-to-risk-pack/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/kits/patch-governance">GitHub kit</a>
+        </div>
+      </div>
 
-    <div class="card">
-      <div class="pill">DFIR</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">DFIR: The First 24 Hours (Public Sector)</h2>
-      <p>
-        One-page incident leadership checklist plus quick links to DFIR templates and a containment decision tree.
-      </p>
-      <ul>
-        <li>Open page: <a href="./dfir-first-24-hours/index.html">dfir-first-24-hours</a></li>
-        <li>Source: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/dfir-first-24-hours">GitHub folder</a></li>
-      </ul>
+      <div class="card">
+        <div class="pill">Workbooks</div>
+        <h2>Assessment and Planning Tools</h2>
+        <p>Browser-based workbooks for CJIS, NIST CSF 2.0, NIST 800-53 Moderate, and NIST 800-171/CMMC-oriented readiness work.</p>
+        <ul>
+          <li><a href="./cjis-v6-local-agency-workbook/index.html">CJIS v6.0 Local Agency Self-Assessment Workbook</a></li>
+          <li><a href="./nist-csf-2-workbook/index.html">NIST CSF 2.0 Workbook</a></li>
+          <li><a href="./nist-800-53r5-moderate-workbook/index.html">NIST SP 800-53 Rev. 5 (Moderate) Workbook</a></li>
+          <li><a href="./nist-800-171-cmmc-workbook/index.html">NIST SP 800-171 r2 + CMMC Workbook</a></li>
+        </ul>
+      </div>
     </div>
-
-    <div class="card">
-      <div class="pill">AI Governance</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">AI Governance Starter Pack (City/County)</h2>
-      <p>
-        NIST AI RMF-aligned starter artifacts with an executive summary and links to policy + staff cheat sheet.
-      </p>
-      <ul>
-        <li>Open page: <a href="./ai-governance-starter-pack/index.html">ai-governance-starter-pack</a></li>
-        <li>Source: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/ai-governance-starter-pack">GitHub folder</a></li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="pill">KEV</div>
-      <h2 style="margin:10px 0 6px 0; font-size:1.1rem;">KEV-to-Risk Pack (Cities/Counties)</h2>
-      <p>
-        Monthly patch governance pack: exec deck outline + IT action sheet + simple patch SLA table.
-      </p>
-      <ul>
-        <li>Open page: <a href="./kev-to-risk-pack/index.html">kev-to-risk-pack</a></li>
-        <li>Source: <a href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/slides/kev-to-risk-pack">GitHub folder</a></li>
-      </ul>
-    </div>
-
   </div>
 </body>
 </html>
