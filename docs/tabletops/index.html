@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Public Sector Playbooks — Tabletop Exercise Kits</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:#94a3b8;font-size:.95rem;line-height:1.4}
+    h1{font-size:1.7rem;margin:0 0 6px 0}
+    h2{font-size:1.05rem;margin:0 0 8px 0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .topbar{display:flex;gap:10px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+    .pill{display:inline-block;font-size:.8rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.1);color:#bfdbfe}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:9px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.8);color:#e5e7eb}
+    .btn.primary{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.35)}
+    ul{margin:10px 0 0 18px}
+    li{margin:7px 0;color:#cbd5e1}
+    .hr{height:1px;background:rgba(148,163,184,.2);margin:16px 0}
+    .small{font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <span class="pill">Tabletop Exercise Kits</span>
+        <h1>Scenario-based exercises for public-sector teams</h1>
+        <div class="muted">Use these tabletop kits to practice coordination, communications, decision-making, and follow-through before a real incident forces the lesson.</div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="../index.html">Main start page</a>
+        <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/tabletops">GitHub source</a>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="card">
+      <h2>How to use these exercises</h2>
+      <p class="muted">Each exercise is designed to stand on its own. Pick the scenario that fits your goal, review the facilitator guide, bring the right people into the room, and capture follow-up actions in the hotwash.</p>
+      <ul>
+        <li><strong>Expected time:</strong> most exercises are built for 60–90 minutes</li>
+        <li><strong>Best audience:</strong> leadership, IT, security, communications, and key service owners</li>
+        <li><strong>Goal:</strong> better decisions, cleaner escalation, and fewer surprises during real events</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>KEV Exploitation Tabletop Kit</h2>
+        <p class="muted">Practice emergency patching, downtime approval, compensating controls, and leadership decisions when a known exploited vulnerability affects an important system.</p>
+        <ul class="small">
+          <li><strong>Expected time:</strong> 60–90 minutes</li>
+          <li><strong>Best for:</strong> IT leadership, security, infrastructure owners, executives, communications</li>
+          <li><strong>Includes:</strong> Spectral Raccoon / APT-1337 threat framing as part of the standard scenario package</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="./kev-exploitation/index.html">Open page</a>
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/tabletops/kev-exploitation">GitHub source</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Ransomware Tabletop Kit</h2>
+        <p class="muted">Practice containment, restoration priorities, continuity, communications, and executive decisions during a ransomware event.</p>
+        <ul class="small">
+          <li><strong>Expected time:</strong> 60–90 minutes</li>
+          <li><strong>Best for:</strong> IT leadership, security, backup owners, executives, communications, operations</li>
+          <li><strong>Status:</strong> repo kit available; hosted scenario page can expand over time</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/tabletops/ransomware">GitHub source</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

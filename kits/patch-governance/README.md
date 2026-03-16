@@ -14,6 +14,7 @@
 - `templates/kev-to-risk-pack/IT_ACTION_SHEET.md`
 - `templates/kev-to-risk-pack/PATCH_SLA_TABLE.md`
 - `references/primary-sources.md`
+- `playbooks/tabletops/kev-exploitation/` — dedicated TTX materials for running or leading a KEV scenario
 
 ## If you only have 15 minutes
 1. Identify internet-facing and high-impact systems.

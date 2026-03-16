@@ -11,7 +11,7 @@
 - `playbooks/ransomware-readiness/RANSOMWARE_READINESS_PACK.md`
 
 ## Use these working files
-- `templates/tabletop-ransomware.md`
+- `playbooks/tabletops/ransomware/`
 - `templates/minimum-logging-baseline.md`
 - `templates/initial-statement-holding.md`
 - `slides/kev-to-risk-deck-outline.md`

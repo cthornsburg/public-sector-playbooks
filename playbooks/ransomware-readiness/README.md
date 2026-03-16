@@ -18,7 +18,7 @@ A lightweight readiness kit for public-sector environments. Start with `RANSOMWA
 
 **Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/ransomware-readiness/
 
-- Run the tabletop: `templates/tabletop-ransomware.md`
+- Run the tabletop: `playbooks/tabletops/ransomware/`
 - Build your patch governance around KEV: `slides/kev-to-risk-deck-outline.md`
 
 - Full pack: RANSOMWARE_READINESS_PACK.md
