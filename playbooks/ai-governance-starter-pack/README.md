@@ -1,4 +1,4 @@
-# AI Governance Starter Pack (City/County) — NIST AI RMF-aligned
+# AI Governance Kit (City/County) — NIST AI RMF-aligned
 
 Practical starter artifacts to help a city/county stand up AI governance quickly.
 

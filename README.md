@@ -1,6 +1,6 @@
 # Public Sector Playbooks
 
-Practical, field-tested security playbooks, templates, starter kits, and assessment workbooks for **cities/counties and other public-sector organizations**.
+Practical, field-tested security playbooks, templates, kits, and assessment workbooks for **cities/counties and other public-sector organizations**.
 
 ## Start here based on the problem you need to solve
 
@@ -20,7 +20,7 @@ Practical, field-tested security playbooks, templates, starter kits, and assessm
 - **Starter kit:** `kits/executive-briefing/`
 - **Hosted page:** https://cthornsburg.github.io/public-sector-playbooks/executive/
 
-### I need AI governance starter material
+### I need AI governance material
 - **Starter kit:** `kits/ai-governance/`
 - **Hosted page:** https://cthornsburg.github.io/public-sector-playbooks/ai-governance-starter-pack/
 
@@ -55,7 +55,7 @@ This repo uses a two-layer model:
    - `references/` = primary-source maps and supporting references
 
 ## What you'll find here
-- **Starter kits**: problem-based guided entry points
+- **Kits**: problem-based guided entry points
 - **Playbooks**: incident response, ransomware readiness, AI governance, emergency patching, and related guidance
 - **Templates**: communications, evidence collection, incident logging, decision aids, and patch governance worksheets
 - **Slides**: exec-ready briefing material
@@ -64,7 +64,7 @@ This repo uses a two-layer model:
 
 ## Notes on in-progress material
 - `docs/texas-privacy-security-workbook/` is currently parked.
-- It is intentionally **not** part of the public navigation, starter kits, or recommended pathways until strategy/content direction is settled.
+- It is intentionally **not** part of the public navigation, kits, or recommended pathways until strategy/content direction is settled.
 
 ## Responsible use
 - Adapt to your environment.

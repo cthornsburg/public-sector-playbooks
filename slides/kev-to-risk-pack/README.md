@@ -1,4 +1,4 @@
-# KEV-to-Risk Pack (Cities/Counties) — Monthly Patch Governance
+# KEV-to-Risk Kit (Cities/Counties) — Monthly Patch Governance
 
 **Purpose:** translate CISA KEV (Known Exploited Vulnerabilities) into an executive-friendly risk conversation and an IT-friendly remediation plan.
 

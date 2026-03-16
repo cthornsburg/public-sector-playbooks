@@ -1,4 +1,4 @@
-# Ransomware Readiness Pack (Cities/Counties)
+# Ransomware Readiness Kit (Cities/Counties)
 
 **Purpose:** a practical, minimum-viable package a city/county can adopt quickly to reduce ransomware impact and improve response speed.
 

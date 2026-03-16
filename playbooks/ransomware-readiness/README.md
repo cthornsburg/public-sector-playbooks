@@ -1,6 +1,6 @@
 # Ransomware Readiness (Cities/Counties)
 
-A lightweight readiness package for public-sector environments. Start with RANSOMWARE_READINESS_PACK.md for the full pack.
+A lightweight readiness kit for public-sector environments. Start with `RANSOMWARE_READINESS_PACK.md` for the full source document.
 
 ## Contents
 - Readiness checklist (prevent/detect/respond)
