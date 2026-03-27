@@ -6,6 +6,7 @@ It is a weekday morning. Multiple users report inaccessible shared files, endpoi
 ## Current situation
 - User reports and security alerts suggest encryption or destructive malware activity.
 - The scope is not fully known.
+- One outside reporting channel notes that some observed behavior may overlap with a financially motivated intrusion cluster referred to in this exercise as **Spectral Raccoon / APT-1337**, but attribution is not confirmed.
 - Leadership wants plain-English impact, expected downtime, and immediate next steps.
 - Communications wants to know whether public messaging is needed.
 - Backup confidence exists, but restoration speed and integrity are not yet confirmed.

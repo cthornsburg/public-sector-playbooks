@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ransomware Tabletop Kit — Public Sector Playbooks</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1220;color:#e5e7eb}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:#94a3b8;font-size:.95rem;line-height:1.4}
+    h1{font-size:1.6rem;margin:0 0 6px 0}
+    h2{font-size:1.1rem;margin:14px 0 6px 0}
+    p{margin:8px 0;color:#cbd5e1;line-height:1.45}
+    .pill{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:rgba(59,130,246,.1);color:#bfdbfe}
+    .card{background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:16px;margin-top:14px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .kpi{background:#0f172a;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:12px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-block;padding:9px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.8);color:#e5e7eb}
+    .btn.primary{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.35)}
+    ul{margin:8px 0 0 18px}
+    li{margin:7px 0}
+    .small{font-size:.92rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">Tabletop Exercise Kit</span>
+    <h1>Ransomware Tabletop Kit</h1>
+    <p class="muted">A 60–90 minute exercise for public-sector teams to practice containment, restoration priorities, continuity, communications, and executive decisions when ransomware or destructive encryption disrupts critical services.</p>
+
+    <div class="card">
+      <div class="grid">
+        <div class="kpi">
+          <h2 style="margin-top:0;">Expected time</h2>
+          <ul class="small">
+            <li>Standard: 60–90 minutes</li>
+            <li>Short version: 45 minutes</li>
+            <li>Extended version: up to 2 hours with deeper hotwash</li>
+          </ul>
+        </div>
+        <div class="kpi">
+          <h2 style="margin-top:0;">Best participants</h2>
+          <ul class="small">
+            <li>IT leadership</li>
+            <li>security staff</li>
+            <li>backup, identity, or infrastructure owners</li>
+            <li>executive sponsor / department leadership</li>
+            <li>communications / PIO</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="../index.html">All tabletop kits</a>
+        <a class="btn" href="https://github.com/cthornsburg/public-sector-playbooks/tree/main/playbooks/tabletops/ransomware">GitHub source</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>What this exercise practices</h2>
+      <ul>
+        <li>identifying scope and initial containment priorities</li>
+        <li>deciding what gets isolated, restored, or rebuilt first</li>
+        <li>testing backup confidence against real recovery pressure</li>
+        <li>managing communications, rumor control, and leadership expectations</li>
+        <li>handling uncertain attribution and possible exfiltration pressure</li>
+        <li>capturing follow-up actions for resilience improvement</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Threat context</h2>
+      <p>This exercise can lightly reuse the same fictional threat framing used in the KEV tabletop — <strong>Spectral Raccoon / APT-1337</strong> — to make exfiltration uncertainty, extortion pressure, and communications discipline more realistic. The adversary label should support the scenario, not dominate it.</p>
+      <ul>
+        <li>Use the label to introduce attribution ambiguity and rumor pressure</li>
+        <li>Keep the core exercise focused on ransomware decisions and service continuity</li>
+        <li>Avoid turning the scenario into a threat-intel lecture</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Included materials</h2>
+      <ul>
+        <li><a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/tabletops/ransomware/facilitator-guide.md">Facilitator guide</a></li>
+        <li><a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/tabletops/ransomware/participant-brief.md">Participant brief</a></li>
+        <li><a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/tabletops/ransomware/injects.md">Injects</a></li>
+        <li><a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/tabletops/ransomware/evaluator-worksheet.md">Evaluator worksheet</a></li>
+        <li><a href="https://github.com/cthornsburg/public-sector-playbooks/blob/main/playbooks/tabletops/ransomware/hotwash-template.md">Hotwash template</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Recommended flow</h2>
+      <ol style="margin:8px 0 0 18px; color:#cbd5e1;">
+        <li>Review the facilitator guide and participant brief.</li>
+        <li>Tailor the impacted services, dependencies, and restoration priorities to your environment.</li>
+        <li>Run the injects using the rolling timestamps to keep pace and force decisions.</li>
+        <li>Push participants to make explicit calls on containment, restoration, communications, and escalation.</li>
+        <li>Capture gaps and owners in the hotwash.</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
