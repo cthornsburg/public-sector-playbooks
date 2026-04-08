@@ -25,10 +25,15 @@ Fill the table:
 | Privileged apps | Helpdesk, RMM | Usually | | | |
 | Core infra | AD, hypervisors | No (should be) | | | |
 
-## Slide 4 — Plan & timelines (7/14/30)
+## Slide 4 — Plan & timelines (7/14/30 + first 24 hours)
 - 7 days: **KEV + internet-facing (always)**; also KEV items with known ransomware use
 - 14 days: high-risk internal systems + privileged apps
 - 30 days: everything else (or compensating controls documented)
+
+**First 24 hours for fast-exploitation KEV events**
+- 0–2h: confirm exposure, assign owner, restrict access, preserve logs/config
+- 2–8h: patch or hotfix if available, otherwise isolate and apply vendor mitigation
+- 8–24h: validate closure, review admin changes, report residual risk to leadership
 
 **Risk acceptance:** anything beyond SLA requires explicit approval and a compensating control.
 
@@ -36,6 +41,7 @@ Fill the table:
 - Approve:
   - patch windows / downtime
   - emergency changes for KEV items
+  - same-day containment authority when exploitation is active
   - funding for visibility (asset inventory + vuln management + logging)
 - Assign:
   - executive sponsor
