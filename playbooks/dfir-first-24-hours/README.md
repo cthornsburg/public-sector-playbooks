@@ -14,6 +14,7 @@ A concise, practical checklist for the first day of an incident.
 3) **Preserve**: EDR alerts, firewall/VPN logs, email security logs, SIEM, cloud audit logs.
 4) **Snapshot before changes** when possible (VM snapshots, host triage images, config exports).
 5) **Identify scope**: what systems are impacted, what is business-critical.
+6) **Confirm external decision paths**: cyber insurance notice, outside counsel, law enforcement, and any reporting/notification obligations. Do not guess; assign someone to verify.
 
 ## Containment (2–8 hours)
 - Segment affected subnets; restrict east-west.
@@ -26,6 +27,7 @@ Quick decision aid (PNG): `docs/images/containment-decision-tree.png`
 - Validate backups (restore test) before trusting them.
 - Decide: rebuild vs clean.
 - Plan communications (internal, leadership, public-facing).
+- Reconfirm insurer requirements and reporting/notification status as facts change.
 
 **Hosted page (GitHub Pages):** https://cthornsburg.github.io/public-sector-playbooks/dfir-first-24-hours/
 

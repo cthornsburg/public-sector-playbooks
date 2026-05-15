@@ -27,6 +27,8 @@ Run a practical tabletop exercise for a city/county environment where ransomware
 - Tailor the scenario to your critical systems and public-service dependencies.
 - Decide what is impacted first: user endpoints, file shares, identity, hypervisors, dispatch-adjacent systems, payroll, utilities, or citizen services.
 - Pre-fill service owners and critical recovery priorities where possible.
+- Confirm cyber insurance status, hotline/claim contact, policy number location, and any insurer notice requirements.
+- Confirm who can verify breach/reporting obligations with legal, records, privacy, state, federal, law-enforcement, and sector partners.
 - Print or distribute:
   - participant brief
   - inject sheet
@@ -78,7 +80,7 @@ Force explicit answers on:
 - outage tolerance
 - restoration priorities
 - communications posture
-- outside notification and partner engagement
+- outside notification and partner engagement, including cyber insurance, outside counsel, law enforcement, state/federal reporting, and privacy/breach notification triggers
 - acceptable risk while services are degraded
 
 ### 5. Hotwash / actions (10–20 min)
@@ -96,7 +98,9 @@ Capture:
 - “Who approves disconnecting or isolating critical systems?”
 - “What does leadership need to hear in the next 30 minutes?”
 - “What can communications say today without overcommitting facts?”
-- “What would legal, insurance, regulators, or auditors ask for later?”
+- “What would legal, insurance, regulators, law enforcement, or auditors ask for later?”
+- “Who verifies reporting requirements before anyone promises that notification is or is not required?”
+- “Do we know our cyber insurance status and notice process, or are we guessing under pressure?”
 - “If the name Spectral Raccoon / APT-1337 starts circulating, who decides whether it is mentioned or avoided?”
 
 ## Common failure modes to watch for
@@ -105,10 +109,12 @@ Capture:
 - Communications outruns confirmed facts.
 - Critical service owners are not involved early enough.
 - Evidence preservation is sacrificed for speed without documentation.
+- Insurance, outside counsel, and reporting obligations are discovered during the incident instead of verified before it.
 
 ## Outputs expected from the session
 - clarified restoration priority list
 - backup/restore validation actions
 - updated communications and escalation expectations
+- verified insurance, outside counsel, and reporting/notification decision paths
 - logging/evidence capture improvements
 - follow-up owners and dates

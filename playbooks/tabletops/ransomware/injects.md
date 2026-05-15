@@ -31,7 +31,8 @@ Threat intelligence or EDR suggests possible data staging or outbound activity, 
 
 **Decision prompts**
 - When do you move from outage response to possible breach response?
-- Who needs to be engaged now?
+- Who needs to be engaged now, including legal, insurance, records/privacy, law enforcement, and key vendors?
+- Who verifies whether any reporting or notification clock has started?
 - What can be said without overstating facts?
 - How do you handle uncertain actor naming in leadership or public updates?
 
@@ -48,6 +49,8 @@ Insurance requests artifacts and a timeline. A local reporter asks whether citiz
 
 **Decision prompts**
 - Who owns external communications?
+- Who contacts the insurer, what policy/contact information is used, and what artifacts does the insurer require?
+- Who verifies required reporting paths before public or leadership statements overcommit?
 - What documentation must be preserved?
 - What is the holding statement?
 - What do you say about attribution when the evidence is still incomplete?

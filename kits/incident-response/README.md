@@ -25,6 +25,7 @@
 3. Stabilize communications.
 4. Preserve logs/evidence before making major changes.
 5. Use the containment decision tree before rushing into destructive containment.
+6. Confirm who is checking cyber insurance notice, outside counsel, law enforcement, and reporting/notification requirements.
 
 ## Good-enough outcome
 By the end of the first hour, you should have:
@@ -33,6 +34,7 @@ By the end of the first hour, you should have:
 - a list of affected systems/users
 - preserved initial evidence/logs
 - a clear next-step containment decision
+- an assigned owner for insurance, legal, and reporting/notification verification
 
 ## Notes
 - This kit is a guide to the right files, not a duplicate content folder.

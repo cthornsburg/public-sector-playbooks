@@ -25,7 +25,7 @@ Help public-sector leadership, IT, security, communications, and business owners
 2. Tailor the scenario to your real environment and critical services.
 3. Invite leadership + IT + comms + critical business owners.
 4. Run the scenario in 60–90 minutes using the rolling timestamps in `injects.md` to keep pacing consistent for the facilitator.
-5. Convert findings into updates for backup validation, containment authority, restoration sequencing, communications, and third-party/vendor coordination.
+5. Convert findings into updates for backup validation, containment authority, restoration sequencing, communications, cyber insurance notice, reporting/notification verification, and third-party/vendor coordination.
 
 ## Related materials
 - Ransomware readiness source document: `/Users/cleo/Desktop/public-sector-playbooks/playbooks/ransomware-readiness/RANSOMWARE_READINESS_PACK.md`
@@ -40,7 +40,7 @@ At the end of the exercise, the team should be able to answer:
 - What systems or services get restored first?
 - What backup assumptions are actually validated?
 - What can be said internally or publicly, and by whom?
-- What decisions require legal, insurance, or outside-partner involvement?
+- What decisions require legal, insurance, law-enforcement, reporting/notification, or outside-partner involvement?
 
 ## Optional adversary flavor
 This kit can lightly reuse the same fictional adversary framing used in the KEV tabletop:

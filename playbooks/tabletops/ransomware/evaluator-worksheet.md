@@ -31,11 +31,12 @@ Score each area as:
 ### 4. Communications
 - Does the team know when/how to brief leadership?
 - Is there a sane public holding statement path?
+- Are legal, insurance, records/privacy, law enforcement, and reporting/notification decision paths identified before statements are made?
 - Notes:
 
 ### 5. Evidence and recordkeeping
 - Do participants preserve evidence early enough?
-- Are actions and decisions documented?
+- Are actions, decisions, insurer requests, and reporting/notification determinations documented?
 - Notes:
 
 ### 6. Follow-through

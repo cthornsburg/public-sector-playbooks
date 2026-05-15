@@ -45,7 +45,10 @@
 - [ ] Incident lead + scribe roles pre-assigned.
 - [ ] Out-of-band contact list maintained (cell numbers, alternate email).
 - [ ] Vendor list maintained (EDR, MSP, cloud, telecom, cyber insurance, IR retainer).
+- [ ] Cyber insurance status verified: active policy, policy number location, hotline/claim contact, notice requirements, and required artifacts.
+- [ ] Outside counsel/contact path identified before an incident.
 - [ ] Legal/notification decision path defined (who decides, what triggers).
+- [ ] Local, state, federal, law-enforcement, privacy, and sector-specific reporting paths documented or explicitly marked not applicable.
 
 ---
 
@@ -102,8 +105,8 @@ If you cannot answer “what happened” quickly, ransomware incidents get more 
 - Who has authority to shut down services?
 - What’s our restoration priority order?
 - What evidence must be preserved before containment actions?
-- Do we have cyber insurance? Who notifies them and when?
-- If exfiltration is suspected, who assesses notification obligations?
+- Do we have active cyber insurance? Where is the policy number, who notifies the insurer, when, and what evidence/timeline do they require?
+- If exfiltration or service-impact reporting is suspected, who verifies state, federal, law-enforcement, privacy, sector, and contractual notification obligations?
 
 ### Injects (optional)
 - Vendor reports suspicious API activity.
@@ -132,11 +135,13 @@ These are meant to be edited and approved *before* an incident.
 ## 5) Pre-incident “Call Sheet” (build this now)
 
 Create a one-page contact sheet:
-- Cyber insurance hotline + policy #
+- Cyber insurance hotline + policy # + claim/notice instructions
 - Outside counsel (if used)
 - IR provider / retainer contact
 - MSP / key vendors (EDR, cloud, telecom)
 - Local/state/federal reporting contacts as appropriate
+- Law enforcement / fusion center / sector contacts as appropriate
+- Privacy, records, or breach-notification owner
 
 ---
 

@@ -24,7 +24,8 @@ By the end of this exercise, participants should be able to describe:
 - Critical services depend on shared infrastructure.
 - At least one executive decision-maker is available.
 - Public-service disruption is possible.
-- Vendor, insurance, or law enforcement engagement may become relevant.
+- Vendor, insurance, outside counsel, or law enforcement engagement may become relevant.
+- Reporting or notification requirements are not assumed; the exercise should identify who verifies them and what facts are needed.
 
 ## Participant questions
 Be ready to answer:
@@ -33,3 +34,5 @@ Be ready to answer:
 - What evidence needs to be preserved before major changes?
 - What gets restored first?
 - What do we tell staff, leadership, and the public?
+- Who confirms cyber insurance status and notice requirements?
+- Who verifies legal, regulatory, state, federal, law-enforcement, or sector reporting obligations?
