@@ -1,0 +1,31 @@
+name: Documentation fix
+description: Report a typo, confusing instruction, broken link, or outdated content.
+title: "[Docs]: "
+labels: ["documentation", "student-friendly"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What needs to be fixed?
+      placeholder: "The step says..., but I expected..."
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: File, page, or link
+      placeholder: "README.md, docs/..., hosted URL, etc."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested wording or correction
+      description: Optional, but helpful.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: This report does not include credentials, private data, CTF flags, or sensitive screenshots.
+          required: true

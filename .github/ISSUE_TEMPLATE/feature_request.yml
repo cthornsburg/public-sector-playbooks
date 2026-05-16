@@ -1,0 +1,34 @@
+name: Feature or improvement request
+description: Suggest a new resource, lab, playbook, checklist, or project improvement.
+title: "[Feature]: "
+labels: ["enhancement", "needs discussion", "student-friendly"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Issues are a good way to participate even if you are not ready to submit a pull request.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to add or improve?
+      description: Describe the idea in plain language.
+      placeholder: "Example: Add a troubleshooting note for..."
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Who would this help?
+      description: Explain the student, instructor, or practitioner value.
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Related file, page, or section
+      placeholder: "docs/example.md, README section, hosted page URL, etc."
+  - type: textarea
+    id: sources
+    attributes:
+      label: References or examples
+      description: Add official sources, screenshots, or examples if safe to share.

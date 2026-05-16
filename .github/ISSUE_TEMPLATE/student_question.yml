@@ -1,0 +1,29 @@
+name: Student question
+description: Ask a question about using or understanding the project.
+title: "[Question]: "
+labels: ["question", "student-friendly"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What are you trying to understand or do?
+      placeholder: "I am trying to..."
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Related file, page, command, or assignment section
+      placeholder: "docs/..., README section, command, etc."
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried so far?
+      description: Keep this brief. Do not include private data.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I did not include passwords, private keys, CTF flags, private screenshots, or personal information.
+          required: true

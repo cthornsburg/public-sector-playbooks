@@ -44,6 +44,15 @@ These are good starting points for compliance-oriented reviews, readiness conver
 ### I just need templates
 - `templates/`
 
+## How to participate
+
+Students, instructors, and practitioners can contribute in several ways:
+
+- Open an **issue** to ask a question, report confusing guidance, suggest a new playbook/template, or flag a broken link.
+- Open a **pull request** when you already have a focused content change ready for review.
+- Start with `docs/participation-guide.md` if you are new to GitHub or unsure whether to use an issue or pull request.
+- See `CONTRIBUTING.md` for safety rules and review expectations.
+
 ## How this repo is organized
 
 This repo uses a two-layer model:
